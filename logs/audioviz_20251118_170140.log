@@ -1,0 +1,43 @@
+2025-11-18 17:01:40 - AudioVizMIDI - INFO - [logger.py:63] - Logging system initialized
+2025-11-18 17:01:40 - AudioVizMIDI - INFO - [logger.py:64] - Log file: logs/audioviz_20251118_170140.log
+2025-11-18 17:01:40 - AudioVizMIDI - INFO - [test_onset_detector.py:15] - Testing Onset Detector Module...
+2025-11-18 17:01:40 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-18 17:01:40 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:53] - AudioLoader initialized
+2025-11-18 17:01:40 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-18 17:01:40 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:51] - OnsetDetector initialized
+2025-11-18 17:01:40 - AudioVizMIDI - INFO - [test_onset_detector.py:25] - Test audio created with expected onsets at: [0.0, 0.5, 1.0, 1.5, 2.0]
+2025-11-18 17:01:40 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:73] - Loading audio file: test_onsets.wav
+2025-11-18 17:01:42 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:98] - Audio loaded successfully
+2025-11-18 17:01:42 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:112] - Preprocessing complete. Duration: 2.30s
+2025-11-18 17:01:42 - AudioVizMIDI - INFO - [test_onset_detector.py:31] - Audio loaded: 2.30s duration
+2025-11-18 17:01:42 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:72] - Detecting onsets using 'energy' method...
+2025-11-18 17:01:47 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:115] - Onset detection complete: 7 onsets detected
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:37] - Detected 7 onsets
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:38] - Onset times: [0.48761905 0.81269841 0.99845805 1.30031746 1.4860771  1.81115646
+ 1.9969161 ]
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:47] - ✗ Expected: 0.00s, Detected: 0.49s, Error: 0.488s
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:47] - ✗ Expected: 0.50s, Detected: 0.81s, Error: 0.313s
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:47] - ✓ Expected: 1.00s, Detected: 1.00s, Error: 0.002s
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:47] - ✗ Expected: 1.50s, Detected: 1.30s, Error: 0.200s
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:47] - ✗ Expected: 2.00s, Detected: 1.49s, Error: 0.514s
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:58] - method: energy
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:58] - total_onsets: 7
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:56] - first_onset: 0.488
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:56] - last_onset: 1.997
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:56] - average_interval: 0.252
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:56] - min_interval: 0.186
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:56] - max_interval: 0.325
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:56] - estimated_tempo: 238.522
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:63] - Generated 7 intervals:
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:65] -   Interval 1: 0.488s - 0.813s (duration: 0.325s)
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:65] -   Interval 2: 0.813s - 0.998s (duration: 0.186s)
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:65] -   Interval 3: 0.998s - 1.300s (duration: 0.302s)
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:65] -   Interval 4: 1.300s - 1.486s (duration: 0.186s)
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:65] -   Interval 5: 1.486s - 1.811s (duration: 0.325s)
+2025-11-18 17:01:47 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:73] - Loading audio file: test_pitch_440hz.wav
+2025-11-18 17:01:47 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:98] - Audio loaded successfully
+2025-11-18 17:01:47 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:112] - Preprocessing complete. Duration: 2.00s
+2025-11-18 17:01:47 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:72] - Detecting onsets using 'energy' method...
+2025-11-18 17:01:47 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:115] - Onset detection complete: 0 onsets detected
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:78] - Detected 0 onsets in 440Hz test file
+2025-11-18 17:01:47 - AudioVizMIDI - INFO - [test_onset_detector.py:79] - Onset times: []
