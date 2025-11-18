@@ -1,0 +1,37 @@
+2025-11-18 16:53:20 - AudioVizMIDI - INFO - [logger.py:63] - Logging system initialized
+2025-11-18 16:53:20 - AudioVizMIDI - INFO - [logger.py:64] - Log file: logs/audioviz_20251118_165320.log
+2025-11-18 16:53:20 - AudioVizMIDI - INFO - [test_pitch_detector.py:14] - Testing Pitch Detector Module...
+2025-11-18 16:53:20 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-18 16:53:20 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:53] - AudioLoader initialized
+2025-11-18 16:53:20 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-18 16:53:20 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:51] - PitchDetector initialized with algorithm: piptrack
+2025-11-18 16:53:20 - AudioVizMIDI - INFO - [test_pitch_detector.py:24] - Test audio created: test_pitch_440hz.wav (440 Hz for 2 seconds)
+2025-11-18 16:53:20 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:73] - Loading audio file: test_pitch_440hz.wav
+2025-11-18 16:53:23 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:98] - Audio loaded successfully
+2025-11-18 16:53:23 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:112] - Preprocessing complete. Duration: 2.00s
+2025-11-18 16:53:23 - AudioVizMIDI - INFO - [test_pitch_detector.py:29] - Audio loaded: 44100 samples at 22050 Hz
+2025-11-18 16:53:23 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:78] - Starting pitch detection using piptrack algorithm...
+2025-11-18 16:53:27 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:101] - Pitch detection complete
+2025-11-18 16:53:27 - AudioVizMIDI - INFO - [test_pitch_detector.py:35] - Detection complete!
+2025-11-18 16:53:27 - AudioVizMIDI - INFO - [test_pitch_detector.py:36] - Number of frames: 87
+2025-11-18 16:53:27 - AudioVizMIDI - INFO - [test_pitch_detector.py:42] - Average detected frequency: 440.34 Hz
+2025-11-18 16:53:27 - AudioVizMIDI - INFO - [test_pitch_detector.py:43] - Expected frequency: 440.00 Hz
+2025-11-18 16:53:27 - AudioVizMIDI - INFO - [test_pitch_detector.py:44] - Error: 0.34 Hz (0.08%)
+2025-11-18 16:53:27 - AudioVizMIDI - INFO - [test_pitch_detector.py:48] - Detected note: A4 (expected: A4)
+2025-11-18 16:53:27 - AudioVizMIDI - INFO - [test_pitch_detector.py:54] - algorithm: piptrack
+2025-11-18 16:53:27 - AudioVizMIDI - INFO - [test_pitch_detector.py:54] - total_frames: 87
+2025-11-18 16:53:27 - AudioVizMIDI - INFO - [test_pitch_detector.py:54] - frames_with_pitch: 87
+2025-11-18 16:53:27 - AudioVizMIDI - INFO - [test_pitch_detector.py:54] - pitch_coverage: 1.0
+2025-11-18 16:53:27 - AudioVizMIDI - INFO - [test_pitch_detector.py:54] - frequency_range: (439.9555358886719, 440.3462829589844)
+2025-11-18 16:53:27 - AudioVizMIDI - INFO - [test_pitch_detector.py:54] - average_confidence: 0.9876076979746494
+2025-11-18 16:53:27 - AudioVizMIDI - INFO - [test_pitch_detector.py:54] - duration: 1.9969160997732427
+2025-11-18 16:53:27 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:257] - Algorithm changed to: pyin
+2025-11-18 16:53:27 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:78] - Starting pitch detection using pyin algorithm...
+2025-11-18 16:53:31 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:101] - Pitch detection complete
+2025-11-18 16:53:31 - AudioVizMIDI - INFO - [test_pitch_detector.py:64] - Pyin average frequency: 439.80 Hz
+2025-11-18 16:53:31 - AudioVizMIDI - INFO - [test_pitch_detector.py:65] - Error: 0.20 Hz
+2025-11-18 16:53:31 - AudioVizMIDI - INFO - [test_pitch_detector.py:75] - ✓ 440.0 Hz -> A4 (expected: A4)
+2025-11-18 16:53:31 - AudioVizMIDI - INFO - [test_pitch_detector.py:75] - ✓ 261.63 Hz -> C4 (expected: C4)
+2025-11-18 16:53:31 - AudioVizMIDI - INFO - [test_pitch_detector.py:75] - ✓ 329.63 Hz -> E4 (expected: E4)
+2025-11-18 16:53:31 - AudioVizMIDI - INFO - [test_pitch_detector.py:75] - ✓ 523.25 Hz -> C5 (expected: C5)
+2025-11-18 16:53:31 - AudioVizMIDI - INFO - [test_pitch_detector.py:75] - ✓ 0.0 Hz -> N/A (expected: N/A)

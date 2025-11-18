@@ -5,5 +5,6 @@ Handles audio loading, pitch detection, and onset detection.
 """
 
 from .audio_loader import AudioLoader
+from .pitch_detector import PitchDetector
 
-__all__ = ['AudioLoader']
+__all__ = ['AudioLoader', 'PitchDetector']
