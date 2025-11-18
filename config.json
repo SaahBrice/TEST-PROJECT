@@ -1,0 +1,59 @@
+{
+    "audio": {
+        "sample_rate": 22050,
+        "hop_length": 512,
+        "normalize": true,
+        "mono_conversion": true
+    },
+    "pitch_detection": {
+        "algorithm": "piptrack",
+        "fmin": 65.0,
+        "fmax": 2093.0,
+        "threshold": 0.1,
+        "min_note_duration": 0.05
+    },
+    "midi": {
+        "default_velocity": 80,
+        "quantize": true,
+        "remove_short_notes": true,
+        "fill_gaps": true
+    },
+    "visualization": {
+        "color_scheme": "chromatic",
+        "fps": 60,
+        "show_grid": true,
+        "show_keyboard": true,
+        "note_height": 10,
+        "background_color": [
+            30,
+            30,
+            40
+        ],
+        "grid_color": [
+            60,
+            60,
+            70
+        ],
+        "playhead_color": [
+            255,
+            100,
+            100
+        ]
+    },
+    "playback": {
+        "default_speed": 1.0,
+        "default_volume": 0.8,
+        "loop_enabled": false
+    },
+    "export": {
+        "default_format": "midi",
+        "default_directory": "exports",
+        "include_metadata": true
+    },
+    "ui": {
+        "window_width": 1920,
+        "window_height": 1080,
+        "theme": "dark",
+        "last_directory": "/test/path"
+    }
+}

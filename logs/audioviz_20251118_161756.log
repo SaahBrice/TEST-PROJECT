@@ -1,0 +1,10 @@
+2025-11-18 16:17:56 - AudioVizMIDI - INFO - [logger.py:63] - Logging system initialized
+2025-11-18 16:17:56 - AudioVizMIDI - INFO - [logger.py:64] - Log file: logs/audioviz_20251118_161756.log
+2025-11-18 16:17:56 - AudioVizMIDI - INFO - [test_setup.py:11] - Testing logging system...
+2025-11-18 16:17:56 - AudioVizMIDI.utils.config - INFO - [config.py:92] - Config file not found. Creating default configuration.
+2025-11-18 16:17:56 - AudioVizMIDI.utils.config - INFO - [config.py:101] - Configuration saved to config.json
+2025-11-18 16:17:56 - AudioVizMIDI - INFO - [test_setup.py:15] - Testing configuration system...
+2025-11-18 16:17:56 - AudioVizMIDI - INFO - [test_setup.py:21] - Sample Rate: 22050
+2025-11-18 16:17:56 - AudioVizMIDI - INFO - [test_setup.py:22] - Color Scheme: chromatic
+2025-11-18 16:17:56 - AudioVizMIDI.utils.config - INFO - [config.py:101] - Configuration saved to config.json
+2025-11-18 16:17:56 - AudioVizMIDI - INFO - [test_setup.py:28] - Configuration and logging systems working correctly!

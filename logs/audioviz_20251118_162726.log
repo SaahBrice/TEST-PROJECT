@@ -1,0 +1,22 @@
+2025-11-18 16:27:26 - AudioVizMIDI - INFO - [logger.py:63] - Logging system initialized
+2025-11-18 16:27:26 - AudioVizMIDI - INFO - [logger.py:64] - Log file: logs/audioviz_20251118_162726.log
+2025-11-18 16:27:26 - AudioVizMIDI - INFO - [test_audio_loader.py:14] - Testing Audio Loader Module...
+2025-11-18 16:27:26 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-18 16:27:26 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:53] - AudioLoader initialized
+2025-11-18 16:27:26 - AudioVizMIDI - INFO - [test_audio_loader.py:21] - Supported formats: .wav, .mp3, .flac, .ogg
+2025-11-18 16:27:26 - AudioVizMIDI - INFO - [test_audio_loader.py:27] - Test audio file created: test_audio.wav
+2025-11-18 16:27:26 - AudioVizMIDI - INFO - [test_audio_loader.py:32] - Validation result: True
+2025-11-18 16:27:26 - AudioVizMIDI - INFO - [test_audio_loader.py:33] - Validation message: File is valid
+2025-11-18 16:27:26 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:73] - Loading audio file: test_audio.wav
+2025-11-18 16:27:41 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:98] - Audio loaded successfully
+2025-11-18 16:27:41 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:112] - Preprocessing complete. Duration: 1.00s
+2025-11-18 16:27:41 - AudioVizMIDI - INFO - [test_audio_loader.py:39] - Audio loaded successfully!
+2025-11-18 16:27:41 - AudioVizMIDI - INFO - [test_audio_loader.py:40] - Sample rate: 22050 Hz
+2025-11-18 16:27:41 - AudioVizMIDI - INFO - [test_audio_loader.py:41] - Audio shape: (22050,)
+2025-11-18 16:27:41 - AudioVizMIDI - INFO - [test_audio_loader.py:42] - Duration: 1.00 seconds
+2025-11-18 16:27:41 - AudioVizMIDI - INFO - [test_audio_loader.py:48] - filename: test_audio.wav
+2025-11-18 16:27:41 - AudioVizMIDI - INFO - [test_audio_loader.py:48] - duration: 1.0
+2025-11-18 16:27:41 - AudioVizMIDI - INFO - [test_audio_loader.py:48] - sample_rate: 22050
+2025-11-18 16:27:41 - AudioVizMIDI - INFO - [test_audio_loader.py:48] - num_samples: 22050
+2025-11-18 16:27:41 - AudioVizMIDI - INFO - [test_audio_loader.py:48] - max_amplitude: 1.0
+2025-11-18 16:27:41 - AudioVizMIDI - INFO - [test_audio_loader.py:48] - mean_amplitude: 0.6365909576416016
