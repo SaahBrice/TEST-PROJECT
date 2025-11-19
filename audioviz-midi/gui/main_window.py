@@ -228,6 +228,31 @@ class MainWindow(QMainWindow):
         reset_size_action.triggered.connect(self._reset_window_size)
         view_menu.addAction(reset_size_action)
         
+
+        view_menu.addSeparator()
+        
+        # Theme selection submenu
+        theme_menu = view_menu.addMenu('&Theme')
+        
+        # Get available themes
+        from visualization import ThemeManager
+        theme_manager = ThemeManager()
+        themes = theme_manager.get_available_themes()
+        
+        # Create theme actions
+        self.theme_actions = []
+        for theme_info in themes:
+            action = QAction(theme_info['display_name'], self)
+            action.setStatusTip(theme_info['description'])
+            action.triggered.connect(
+                lambda checked, name=theme_info['name']: self._on_theme_changed(name)
+            )
+            theme_menu.addAction(action)
+            self.theme_actions.append(action)
+        
+        view_menu.addSeparator()
+
+
         # Help Menu
         help_menu = menubar.addMenu('&Help')
         
@@ -248,6 +273,33 @@ class MainWindow(QMainWindow):
         
         logger.debug("Menu bar created")
     
+    def _on_theme_changed(self, theme_name: str):
+        """
+        Handle theme change.
+        
+        Args:
+            theme_name: Name of new theme
+        """
+        logger.info(f"Theme change requested: {theme_name}")
+        
+        # Update renderer if it exists
+        if hasattr(self, 'pygame_widget') and self.pygame_widget:
+            if hasattr(self.pygame_widget, 'renderer') and self.pygame_widget.renderer:
+                self.pygame_widget.renderer.set_theme(theme_name)
+                
+                # Update config
+                self.config.set('visualization', 'theme', theme_name)
+                self.config.save_config()
+                
+                self.set_status(f"Theme changed to: {theme_name}")
+                logger.info(f"Theme applied: {theme_name}")
+            else:
+                self.set_status("Load and transcribe audio to see theme")
+        else:
+            self.set_status("Theme will apply after transcription")
+
+
+
     def _check_workflow_state(self) -> dict:
         """
         Check current workflow state for UI guidance.

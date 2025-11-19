@@ -10,6 +10,8 @@ from typing import Optional, Tuple
 from midi import MIDIData, Note
 from utils.logger import get_logger
 from utils.config import ConfigManager
+from visualization.theme_manager import ThemeManager, Theme
+
 
 logger = get_logger(__name__)
 
@@ -56,16 +58,20 @@ class PianoRollRenderer:
         self.color_scheme = self.config.get('visualization', 'color_scheme', 'chromatic')
         self.show_grid = self.config.get('visualization', 'show_grid', True)
         self.show_keyboard = self.config.get('visualization', 'show_keyboard', True)
-        
-        # Colors from config
-        bg_color = self.config.get('visualization', 'background_color', [30, 30, 40])
-        self.bg_color = tuple(bg_color)
-        
-        grid_color = self.config.get('visualization', 'grid_color', [60, 60, 70])
-        self.grid_color = tuple(grid_color)
-        
-        playhead_color = self.config.get('visualization', 'playhead_color', [255, 100, 100])
-        self.playhead_color = tuple(playhead_color)
+
+        # Theme system
+        self.theme_manager = ThemeManager()
+        theme_name = self.config.get('visualization', 'theme', 'studio_dark')
+        self.theme_manager.set_theme(theme_name)
+        self.current_theme = self.theme_manager.get_current_theme()
+
+        # Colors from theme (instead of config)
+        self.bg_color = self.current_theme.background_color
+        self.grid_color = self.current_theme.grid_color
+        self.playhead_color = self.current_theme.playhead_color
+
+        logger.info(f"Theme loaded: {self.current_theme.display_name}")
+
         
         # Rendering parameters
         self.keyboard_width = 70  # Width of piano keyboard on left
@@ -221,25 +227,26 @@ class PianoRollRenderer:
             
             # Draw key 
             if is_black_key:
-                key_color = (40, 40, 50)
+                key_color = self.current_theme.keyboard_black_key
                 key_width = self.keyboard_width - 18  # Narrower for black keys
             else:
-                key_color = (200, 200, 210)
+                key_color = self.current_theme.keyboard_white_key
                 key_width = self.keyboard_width - 8  # Slightly wider white keys
 
             
             pygame.draw.rect(self.surface, key_color,
                            (2, y, key_width, key_height))
             
-            # Draw key border
-            pygame.draw.rect(self.surface, (60, 60, 70),
-                           (2, y, key_width, key_height), 1)
+            # Draw key border using theme color
+            pygame.draw.rect(self.surface, self.current_theme.keyboard_border,
+                        (2, y, key_width, key_height), 1)
+
             
             # Draw note name for C notes
             if note_class == 0:  # C notes
                 octave = (pitch // 12) - 1
                 note_name = f'C{octave}'
-                text = self.small_font.render(note_name, True, (150, 150, 160))
+                text = self.small_font.render(note_name, True, self.current_theme.keyboard_text)
                 # Center text horizontally in key
                 text_x = 8
                 text_y = y + (key_height - text.get_height()) // 2
@@ -379,9 +386,10 @@ class PianoRollRenderer:
             RGB color tuple
         """
         if self.color_scheme == 'chromatic':
-            # Color by pitch class (C, C#, D, etc.)
+            # Color by pitch class using theme colors
             pitch_class = note.pitch % 12
-            return self.CHROMATIC_COLORS[pitch_class]
+            return self.current_theme.note_colors[pitch_class]
+
         
         elif self.color_scheme == 'octave':
             # Color by octave
@@ -459,3 +467,20 @@ class PianoRollRenderer:
         pixel_offset = int(time_offset * self.pixels_per_second)
         
         return playhead_x + pixel_offset
+
+    def set_theme(self, theme_name: str):
+        """
+        Switch to a different theme.
+        
+        Args:
+            theme_name: Name of theme to activate
+        """
+        self.theme_manager.set_theme(theme_name)
+        self.current_theme = self.theme_manager.get_current_theme()
+        
+        # Update colors from new theme
+        self.bg_color = self.current_theme.background_color
+        self.grid_color = self.current_theme.grid_color
+        self.playhead_color = self.current_theme.playhead_color
+        
+        logger.info(f"Theme switched to: {self.current_theme.display_name}")

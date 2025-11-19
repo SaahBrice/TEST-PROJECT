@@ -6,5 +6,6 @@ Handles all graphics rendering and visual display.
 
 from .pygame_widget import PygameWidget
 from .piano_roll_renderer import PianoRollRenderer
+from .theme_manager import ThemeManager, Theme
 
-__all__ = ['PygameWidget', 'PianoRollRenderer']
+__all__ = ['PygameWidget', 'PianoRollRenderer', 'ThemeManager', 'Theme']
