@@ -8,6 +8,8 @@ import sys
 from PyQt5.QtWidgets import QApplication
 from gui import MainWindow
 from utils import setup_logging, ConfigManager
+from utils import setup_logging, ConfigManager, __version__
+
 
 def main():
     """Initialize and run the application."""
@@ -15,11 +17,17 @@ def main():
     logger = setup_logging()
     logger.info("=" * 60)
     logger.info("AudioViz MIDI Application Starting")
+    logger.info(f"AudioViz MIDI v{__version__} Starting")
     logger.info("=" * 60)
     
     # Load configuration
     config = ConfigManager()
     
+    # Log configuration version
+    config_version = config.get('version', 'unknown')
+    if config_version != __version__:
+        logger.warning(f"Config version mismatch: {config_version} vs {__version__}")
+
     # Create Qt application
     app = QApplication(sys.argv)
     app.setApplicationName("AudioViz MIDI")

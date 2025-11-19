@@ -1,9 +1,12 @@
 {
+    "version": "0.2.0-dev",
+    "app_name": "AudioViz MIDI",
     "audio": {
         "sample_rate": 22050,
         "hop_length": 512,
         "normalize": true,
-        "mono_conversion": true
+        "mono_conversion": true,
+        "max_file_size_mb": 100
     },
     "pitch_detection": {
         "algorithm": "piptrack",
@@ -24,21 +27,9 @@
         "show_grid": true,
         "show_keyboard": true,
         "note_height": 10,
-        "background_color": [
-            30,
-            30,
-            40
-        ],
-        "grid_color": [
-            60,
-            60,
-            70
-        ],
-        "playhead_color": [
-            255,
-            100,
-            100
-        ]
+        "background_color": [30, 30, 40],
+        "grid_color": [60, 60, 70],
+        "playhead_color": [255, 100, 100]
     },
     "playback": {
         "default_speed": 1.0,
@@ -53,7 +44,7 @@
     "ui": {
         "window_width": 1920,
         "window_height": 1001,
-        "theme": "light",
+        "theme": "dark",
         "last_directory": "C:/Users/brice.saah/Desktop"
     }
 }
