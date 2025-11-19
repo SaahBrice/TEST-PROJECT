@@ -9,6 +9,7 @@ import os
 from PyQt5.QtWidgets import QWidget, QVBoxLayout
 from PyQt5.QtCore import QTimer, Qt
 from utils.logger import get_logger
+import time
 
 logger = get_logger(__name__)
 
@@ -35,6 +36,11 @@ class PygameWidget(QWidget):
         self.is_initialized = False
         self.screen = None
         self.clock = None
+
+        # FPS tracking for performance monitoring
+        self.frame_count = 0
+        self.fps_last_time = time.time()
+        self.current_fps = 0.0
         
         # Set up widget properties
         self.setMinimumSize(800, 400)
@@ -149,8 +155,21 @@ class PygameWidget(QWidget):
             # Maintain frame rate
             self.clock.tick(self.target_fps)
             
+            # Track FPS (update every second)
+            self.frame_count += 1
+            current_time = time.time()
+            if current_time - self.fps_last_time >= 1.0:
+                self.current_fps = self.frame_count / (current_time - self.fps_last_time)
+                self.frame_count = 0
+                self.fps_last_time = current_time
+                
+                # Log if FPS drops significantly
+                if self.current_fps < self.target_fps * 0.8:
+                    logger.warning(f"Low FPS: {self.current_fps:.1f} (target: {self.target_fps})")
+            
         except Exception as e:
             logger.error(f"Error updating frame: {e}")
+
     
     def _render(self):
         """

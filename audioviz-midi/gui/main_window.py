@@ -22,6 +22,7 @@ from utils.logger import get_logger
 from utils.config import ConfigManager
 from export import MIDIExporter, JSONExporter
 from utils import ErrorHandler
+from utils import get_performance_monitor
 
 
 
@@ -61,7 +62,11 @@ class MainWindow(QMainWindow):
         self.playback_controller.state_changed.connect(self._on_playback_state_changed)
         self.playback_controller.time_updated.connect(self._on_playback_time_updated)
         self.playback_controller.playback_finished.connect(self._on_playback_finished)
-
+        
+        # Performance monitoring
+        self.perf_monitor = get_performance_monitor()
+        self.perf_monitor.log_memory_usage("Application start")
+        
         # Initialize UI components
         self._init_ui()
         
@@ -1265,6 +1270,9 @@ class MainWindow(QMainWindow):
 
     def closeEvent(self, event):
         """Handle window close event."""
+        # Log performance summary
+        self.perf_monitor.log_summary()
+        
         # Clean up playback
         if self.playback_controller:
             self.playback_controller.cleanup()
@@ -1280,5 +1288,6 @@ class MainWindow(QMainWindow):
         
         logger.info("Main window closing")
         event.accept()
+
 
 

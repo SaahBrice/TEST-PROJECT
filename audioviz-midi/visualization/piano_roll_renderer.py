@@ -257,12 +257,20 @@ class PianoRollRenderer:
         start_time = max(0, self.current_time - visible_duration / 3)
         end_time = start_time + visible_duration
         
-        # Get notes in visible time range
+        # OPTIMIZATION: Only get notes in visible time range
         visible_notes = self.midi_data.get_notes_in_range(start_time, end_time)
         
-        # Draw each note
-        for note in visible_notes:
-            self._draw_note(note, x_offset, width, height)
+        # OPTIMIZATION: Skip drawing if too many notes (performance fallback)
+        if len(visible_notes) > 1000:
+            # Draw simplified version for many notes
+            logger.warning(f"Many notes visible ({len(visible_notes)}), using simplified rendering")
+            for note in visible_notes[::2]:  # Draw every other note
+                self._draw_note(note, x_offset, width, height)
+        else:
+            # Draw each note normally
+            for note in visible_notes:
+                self._draw_note(note, x_offset, width, height)
+
     
     def _draw_note(self, note: Note, x_offset: int, width: int, height: int):
         """
