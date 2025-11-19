@@ -1,0 +1,44 @@
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [logger.py:63] - Logging system initialized
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [logger.py:64] - Log file: logs/audioviz_20251119_143805.log
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:114] - ============================================================
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:115] - RUNNING SMOKE TESTS
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:116] - ============================================================
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:121] - 
+--- Test 1: Module Imports ---
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:18] - Testing module imports...
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:22] - ✓ Audio modules imported
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:25] - ✓ MIDI modules imported
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:28] - ✓ Export modules imported
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:31] - ✓ Visualization modules imported
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:34] - ✓ Playback modules imported
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:37] - ✓ GUI modules imported
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:40] - ✓ Utility modules imported
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:125] - 
+--- Test 2: Basic Functionality ---
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:51] - 
+Testing basic functionality...
+2025-11-19 14:38:05 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:60] - ✓ Config manager created
+2025-11-19 14:38:05 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 14:38:05 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:53] - AudioLoader initialized
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:64] - ✓ Audio loader created
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:70] - ✓ Note creation working
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:75] - ✓ MIDI data structure working
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:129] - 
+--- Test 3: File Structure ---
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:86] - 
+Testing file structure...
+2025-11-19 14:38:05 - AudioVizMIDI - ERROR - [test_smoke.py:106] - ✗ main.py - MISSING
+2025-11-19 14:38:05 - AudioVizMIDI - ERROR - [test_smoke.py:106] - ✗ requirements.txt - MISSING
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:104] - ✓ config.json
+2025-11-19 14:38:05 - AudioVizMIDI - ERROR - [test_smoke.py:106] - ✗ audio/__init__.py - MISSING
+2025-11-19 14:38:05 - AudioVizMIDI - ERROR - [test_smoke.py:106] - ✗ midi/__init__.py - MISSING
+2025-11-19 14:38:05 - AudioVizMIDI - ERROR - [test_smoke.py:106] - ✗ visualization/__init__.py - MISSING
+2025-11-19 14:38:05 - AudioVizMIDI - ERROR - [test_smoke.py:106] - ✗ playback/__init__.py - MISSING
+2025-11-19 14:38:05 - AudioVizMIDI - ERROR - [test_smoke.py:106] - ✗ export/__init__.py - MISSING
+2025-11-19 14:38:05 - AudioVizMIDI - ERROR - [test_smoke.py:106] - ✗ gui/__init__.py - MISSING
+2025-11-19 14:38:05 - AudioVizMIDI - ERROR - [test_smoke.py:106] - ✗ utils/__init__.py - MISSING
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:133] - 
+============================================================
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:136] - Smoke Tests: 2/3 passed
+2025-11-19 14:38:05 - AudioVizMIDI - INFO - [test_smoke.py:137] - ============================================================

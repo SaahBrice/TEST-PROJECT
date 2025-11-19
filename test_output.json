@@ -1,0 +1,54 @@
+{
+  "format": "AudioViz MIDI JSON Export",
+  "version": "1.0",
+  "metadata": {
+    "total_notes": 4,
+    "duration_seconds": 2.322,
+    "pitch_range": {
+      "min": 62,
+      "max": 67
+    },
+    "average_note_duration": 0.551,
+    "average_velocity": 82.0,
+    "source_file": "test_audio_integration.wav",
+    "export_date": "2025-11-19T14:38:39.707647"
+  },
+  "notes": [
+    {
+      "pitch": 62,
+      "note_name": "D4",
+      "start_time": 0.603718820861678,
+      "end_time": 1.0913378684807256,
+      "duration": 0.4876190476190475,
+      "velocity": 84,
+      "frequency": 293.6647679174076
+    },
+    {
+      "pitch": 64,
+      "note_name": "E4",
+      "start_time": 1.207437641723356,
+      "end_time": 1.787936507936508,
+      "duration": 0.5804988662131518,
+      "velocity": 83,
+      "frequency": 329.6275569128699
+    },
+    {
+      "pitch": 65,
+      "note_name": "F4",
+      "start_time": 1.787936507936508,
+      "end_time": 2.391655328798186,
+      "duration": 0.6037188208616782,
+      "velocity": 81,
+      "frequency": 349.2282314330039
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 2.391655328798186,
+      "end_time": 2.9257142857142857,
+      "duration": 0.5340589569160996,
+      "velocity": 80,
+      "frequency": 391.99543598174927
+    }
+  ]
+}
