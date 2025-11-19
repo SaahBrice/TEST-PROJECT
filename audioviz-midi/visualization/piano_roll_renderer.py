@@ -68,8 +68,8 @@ class PianoRollRenderer:
         self.playhead_color = tuple(playhead_color)
         
         # Rendering parameters
-        self.keyboard_width = 60  # Width of piano keyboard on left
-        self.note_height = 12  # Height of each note row in pixels
+        self.keyboard_width = 70  # Width of piano keyboard on left
+        self.note_height = self.config.get('visualization', 'note_height', 12)  # Load from config
         self.pixels_per_second = 200  # Horizontal scaling factor
         
         
@@ -219,13 +219,14 @@ class PianoRollRenderer:
             note_class = pitch % 12
             is_black_key = note_class in [1, 3, 6, 8, 10]  # C#, D#, F#, G#, A#
             
-            # Draw key
+            # Draw key 
             if is_black_key:
                 key_color = (40, 40, 50)
-                key_width = self.keyboard_width - 15
+                key_width = self.keyboard_width - 18  # Narrower for black keys
             else:
                 key_color = (200, 200, 210)
-                key_width = self.keyboard_width - 5
+                key_width = self.keyboard_width - 8  # Slightly wider white keys
+
             
             pygame.draw.rect(self.surface, key_color,
                            (2, y, key_width, key_height))
@@ -239,7 +240,11 @@ class PianoRollRenderer:
                 octave = (pitch // 12) - 1
                 note_name = f'C{octave}'
                 text = self.small_font.render(note_name, True, (150, 150, 160))
-                self.surface.blit(text, (5, y + 2))
+                # Center text horizontally in key
+                text_x = 8
+                text_y = y + (key_height - text.get_height()) // 2
+                self.surface.blit(text, (text_x, text_y))
+
     
     def _draw_notes(self, x_offset: int, width: int, height: int):
         """
@@ -353,7 +358,7 @@ class PianoRollRenderer:
         
         # Draw vertical line
         pygame.draw.line(self.surface, self.playhead_color,
-                        (playhead_x, 0), (playhead_x, height), 3)
+                        (playhead_x, 0), (playhead_x, height), 4)
         
         # Draw small triangle at top
         triangle_points = [
@@ -412,7 +417,7 @@ class PianoRollRenderer:
     
     def _pitch_to_y(self, pitch: int, height: int) -> int:
         """
-        Convert MIDI pitch to Y coordinate.
+        Convert MIDI pitch to Y coordinate with spacing between rows.
         
         Args:
             pitch: MIDI pitch number
@@ -423,7 +428,16 @@ class PianoRollRenderer:
         """
         num_pitches = self.max_pitch - self.min_pitch + 1
         pitch_index = self.max_pitch - pitch  # Invert (higher pitch = lower Y)
-        return int((pitch_index / num_pitches) * height)
+        
+        # Calculate base position
+        note_spacing = 1  # 1px gap between notes
+        total_note_height = self.note_height + note_spacing
+        
+        # Position with spacing included
+        y_position = int((pitch_index / num_pitches) * height)
+        
+        return y_position
+
     
     def _time_to_x(self, time: float, x_offset: int, width: int) -> int:
         """
