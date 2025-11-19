@@ -1,0 +1,22 @@
+2025-11-19 11:28:15 - AudioVizMIDI - INFO - [logger.py:63] - Logging system initialized
+2025-11-19 11:28:15 - AudioVizMIDI - INFO - [logger.py:64] - Log file: logs/audioviz_20251119_112815.log
+2025-11-19 11:28:15 - AudioVizMIDI - INFO - [main.py:16] - ============================================================
+2025-11-19 11:28:15 - AudioVizMIDI - INFO - [main.py:17] - AudioViz MIDI Application Starting
+2025-11-19 11:28:15 - AudioVizMIDI - INFO - [main.py:18] - ============================================================
+2025-11-19 11:28:15 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:28:16 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:48] - Main window initialized
+2025-11-19 11:28:16 - AudioVizMIDI - INFO - [main.py:32] - Main window displayed
+2025-11-19 11:28:16 - AudioVizMIDI - INFO - [main.py:33] - Application ready
+2025-11-19 11:28:21 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:362] - Open file dialog triggered
+2025-11-19 11:28:24 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:362] - Open file dialog triggered
+2025-11-19 11:28:26 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:376] - File selected: C:/Users/brice.saah/Desktop/TEST PROJECT/test_scale.wav
+2025-11-19 11:28:26 - AudioVizMIDI.utils.config - INFO - [config.py:101] - Configuration saved to config.json
+2025-11-19 11:28:27 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:398] - Transcribe triggered
+2025-11-19 11:28:34 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:398] - Transcribe triggered
+2025-11-19 11:28:44 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:418] - Settings dialog triggered
+2025-11-19 11:28:49 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:495] - Window size reset to default
+2025-11-19 11:29:09 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:398] - Transcribe triggered
+2025-11-19 11:29:15 - AudioVizMIDI.utils.config - INFO - [config.py:101] - Configuration saved to config.json
+2025-11-19 11:29:15 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:554] - Main window closing
+2025-11-19 11:29:15 - AudioVizMIDI - INFO - [main.py:38] - Application shutting down
+2025-11-19 11:29:15 - AudioVizMIDI - INFO - [main.py:39] - Exit code: 0

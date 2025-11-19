@@ -1,0 +1,263 @@
+2025-11-19 11:50:27 - AudioVizMIDI - INFO - [logger.py:63] - Logging system initialized
+2025-11-19 11:50:27 - AudioVizMIDI - INFO - [logger.py:64] - Log file: logs/audioviz_20251119_115027.log
+2025-11-19 11:50:27 - AudioVizMIDI - INFO - [main.py:16] - ============================================================
+2025-11-19 11:50:27 - AudioVizMIDI - INFO - [main.py:17] - AudioViz MIDI Application Starting
+2025-11-19 11:50:27 - AudioVizMIDI - INFO - [main.py:18] - ============================================================
+2025-11-19 11:50:27 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:50:28 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:51] - Main window initialized
+2025-11-19 11:50:28 - AudioVizMIDI - INFO - [main.py:32] - Main window displayed
+2025-11-19 11:50:28 - AudioVizMIDI - INFO - [main.py:33] - Application ready
+2025-11-19 11:50:34 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:362] - Open file dialog triggered
+2025-11-19 11:50:36 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:378] - File selected: C:/Users/brice.saah/Desktop/TEST PROJECT/test_scale.wav
+2025-11-19 11:50:36 - AudioVizMIDI.utils.config - INFO - [config.py:101] - Configuration saved to config.json
+2025-11-19 11:50:36 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:395] - File loaded successfully via menu: test_scale.wav
+2025-11-19 11:50:40 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:477] - ============================================================
+2025-11-19 11:50:40 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:478] - Starting transcription process...
+2025-11-19 11:50:40 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:479] - ============================================================
+2025-11-19 11:50:40 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:516] - Background processing thread started
+2025-11-19 11:50:40 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:46] - ============================================================
+2025-11-19 11:50:40 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:47] - Starting Audio-to-MIDI Transcription
+2025-11-19 11:50:40 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:48] - ============================================================
+2025-11-19 11:50:40 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:52] - Step 1: Loading audio...
+2025-11-19 11:50:40 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:50:40 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:53] - AudioLoader initialized
+2025-11-19 11:50:40 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:73] - Loading audio file: C:/Users/brice.saah/Desktop/TEST PROJECT/test_scale.wav
+2025-11-19 11:50:42 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:98] - Audio loaded successfully
+2025-11-19 11:50:42 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:112] - Preprocessing complete. Duration: 3.00s
+2025-11-19 11:50:42 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:61] - Audio loaded: 3.00s, 22050 Hz
+2025-11-19 11:50:42 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:66] - Step 2: Detecting pitch...
+2025-11-19 11:50:42 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:50:42 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:51] - PitchDetector initialized with algorithm: piptrack
+2025-11-19 11:50:42 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:78] - Starting pitch detection using piptrack algorithm...
+2025-11-19 11:50:42 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:101] - Pitch detection complete
+2025-11-19 11:50:42 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:77] - Pitch detection: 125 frames detected
+2025-11-19 11:50:42 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:82] - Step 3: Detecting onsets...
+2025-11-19 11:50:42 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:50:42 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:51] - OnsetDetector initialized
+2025-11-19 11:50:42 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:72] - Detecting onsets using 'energy' method...
+2025-11-19 11:50:42 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:115] - Onset detection complete: 9 onsets detected
+2025-11-19 11:50:42 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:91] - Onset detection: 9 onsets found
+2025-11-19 11:50:42 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:96] - Step 4: Converting to MIDI...
+2025-11-19 11:50:42 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:50:42 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:41] - MIDIConverter initialized
+2025-11-19 11:50:42 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:63] - Converting audio analysis to MIDI notes...
+2025-11-19 11:50:42 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:75] - Conversion complete: 4 notes created
+2025-11-19 11:50:42 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:106] - MIDI conversion: 4 notes created
+2025-11-19 11:50:42 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:111] - Step 5: Quantizing notes...
+2025-11-19 11:50:42 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:50:42 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:49] - NoteQuantizer initialized
+2025-11-19 11:50:42 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:63] - Starting note quantization...
+2025-11-19 11:50:42 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:243] - Filled 2 gaps
+2025-11-19 11:50:42 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:99] - Quantization complete: 4 -> 4 notes
+2025-11-19 11:50:42 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:119] - Quantization: 4 notes (filtered from 4)
+2025-11-19 11:50:42 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:124] - ============================================================
+2025-11-19 11:50:42 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:125] - Transcription Complete!
+2025-11-19 11:50:42 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:126] - Total notes: 4
+2025-11-19 11:50:42 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:127] - Duration: 2.32s
+2025-11-19 11:50:42 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:128] - Pitch range: (62, 67)
+2025-11-19 11:50:42 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:129] - ============================================================
+2025-11-19 11:50:42 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:538] - Processing completed successfully!
+2025-11-19 11:50:59 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:630] - Export MIDI triggered
+2025-11-19 11:51:03 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:362] - Open file dialog triggered
+2025-11-19 11:51:10 - AudioVizMIDI.gui.file_drop_widget - INFO - [file_drop_widget.py:149] - File dropped: C:/Users/brice.saah/Desktop/TEST PROJECT/test_scale.wav
+2025-11-19 11:51:10 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:407] - File dropped: C:/Users/brice.saah/Desktop/TEST PROJECT/test_scale.wav
+2025-11-19 11:51:10 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:51:10 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:53] - AudioLoader initialized
+2025-11-19 11:51:10 - AudioVizMIDI.utils.config - INFO - [config.py:101] - Configuration saved to config.json
+2025-11-19 11:51:10 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:435] - File loaded successfully via drag-and-drop: test_scale.wav
+2025-11-19 11:51:16 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:630] - Export MIDI triggered
+2025-11-19 11:51:20 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:477] - ============================================================
+2025-11-19 11:51:20 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:478] - Starting transcription process...
+2025-11-19 11:51:20 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:479] - ============================================================
+2025-11-19 11:51:20 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:516] - Background processing thread started
+2025-11-19 11:51:20 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:46] - ============================================================
+2025-11-19 11:51:20 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:47] - Starting Audio-to-MIDI Transcription
+2025-11-19 11:51:20 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:48] - ============================================================
+2025-11-19 11:51:20 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:52] - Step 1: Loading audio...
+2025-11-19 11:51:20 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:51:20 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:53] - AudioLoader initialized
+2025-11-19 11:51:20 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:73] - Loading audio file: C:/Users/brice.saah/Desktop/TEST PROJECT/test_scale.wav
+2025-11-19 11:51:20 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:98] - Audio loaded successfully
+2025-11-19 11:51:20 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:112] - Preprocessing complete. Duration: 3.00s
+2025-11-19 11:51:20 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:61] - Audio loaded: 3.00s, 22050 Hz
+2025-11-19 11:51:20 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:66] - Step 2: Detecting pitch...
+2025-11-19 11:51:20 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:51:20 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:51] - PitchDetector initialized with algorithm: piptrack
+2025-11-19 11:51:20 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:78] - Starting pitch detection using piptrack algorithm...
+2025-11-19 11:51:20 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:101] - Pitch detection complete
+2025-11-19 11:51:20 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:77] - Pitch detection: 125 frames detected
+2025-11-19 11:51:20 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:82] - Step 3: Detecting onsets...
+2025-11-19 11:51:20 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:51:20 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:51] - OnsetDetector initialized
+2025-11-19 11:51:20 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:72] - Detecting onsets using 'energy' method...
+2025-11-19 11:51:20 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:115] - Onset detection complete: 9 onsets detected
+2025-11-19 11:51:20 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:91] - Onset detection: 9 onsets found
+2025-11-19 11:51:20 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:96] - Step 4: Converting to MIDI...
+2025-11-19 11:51:20 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:51:20 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:41] - MIDIConverter initialized
+2025-11-19 11:51:20 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:63] - Converting audio analysis to MIDI notes...
+2025-11-19 11:51:20 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:75] - Conversion complete: 4 notes created
+2025-11-19 11:51:20 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:106] - MIDI conversion: 4 notes created
+2025-11-19 11:51:20 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:111] - Step 5: Quantizing notes...
+2025-11-19 11:51:20 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:51:20 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:49] - NoteQuantizer initialized
+2025-11-19 11:51:20 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:63] - Starting note quantization...
+2025-11-19 11:51:20 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:243] - Filled 2 gaps
+2025-11-19 11:51:20 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:99] - Quantization complete: 4 -> 4 notes
+2025-11-19 11:51:20 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:119] - Quantization: 4 notes (filtered from 4)
+2025-11-19 11:51:20 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:124] - ============================================================
+2025-11-19 11:51:20 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:125] - Transcription Complete!
+2025-11-19 11:51:20 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:126] - Total notes: 4
+2025-11-19 11:51:20 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:127] - Duration: 2.32s
+2025-11-19 11:51:20 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:128] - Pitch range: (62, 67)
+2025-11-19 11:51:20 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:129] - ============================================================
+2025-11-19 11:51:20 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:538] - Processing completed successfully!
+2025-11-19 11:51:53 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:362] - Open file dialog triggered
+2025-11-19 11:52:05 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:378] - File selected: C:/Users/brice.saah/Desktop/Dailogue.mp3
+2025-11-19 11:52:05 - AudioVizMIDI.utils.config - INFO - [config.py:101] - Configuration saved to config.json
+2025-11-19 11:52:05 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:395] - File loaded successfully via menu: Dailogue.mp3
+2025-11-19 11:52:08 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:477] - ============================================================
+2025-11-19 11:52:08 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:478] - Starting transcription process...
+2025-11-19 11:52:08 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:479] - ============================================================
+2025-11-19 11:52:08 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:516] - Background processing thread started
+2025-11-19 11:52:08 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:46] - ============================================================
+2025-11-19 11:52:08 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:47] - Starting Audio-to-MIDI Transcription
+2025-11-19 11:52:08 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:48] - ============================================================
+2025-11-19 11:52:08 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:52] - Step 1: Loading audio...
+2025-11-19 11:52:08 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:52:08 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:53] - AudioLoader initialized
+2025-11-19 11:52:08 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:73] - Loading audio file: C:/Users/brice.saah/Desktop/Dailogue.mp3
+2025-11-19 11:52:09 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:98] - Audio loaded successfully
+2025-11-19 11:52:09 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:112] - Preprocessing complete. Duration: 290.89s
+2025-11-19 11:52:09 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:61] - Audio loaded: 290.89s, 22050 Hz
+2025-11-19 11:52:09 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:66] - Step 2: Detecting pitch...
+2025-11-19 11:52:09 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:52:09 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:51] - PitchDetector initialized with algorithm: piptrack
+2025-11-19 11:52:09 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:78] - Starting pitch detection using piptrack algorithm...
+2025-11-19 11:52:10 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:101] - Pitch detection complete
+2025-11-19 11:52:10 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:77] - Pitch detection: 11041 frames detected
+2025-11-19 11:52:10 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:82] - Step 3: Detecting onsets...
+2025-11-19 11:52:10 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:52:10 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:51] - OnsetDetector initialized
+2025-11-19 11:52:10 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:72] - Detecting onsets using 'energy' method...
+2025-11-19 11:52:10 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:115] - Onset detection complete: 1232 onsets detected
+2025-11-19 11:52:10 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:91] - Onset detection: 1232 onsets found
+2025-11-19 11:52:10 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:96] - Step 4: Converting to MIDI...
+2025-11-19 11:52:10 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:52:10 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:41] - MIDIConverter initialized
+2025-11-19 11:52:10 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:63] - Converting audio analysis to MIDI notes...
+2025-11-19 11:52:10 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:75] - Conversion complete: 944 notes created
+2025-11-19 11:52:10 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:106] - MIDI conversion: 944 notes created
+2025-11-19 11:52:10 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:111] - Step 5: Quantizing notes...
+2025-11-19 11:52:10 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:52:10 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:49] - NoteQuantizer initialized
+2025-11-19 11:52:10 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:63] - Starting note quantization...
+2025-11-19 11:52:10 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:196] - Merged 33 adjacent note pairs
+2025-11-19 11:52:10 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:243] - Filled 30 gaps
+2025-11-19 11:52:10 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:99] - Quantization complete: 944 -> 911 notes
+2025-11-19 11:52:10 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:119] - Quantization: 911 notes (filtered from 944)
+2025-11-19 11:52:10 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:124] - ============================================================
+2025-11-19 11:52:10 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:125] - Transcription Complete!
+2025-11-19 11:52:10 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:126] - Total notes: 911
+2025-11-19 11:52:10 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:127] - Duration: 290.34s
+2025-11-19 11:52:10 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:128] - Pitch range: (41, 83)
+2025-11-19 11:52:10 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:129] - ============================================================
+2025-11-19 11:52:10 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:538] - Processing completed successfully!
+2025-11-19 11:52:24 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:477] - ============================================================
+2025-11-19 11:52:24 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:478] - Starting transcription process...
+2025-11-19 11:52:24 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:479] - ============================================================
+2025-11-19 11:52:24 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:516] - Background processing thread started
+2025-11-19 11:52:24 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:46] - ============================================================
+2025-11-19 11:52:24 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:47] - Starting Audio-to-MIDI Transcription
+2025-11-19 11:52:24 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:48] - ============================================================
+2025-11-19 11:52:24 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:52] - Step 1: Loading audio...
+2025-11-19 11:52:24 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:52:24 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:53] - AudioLoader initialized
+2025-11-19 11:52:24 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:73] - Loading audio file: C:/Users/brice.saah/Desktop/Dailogue.mp3
+2025-11-19 11:52:24 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:98] - Audio loaded successfully
+2025-11-19 11:52:24 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:112] - Preprocessing complete. Duration: 290.89s
+2025-11-19 11:52:24 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:61] - Audio loaded: 290.89s, 22050 Hz
+2025-11-19 11:52:24 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:66] - Step 2: Detecting pitch...
+2025-11-19 11:52:24 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:52:24 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:51] - PitchDetector initialized with algorithm: piptrack
+2025-11-19 11:52:24 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:78] - Starting pitch detection using piptrack algorithm...
+2025-11-19 11:52:25 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:101] - Pitch detection complete
+2025-11-19 11:52:25 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:77] - Pitch detection: 11041 frames detected
+2025-11-19 11:52:25 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:82] - Step 3: Detecting onsets...
+2025-11-19 11:52:25 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:52:25 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:51] - OnsetDetector initialized
+2025-11-19 11:52:25 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:72] - Detecting onsets using 'energy' method...
+2025-11-19 11:52:25 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:115] - Onset detection complete: 1232 onsets detected
+2025-11-19 11:52:25 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:91] - Onset detection: 1232 onsets found
+2025-11-19 11:52:25 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:96] - Step 4: Converting to MIDI...
+2025-11-19 11:52:25 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:52:25 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:41] - MIDIConverter initialized
+2025-11-19 11:52:25 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:63] - Converting audio analysis to MIDI notes...
+2025-11-19 11:52:25 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:75] - Conversion complete: 944 notes created
+2025-11-19 11:52:25 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:106] - MIDI conversion: 944 notes created
+2025-11-19 11:52:25 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:111] - Step 5: Quantizing notes...
+2025-11-19 11:52:25 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:52:25 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:49] - NoteQuantizer initialized
+2025-11-19 11:52:25 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:63] - Starting note quantization...
+2025-11-19 11:52:25 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:196] - Merged 33 adjacent note pairs
+2025-11-19 11:52:25 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:243] - Filled 30 gaps
+2025-11-19 11:52:25 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:99] - Quantization complete: 944 -> 911 notes
+2025-11-19 11:52:25 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:119] - Quantization: 911 notes (filtered from 944)
+2025-11-19 11:52:25 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:124] - ============================================================
+2025-11-19 11:52:25 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:125] - Transcription Complete!
+2025-11-19 11:52:25 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:126] - Total notes: 911
+2025-11-19 11:52:25 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:127] - Duration: 290.34s
+2025-11-19 11:52:25 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:128] - Pitch range: (41, 83)
+2025-11-19 11:52:25 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:129] - ============================================================
+2025-11-19 11:52:25 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:538] - Processing completed successfully!
+2025-11-19 11:52:29 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:477] - ============================================================
+2025-11-19 11:52:29 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:478] - Starting transcription process...
+2025-11-19 11:52:29 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:479] - ============================================================
+2025-11-19 11:52:29 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:516] - Background processing thread started
+2025-11-19 11:52:29 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:46] - ============================================================
+2025-11-19 11:52:29 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:47] - Starting Audio-to-MIDI Transcription
+2025-11-19 11:52:29 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:48] - ============================================================
+2025-11-19 11:52:29 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:52] - Step 1: Loading audio...
+2025-11-19 11:52:29 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:52:29 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:53] - AudioLoader initialized
+2025-11-19 11:52:29 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:73] - Loading audio file: C:/Users/brice.saah/Desktop/Dailogue.mp3
+2025-11-19 11:52:29 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:98] - Audio loaded successfully
+2025-11-19 11:52:29 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:112] - Preprocessing complete. Duration: 290.89s
+2025-11-19 11:52:29 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:61] - Audio loaded: 290.89s, 22050 Hz
+2025-11-19 11:52:29 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:66] - Step 2: Detecting pitch...
+2025-11-19 11:52:29 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:52:29 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:51] - PitchDetector initialized with algorithm: piptrack
+2025-11-19 11:52:29 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:78] - Starting pitch detection using piptrack algorithm...
+2025-11-19 11:52:30 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:101] - Pitch detection complete
+2025-11-19 11:52:30 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:77] - Pitch detection: 11041 frames detected
+2025-11-19 11:52:30 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:82] - Step 3: Detecting onsets...
+2025-11-19 11:52:30 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:52:30 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:51] - OnsetDetector initialized
+2025-11-19 11:52:30 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:72] - Detecting onsets using 'energy' method...
+2025-11-19 11:52:30 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:115] - Onset detection complete: 1232 onsets detected
+2025-11-19 11:52:30 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:91] - Onset detection: 1232 onsets found
+2025-11-19 11:52:30 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:96] - Step 4: Converting to MIDI...
+2025-11-19 11:52:30 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:52:30 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:41] - MIDIConverter initialized
+2025-11-19 11:52:30 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:63] - Converting audio analysis to MIDI notes...
+2025-11-19 11:52:30 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:75] - Conversion complete: 944 notes created
+2025-11-19 11:52:30 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:106] - MIDI conversion: 944 notes created
+2025-11-19 11:52:30 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:111] - Step 5: Quantizing notes...
+2025-11-19 11:52:30 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 11:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:49] - NoteQuantizer initialized
+2025-11-19 11:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:63] - Starting note quantization...
+2025-11-19 11:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:196] - Merged 33 adjacent note pairs
+2025-11-19 11:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:243] - Filled 30 gaps
+2025-11-19 11:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:99] - Quantization complete: 944 -> 911 notes
+2025-11-19 11:52:30 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:119] - Quantization: 911 notes (filtered from 944)
+2025-11-19 11:52:30 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:124] - ============================================================
+2025-11-19 11:52:30 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:125] - Transcription Complete!
+2025-11-19 11:52:30 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:126] - Total notes: 911
+2025-11-19 11:52:30 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:127] - Duration: 290.34s
+2025-11-19 11:52:30 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:128] - Pitch range: (41, 83)
+2025-11-19 11:52:30 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:129] - ============================================================
+2025-11-19 11:52:30 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:538] - Processing completed successfully!
+2025-11-19 11:53:18 - AudioVizMIDI.utils.config - INFO - [config.py:101] - Configuration saved to config.json
+2025-11-19 11:53:18 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:776] - Main window closing
+2025-11-19 11:53:18 - AudioVizMIDI - INFO - [main.py:38] - Application shutting down
+2025-11-19 11:53:18 - AudioVizMIDI - INFO - [main.py:39] - Exit code: 0

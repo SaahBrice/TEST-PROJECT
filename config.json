@@ -52,8 +52,8 @@
     },
     "ui": {
         "window_width": 1920,
-        "window_height": 1080,
-        "theme": "dark",
-        "last_directory": "/test/path"
+        "window_height": 1001,
+        "theme": "light",
+        "last_directory": "C:/Users/brice.saah/Desktop"
     }
 }
