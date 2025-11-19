@@ -154,14 +154,16 @@ class PygameWidget(QWidget):
     
     def _render(self):
         """
-        Render the frame (placeholder - override in subclasses).
-        Default implementation shows a test pattern.
+        Render the frame using piano roll renderer if available.
         """
-        # Clear screen with dark background
-        self.screen.fill((30, 30, 40))
-        
-        # Draw test pattern (will be replaced with actual visualization)
-        self._draw_test_pattern()
+        # Check if we have a renderer
+        if hasattr(self, 'renderer') and self.renderer:
+            self.renderer.render()
+        else:
+            # No renderer - show test pattern
+            self.screen.fill((30, 30, 40))
+            self._draw_test_pattern()
+
     
     def _draw_test_pattern(self):
         """Draw a simple test pattern to verify Pygame is working."""
@@ -194,6 +196,39 @@ class PygameWidget(QWidget):
         except Exception as e:
             logger.error(f"Error drawing test pattern: {e}")
     
+    def set_renderer(self, renderer):
+        """
+        Set the renderer to use for visualization.
+        
+        Args:
+            renderer: Renderer instance (e.g., PianoRollRenderer)
+        """
+        self.renderer = renderer
+        logger.info(f"Renderer set: {type(renderer).__name__}")
+    
+    def set_midi_data(self, midi_data):
+        """
+        Set MIDI data for visualization.
+        
+        Args:
+            midi_data: MIDIData object
+        """
+        if hasattr(self, 'renderer') and self.renderer:
+            self.renderer.set_midi_data(midi_data)
+            logger.info("MIDI data passed to renderer")
+    
+    def set_playback_time(self, time: float):
+        """
+        Update playback time for visualization.
+        
+        Args:
+            time: Current time in seconds
+        """
+        if hasattr(self, 'renderer') and self.renderer:
+            self.renderer.set_playback_time(time)
+
+
+
     def resizeEvent(self, event):
         """
         Handle widget resize events.

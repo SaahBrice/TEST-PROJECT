@@ -1,0 +1,204 @@
+2025-11-19 12:51:52 - AudioVizMIDI - INFO - [logger.py:63] - Logging system initialized
+2025-11-19 12:51:52 - AudioVizMIDI - INFO - [logger.py:64] - Log file: logs/audioviz_20251119_125152.log
+2025-11-19 12:51:52 - AudioVizMIDI - INFO - [main.py:16] - ============================================================
+2025-11-19 12:51:52 - AudioVizMIDI - INFO - [main.py:17] - AudioViz MIDI Application Starting
+2025-11-19 12:51:52 - AudioVizMIDI - INFO - [main.py:18] - ============================================================
+2025-11-19 12:51:52 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 12:51:52 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:75] - Pygame mixer initialized
+2025-11-19 12:51:52 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:63] - PlaybackController initialized
+2025-11-19 12:51:53 - AudioVizMIDI.visualization.pygame_widget - INFO - [pygame_widget.py:84] - Pygame initialized with surface size: (800, 480)
+2025-11-19 12:51:53 - AudioVizMIDI.visualization.pygame_widget - INFO - [pygame_widget.py:113] - Pygame initialized with surface size: (800, 480)
+2025-11-19 12:51:53 - AudioVizMIDI.visualization.pygame_widget - INFO - [pygame_widget.py:48] - PygameWidget initialized
+2025-11-19 12:51:53 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:63] - Main window initialized
+2025-11-19 12:51:53 - AudioVizMIDI - INFO - [main.py:32] - Main window displayed
+2025-11-19 12:51:53 - AudioVizMIDI - INFO - [main.py:33] - Application ready
+2025-11-19 12:51:55 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:391] - Open file dialog triggered
+2025-11-19 12:51:59 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:407] - File selected: C:/Users/brice.saah/Desktop/TEST PROJECT/test_scale.wav
+2025-11-19 12:51:59 - AudioVizMIDI.utils.config - INFO - [config.py:101] - Configuration saved to config.json
+2025-11-19 12:51:59 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:424] - File loaded successfully via menu: test_scale.wav
+2025-11-19 12:52:00 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:506] - ============================================================
+2025-11-19 12:52:00 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:507] - Starting transcription process...
+2025-11-19 12:52:00 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:508] - ============================================================
+2025-11-19 12:52:00 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:545] - Background processing thread started
+2025-11-19 12:52:00 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:46] - ============================================================
+2025-11-19 12:52:00 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:47] - Starting Audio-to-MIDI Transcription
+2025-11-19 12:52:00 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:48] - ============================================================
+2025-11-19 12:52:00 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:52] - Step 1: Loading audio...
+2025-11-19 12:52:00 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 12:52:00 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:53] - AudioLoader initialized
+2025-11-19 12:52:00 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:73] - Loading audio file: C:/Users/brice.saah/Desktop/TEST PROJECT/test_scale.wav
+2025-11-19 12:52:03 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:98] - Audio loaded successfully
+2025-11-19 12:52:03 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:112] - Preprocessing complete. Duration: 3.00s
+2025-11-19 12:52:03 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:61] - Audio loaded: 3.00s, 22050 Hz
+2025-11-19 12:52:03 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:66] - Step 2: Detecting pitch...
+2025-11-19 12:52:03 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 12:52:03 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:51] - PitchDetector initialized with algorithm: piptrack
+2025-11-19 12:52:03 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:78] - Starting pitch detection using piptrack algorithm...
+2025-11-19 12:52:03 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:101] - Pitch detection complete
+2025-11-19 12:52:03 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:77] - Pitch detection: 125 frames detected
+2025-11-19 12:52:03 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:82] - Step 3: Detecting onsets...
+2025-11-19 12:52:03 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 12:52:03 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:51] - OnsetDetector initialized
+2025-11-19 12:52:03 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:72] - Detecting onsets using 'energy' method...
+2025-11-19 12:52:03 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:115] - Onset detection complete: 9 onsets detected
+2025-11-19 12:52:03 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:91] - Onset detection: 9 onsets found
+2025-11-19 12:52:03 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:96] - Step 4: Converting to MIDI...
+2025-11-19 12:52:03 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 12:52:03 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:41] - MIDIConverter initialized
+2025-11-19 12:52:03 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:63] - Converting audio analysis to MIDI notes...
+2025-11-19 12:52:03 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:75] - Conversion complete: 4 notes created
+2025-11-19 12:52:03 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:106] - MIDI conversion: 4 notes created
+2025-11-19 12:52:03 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:111] - Step 5: Quantizing notes...
+2025-11-19 12:52:03 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 12:52:03 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:49] - NoteQuantizer initialized
+2025-11-19 12:52:03 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:63] - Starting note quantization...
+2025-11-19 12:52:03 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:243] - Filled 2 gaps
+2025-11-19 12:52:03 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:99] - Quantization complete: 4 -> 4 notes
+2025-11-19 12:52:03 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:119] - Quantization: 4 notes (filtered from 4)
+2025-11-19 12:52:03 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:124] - ============================================================
+2025-11-19 12:52:03 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:125] - Transcription Complete!
+2025-11-19 12:52:03 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:126] - Total notes: 4
+2025-11-19 12:52:03 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:127] - Duration: 2.32s
+2025-11-19 12:52:03 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:128] - Pitch range: (62, 67)
+2025-11-19 12:52:03 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:129] - ============================================================
+2025-11-19 12:52:03 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:568] - Processing completed successfully!
+2025-11-19 12:52:03 - AudioVizMIDI.visualization.piano_roll_renderer - INFO - [piano_roll_renderer.py:89] - PianoRollRenderer initialized
+2025-11-19 12:52:03 - AudioVizMIDI.visualization.piano_roll_renderer - INFO - [piano_roll_renderer.py:107] - MIDI data set: 4 notes, pitch range 59-70
+2025-11-19 12:52:03 - AudioVizMIDI.visualization.pygame_widget - INFO - [pygame_widget.py:207] - Renderer set: PianoRollRenderer
+2025-11-19 12:52:03 - AudioVizMIDI.visualization.piano_roll_renderer - INFO - [piano_roll_renderer.py:107] - MIDI data set: 4 notes, pitch range 59-70
+2025-11-19 12:52:03 - AudioVizMIDI.visualization.pygame_widget - INFO - [pygame_widget.py:218] - MIDI data passed to renderer
+2025-11-19 12:52:03 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:88] - Loading audio file: C:/Users/brice.saah/Desktop/TEST PROJECT/test_scale.wav
+2025-11-19 12:52:03 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:104] - Audio loaded: duration=2.32s
+2025-11-19 12:52:03 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:598] - Audio loaded for playback
+2025-11-19 12:52:11 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:840] - Window size reset to default
+2025-11-19 12:52:14 - AudioVizMIDI.gui.control_panel - INFO - [control_panel.py:228] - Play button clicked
+2025-11-19 12:52:14 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:636] - Play requested from control panel
+2025-11-19 12:52:14 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:120] - Starting playback
+2025-11-19 12:52:17 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:262] - Playback finished
+2025-11-19 12:52:17 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:166] - Stopping playback
+2025-11-19 12:52:17 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:711] - Playback finished
+2025-11-19 12:52:18 - AudioVizMIDI.gui.control_panel - INFO - [control_panel.py:228] - Play button clicked
+2025-11-19 12:52:18 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:636] - Play requested from control panel
+2025-11-19 12:52:18 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:120] - Starting playback
+2025-11-19 12:52:20 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:262] - Playback finished
+2025-11-19 12:52:20 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:166] - Stopping playback
+2025-11-19 12:52:20 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:711] - Playback finished
+2025-11-19 12:52:22 - AudioVizMIDI.gui.control_panel - INFO - [control_panel.py:228] - Play button clicked
+2025-11-19 12:52:22 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:636] - Play requested from control panel
+2025-11-19 12:52:22 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:120] - Starting playback
+2025-11-19 12:52:24 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:262] - Playback finished
+2025-11-19 12:52:24 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:166] - Stopping playback
+2025-11-19 12:52:24 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:711] - Playback finished
+2025-11-19 12:52:27 - AudioVizMIDI.gui.control_panel - INFO - [control_panel.py:228] - Play button clicked
+2025-11-19 12:52:27 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:636] - Play requested from control panel
+2025-11-19 12:52:27 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:120] - Starting playback
+2025-11-19 12:52:29 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:262] - Playback finished
+2025-11-19 12:52:29 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:166] - Stopping playback
+2025-11-19 12:52:29 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:711] - Playback finished
+2025-11-19 12:52:31 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:391] - Open file dialog triggered
+2025-11-19 12:52:41 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:407] - File selected: C:/Users/brice.saah/Desktop/Dailogue.mp3
+2025-11-19 12:52:41 - AudioVizMIDI.utils.config - INFO - [config.py:101] - Configuration saved to config.json
+2025-11-19 12:52:41 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:424] - File loaded successfully via menu: Dailogue.mp3
+2025-11-19 12:52:46 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:506] - ============================================================
+2025-11-19 12:52:46 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:507] - Starting transcription process...
+2025-11-19 12:52:46 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:508] - ============================================================
+2025-11-19 12:52:46 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:545] - Background processing thread started
+2025-11-19 12:52:46 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:46] - ============================================================
+2025-11-19 12:52:46 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:47] - Starting Audio-to-MIDI Transcription
+2025-11-19 12:52:46 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:48] - ============================================================
+2025-11-19 12:52:46 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:52] - Step 1: Loading audio...
+2025-11-19 12:52:46 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 12:52:46 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:53] - AudioLoader initialized
+2025-11-19 12:52:46 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:73] - Loading audio file: C:/Users/brice.saah/Desktop/Dailogue.mp3
+2025-11-19 12:52:46 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:98] - Audio loaded successfully
+2025-11-19 12:52:46 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:112] - Preprocessing complete. Duration: 290.89s
+2025-11-19 12:52:46 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:61] - Audio loaded: 290.89s, 22050 Hz
+2025-11-19 12:52:46 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:66] - Step 2: Detecting pitch...
+2025-11-19 12:52:46 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 12:52:46 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:51] - PitchDetector initialized with algorithm: piptrack
+2025-11-19 12:52:46 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:78] - Starting pitch detection using piptrack algorithm...
+2025-11-19 12:52:47 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:101] - Pitch detection complete
+2025-11-19 12:52:47 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:77] - Pitch detection: 11041 frames detected
+2025-11-19 12:52:47 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:82] - Step 3: Detecting onsets...
+2025-11-19 12:52:47 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 12:52:47 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:51] - OnsetDetector initialized
+2025-11-19 12:52:47 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:72] - Detecting onsets using 'energy' method...
+2025-11-19 12:52:47 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:115] - Onset detection complete: 1232 onsets detected
+2025-11-19 12:52:47 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:91] - Onset detection: 1232 onsets found
+2025-11-19 12:52:47 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:96] - Step 4: Converting to MIDI...
+2025-11-19 12:52:47 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 12:52:47 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:41] - MIDIConverter initialized
+2025-11-19 12:52:47 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:63] - Converting audio analysis to MIDI notes...
+2025-11-19 12:52:47 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:75] - Conversion complete: 944 notes created
+2025-11-19 12:52:47 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:106] - MIDI conversion: 944 notes created
+2025-11-19 12:52:47 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:111] - Step 5: Quantizing notes...
+2025-11-19 12:52:47 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 12:52:47 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:49] - NoteQuantizer initialized
+2025-11-19 12:52:47 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:63] - Starting note quantization...
+2025-11-19 12:52:47 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:196] - Merged 33 adjacent note pairs
+2025-11-19 12:52:47 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:243] - Filled 30 gaps
+2025-11-19 12:52:48 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:99] - Quantization complete: 944 -> 911 notes
+2025-11-19 12:52:48 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:119] - Quantization: 911 notes (filtered from 944)
+2025-11-19 12:52:48 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:124] - ============================================================
+2025-11-19 12:52:48 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:125] - Transcription Complete!
+2025-11-19 12:52:48 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:126] - Total notes: 911
+2025-11-19 12:52:48 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:127] - Duration: 290.34s
+2025-11-19 12:52:48 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:128] - Pitch range: (41, 83)
+2025-11-19 12:52:48 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:129] - ============================================================
+2025-11-19 12:52:48 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:568] - Processing completed successfully!
+2025-11-19 12:52:48 - AudioVizMIDI.visualization.piano_roll_renderer - INFO - [piano_roll_renderer.py:89] - PianoRollRenderer initialized
+2025-11-19 12:52:48 - AudioVizMIDI.visualization.piano_roll_renderer - INFO - [piano_roll_renderer.py:107] - MIDI data set: 911 notes, pitch range 38-86
+2025-11-19 12:52:48 - AudioVizMIDI.visualization.pygame_widget - INFO - [pygame_widget.py:207] - Renderer set: PianoRollRenderer
+2025-11-19 12:52:48 - AudioVizMIDI.visualization.piano_roll_renderer - INFO - [piano_roll_renderer.py:107] - MIDI data set: 911 notes, pitch range 38-86
+2025-11-19 12:52:48 - AudioVizMIDI.visualization.pygame_widget - INFO - [pygame_widget.py:218] - MIDI data passed to renderer
+2025-11-19 12:52:48 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:88] - Loading audio file: C:/Users/brice.saah/Desktop/Dailogue.mp3
+2025-11-19 12:52:48 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:104] - Audio loaded: duration=290.34s
+2025-11-19 12:52:48 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:598] - Audio loaded for playback
+2025-11-19 12:52:51 - AudioVizMIDI.gui.control_panel - INFO - [control_panel.py:228] - Play button clicked
+2025-11-19 12:52:51 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:636] - Play requested from control panel
+2025-11-19 12:52:51 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:120] - Starting playback
+2025-11-19 12:53:15 - AudioVizMIDI.gui.control_panel - INFO - [control_panel.py:249] - Seek requested to position: 0.081
+2025-11-19 12:53:15 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:662] - Seek requested to position: 0.081
+2025-11-19 12:53:15 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:199] - Seeking to 23.52s (8.1%)
+2025-11-19 12:53:16 - AudioVizMIDI.gui.control_panel - INFO - [control_panel.py:249] - Seek requested to position: 0.083
+2025-11-19 12:53:16 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:662] - Seek requested to position: 0.083
+2025-11-19 12:53:16 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:199] - Seeking to 24.10s (8.3%)
+2025-11-19 12:53:19 - AudioVizMIDI.gui.control_panel - INFO - [control_panel.py:249] - Seek requested to position: 0.093
+2025-11-19 12:53:19 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:662] - Seek requested to position: 0.093
+2025-11-19 12:53:19 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:199] - Seeking to 27.00s (9.3%)
+2025-11-19 12:53:20 - AudioVizMIDI.gui.control_panel - INFO - [control_panel.py:233] - Pause button clicked
+2025-11-19 12:53:20 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:647] - Pause requested from control panel
+2025-11-19 12:53:20 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:147] - Pausing playback
+2025-11-19 12:53:22 - AudioVizMIDI.gui.control_panel - INFO - [control_panel.py:249] - Seek requested to position: 0.245
+2025-11-19 12:53:22 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:662] - Seek requested to position: 0.245
+2025-11-19 12:53:22 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:199] - Seeking to 71.13s (24.5%)
+2025-11-19 12:53:23 - AudioVizMIDI.gui.control_panel - INFO - [control_panel.py:249] - Seek requested to position: 0.328
+2025-11-19 12:53:23 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:662] - Seek requested to position: 0.328
+2025-11-19 12:53:23 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:199] - Seeking to 95.23s (32.8%)
+2025-11-19 12:53:24 - AudioVizMIDI.gui.control_panel - INFO - [control_panel.py:249] - Seek requested to position: 0.359
+2025-11-19 12:53:24 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:662] - Seek requested to position: 0.359
+2025-11-19 12:53:24 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:199] - Seeking to 104.23s (35.9%)
+2025-11-19 12:53:25 - AudioVizMIDI.gui.control_panel - INFO - [control_panel.py:228] - Play button clicked
+2025-11-19 12:53:25 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:636] - Play requested from control panel
+2025-11-19 12:53:25 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:120] - Starting playback
+2025-11-19 12:53:28 - AudioVizMIDI.gui.control_panel - INFO - [control_panel.py:238] - Stop button clicked
+2025-11-19 12:53:28 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:652] - Stop requested from control panel
+2025-11-19 12:53:28 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:166] - Stopping playback
+2025-11-19 12:53:30 - AudioVizMIDI.gui.control_panel - INFO - [control_panel.py:228] - Play button clicked
+2025-11-19 12:53:30 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:636] - Play requested from control panel
+2025-11-19 12:53:30 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:120] - Starting playback
+2025-11-19 12:53:31 - AudioVizMIDI.gui.control_panel - INFO - [control_panel.py:233] - Pause button clicked
+2025-11-19 12:53:31 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:647] - Pause requested from control panel
+2025-11-19 12:53:31 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:147] - Pausing playback
+2025-11-19 12:53:32 - AudioVizMIDI.gui.control_panel - INFO - [control_panel.py:228] - Play button clicked
+2025-11-19 12:53:32 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:636] - Play requested from control panel
+2025-11-19 12:53:32 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:120] - Starting playback
+2025-11-19 12:53:33 - AudioVizMIDI.gui.control_panel - INFO - [control_panel.py:238] - Stop button clicked
+2025-11-19 12:53:33 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:652] - Stop requested from control panel
+2025-11-19 12:53:33 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:166] - Stopping playback
+2025-11-19 12:53:38 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:310] - Cleaning up playback controller
+2025-11-19 12:53:38 - AudioVizMIDI.visualization.pygame_widget - INFO - [pygame_widget.py:253] - Cleaning up Pygame resources
+2025-11-19 12:53:38 - AudioVizMIDI.utils.config - INFO - [config.py:101] - Configuration saved to config.json
+2025-11-19 12:53:38 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:907] - Main window closing
+2025-11-19 12:53:38 - AudioVizMIDI - INFO - [main.py:38] - Application shutting down
+2025-11-19 12:53:38 - AudioVizMIDI - INFO - [main.py:39] - Exit code: 0

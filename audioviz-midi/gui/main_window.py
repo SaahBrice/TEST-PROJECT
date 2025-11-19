@@ -10,6 +10,8 @@ from PyQt5.QtWidgets import (
     QMenuBar, QMenu, QAction, QToolBar, QStatusBar,
     QLabel, QFileDialog, QMessageBox, QProgressBar
 )
+from playback import PlaybackController, PlaybackState
+from visualization import PianoRollRenderer
 from gui.control_panel import ControlPanel
 from visualization import PygameWidget
 from gui.processing_thread import ProcessingThread
@@ -18,6 +20,8 @@ from PyQt5.QtCore import Qt, QTimer, QSize
 from PyQt5.QtGui import QIcon, QKeySequence
 from utils.logger import get_logger
 from utils.config import ConfigManager
+from export import MIDIExporter, JSONExporter
+
 
 logger = get_logger(__name__)
 
@@ -47,7 +51,14 @@ class MainWindow(QMainWindow):
         self.is_processing = False
         self.processing_thread = None
         self.midi_data = None  # Store transcription result
-        self.pygame_widget = None
+        self.pygame_widget = None  # Pygame visualization widget
+        self.playback_controller = PlaybackController() 
+        self.midi_exporter = MIDIExporter(config)
+        self.json_exporter = JSONExporter(config)
+        # Connect playback signals
+        self.playback_controller.state_changed.connect(self._on_playback_state_changed)
+        self.playback_controller.time_updated.connect(self._on_playback_time_updated)
+        self.playback_controller.playback_finished.connect(self._on_playback_finished)
 
         # Initialize UI components
         self._init_ui()
@@ -562,8 +573,10 @@ class MainWindow(QMainWindow):
         # Store MIDI data
         self.midi_data = midi_data
         
-        # Enable control panel and set duration
+        # Get statistics ONCE at the beginning
         stats = midi_data.get_statistics()
+        
+        # Enable control panel and set duration
         self.control_panel.set_enabled(True)
         self.control_panel.set_duration(stats['duration'])
         
@@ -576,7 +589,26 @@ class MainWindow(QMainWindow):
         self.export_json_action.setEnabled(True)
         self.export_action.setEnabled(True)
         
-        # Switch to Pygame visualization (THIS IS THE NEW PART)
+        # CREATE AND SET UP PIANO ROLL RENDERER
+        renderer = PianoRollRenderer(self.pygame_widget.screen, self.config)
+        renderer.set_midi_data(midi_data)
+        self.pygame_widget.set_renderer(renderer)
+        self.pygame_widget.set_midi_data(midi_data)
+        
+        # LOAD AUDIO FOR PLAYBACK
+        try:
+            self.playback_controller.load_audio(self.current_file, stats['duration'])
+            logger.info("Audio loaded for playback")
+        except Exception as e:
+            logger.error(f"Failed to load audio for playback: {e}")
+            from PyQt5.QtWidgets import QMessageBox
+            QMessageBox.warning(
+                self,
+                'Playback Warning',
+                f'Audio loaded but playback may not work:\n{e}'
+            )
+        
+        # Switch to Pygame visualization
         self.visualization_stack.setCurrentIndex(1)
         
         # Update status
@@ -601,40 +633,27 @@ class MainWindow(QMainWindow):
 
 
 
+
     def _on_play(self):
         """Handle play button from control panel."""
         logger.info("Play requested from control panel")
         
-        if not self.midi_data:
-            logger.warning("No MIDI data available for playback")
+        if not self.midi_data or not self.current_file:
+            logger.warning("No MIDI data or audio file available for playback")
             return
         
-        # Update control panel state
-        self.control_panel.set_playing(True)
-        
-        # Placeholder for actual playback (will implement in Phase 5)
-        self.set_status("Playback will be implemented in Phase 5")
-        
-        from PyQt5.QtWidgets import QMessageBox
-        QMessageBox.information(
-            self,
-            'Coming Soon',
-            'Playback functionality will be added in Phase 5!\n\n'
-            'For now, the controls are functional and ready.'
-        )
+        # Start playback
+        self.playback_controller.play()
     
     def _on_pause(self):
         """Handle pause button from control panel."""
         logger.info("Pause requested from control panel")
-        self.control_panel.set_playing(False)
-        self.set_status("Paused")
+        self.playback_controller.pause()
     
     def _on_stop(self):
         """Handle stop button from control panel."""
         logger.info("Stop requested from control panel")
-        self.control_panel.set_playing(False)
-        self.control_panel.set_playback_position(0.0)
-        self.set_status("Stopped")
+        self.playback_controller.stop()
     
     def _on_seek(self, position: float):
         """
@@ -644,11 +663,7 @@ class MainWindow(QMainWindow):
             position: Position from 0.0 to 1.0
         """
         logger.info(f"Seek requested to position: {position:.3f}")
-        
-        if self.midi_data:
-            stats = self.midi_data.get_statistics()
-            time = position * stats['duration']
-            self.set_status(f"Seek to {time:.1f}s")
+        self.playback_controller.seek(position)
     
     def _on_speed_changed(self, speed: float):
         """
@@ -658,7 +673,46 @@ class MainWindow(QMainWindow):
             speed: Speed multiplier
         """
         logger.info(f"Speed changed to {speed}x")
-        self.set_status(f"Playback speed: {speed}x")
+        self.playback_controller.set_speed(speed)
+        self.set_status(f"Note: Speed control not fully implemented in MVP")
+
+    def _on_playback_state_changed(self, state):
+        """
+        Handle playback state changes.
+        
+        Args:
+            state: New PlaybackState
+        """
+        from playback import PlaybackState
+        
+        if state == PlaybackState.PLAYING:
+            self.control_panel.set_playing(True)
+            self.set_status("Playing...")
+        elif state == PlaybackState.PAUSED:
+            self.control_panel.set_playing(False)
+            self.set_status("Paused")
+        elif state == PlaybackState.STOPPED:
+            self.control_panel.set_playing(False)
+            self.set_status("Stopped")
+    
+    def _on_playback_time_updated(self, time: float):
+        """
+        Handle playback time updates.
+        
+        Args:
+            time: Current time in seconds
+        """
+        # Update control panel
+        self.control_panel.set_playback_position(time)
+        
+        # Update visualization
+        if self.pygame_widget:
+            self.pygame_widget.set_playback_time(time)
+    
+    def _on_playback_finished(self):
+        """Handle playback completion."""
+        logger.info("Playback finished")
+        self.set_status("Playback complete")
 
 
 
@@ -699,13 +753,122 @@ class MainWindow(QMainWindow):
 
     def _on_export_midi(self):
         """Handle Export MIDI action."""
+        if not self.midi_data:
+            logger.warning("No MIDI data to export")
+            from PyQt5.QtWidgets import QMessageBox
+            QMessageBox.warning(self, 'No Data', 'Please transcribe audio first.')
+            return
+        
         logger.info("Export MIDI triggered")
-        self.set_status("Export will be implemented in next steps...")
+        
+        # Get default filename
+        default_name = self.midi_exporter.get_default_filename(self.current_file)
+        default_dir = self.config.get('export', 'default_directory', 'exports')
+        
+        # Create exports directory if it doesn't exist
+        import os
+        if not os.path.exists(default_dir):
+            os.makedirs(default_dir)
+        
+        default_path = os.path.join(default_dir, default_name)
+        
+        # Show save dialog
+        from PyQt5.QtWidgets import QFileDialog
+        file_path, _ = QFileDialog.getSaveFileName(
+            self,
+            'Export MIDI File',
+            default_path,
+            'MIDI Files (*.mid);;All Files (*.*)'
+        )
+        
+        if file_path:
+            # Ensure .mid extension
+            if not file_path.lower().endswith('.mid'):
+                file_path += '.mid'
+            
+            # Export
+            success = self.midi_exporter.export(self.midi_data, file_path)
+            
+            if success:
+                logger.info(f"MIDI exported to: {file_path}")
+                self.set_status(f"MIDI exported: {os.path.basename(file_path)}")
+                
+                from PyQt5.QtWidgets import QMessageBox
+                QMessageBox.information(
+                    self,
+                    'Export Successful',
+                    f'MIDI file saved successfully!\n\n{file_path}'
+                )
+            else:
+                logger.error("MIDI export failed")
+                from PyQt5.QtWidgets import QMessageBox
+                QMessageBox.critical(
+                    self,
+                    'Export Failed',
+                    'Failed to export MIDI file. Check logs for details.'
+                )
     
     def _on_export_json(self):
         """Handle Export JSON action."""
+        if not self.midi_data:
+            logger.warning("No MIDI data to export")
+            from PyQt5.QtWidgets import QMessageBox
+            QMessageBox.warning(self, 'No Data', 'Please transcribe audio first.')
+            return
+        
         logger.info("Export JSON triggered")
-        self.set_status("Export will be implemented in next steps...")
+        
+        # Get default filename
+        default_name = self.json_exporter.get_default_filename(self.current_file)
+        default_dir = self.config.get('export', 'default_directory', 'exports')
+        
+        # Create exports directory if it doesn't exist
+        import os
+        if not os.path.exists(default_dir):
+            os.makedirs(default_dir)
+        
+        default_path = os.path.join(default_dir, default_name)
+        
+        # Show save dialog
+        from PyQt5.QtWidgets import QFileDialog
+        file_path, _ = QFileDialog.getSaveFileName(
+            self,
+            'Export JSON File',
+            default_path,
+            'JSON Files (*.json);;All Files (*.*)'
+        )
+        
+        if file_path:
+            # Ensure .json extension
+            if not file_path.lower().endswith('.json'):
+                file_path += '.json'
+            
+            # Export
+            success = self.json_exporter.export(
+                self.midi_data, 
+                file_path,
+                source_file=self.current_file
+            )
+            
+            if success:
+                logger.info(f"JSON exported to: {file_path}")
+                self.set_status(f"JSON exported: {os.path.basename(file_path)}")
+                
+                from PyQt5.QtWidgets import QMessageBox
+                QMessageBox.information(
+                    self,
+                    'Export Successful',
+                    f'JSON file saved successfully!\n\n{file_path}'
+                )
+            else:
+                logger.error("JSON export failed")
+                from PyQt5.QtWidgets import QMessageBox
+                QMessageBox.critical(
+                    self,
+                    'Export Failed',
+                    'Failed to export JSON file. Check logs for details.'
+                )
+
     
     def _on_settings(self):
         """Handle Settings action."""
@@ -840,6 +1003,10 @@ class MainWindow(QMainWindow):
     
     def closeEvent(self, event):
         """Handle window close event."""
+        # Clean up playback
+        if self.playback_controller:
+            self.playback_controller.cleanup()
+        
         # Clean up Pygame
         if self.pygame_widget:
             self.pygame_widget.cleanup()
@@ -851,4 +1018,5 @@ class MainWindow(QMainWindow):
         
         logger.info("Main window closing")
         event.accept()
+
 
