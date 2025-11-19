@@ -24,9 +24,16 @@ def main():
     config = ConfigManager()
     
     # Log configuration version
-    config_version = config.get('version', 'unknown')
+    config_version = config.get('app', 'version', 'unknown')
+    app_name = config.get('app', 'name', 'AudioViz MIDI')
+    
+    logger.info(f"Application: {app_name}")
+    logger.info(f"Config Version: {config_version}")
+    
     if config_version != __version__:
         logger.warning(f"Config version mismatch: {config_version} vs {__version__}")
+
+
 
     # Create Qt application
     app = QApplication(sys.argv)

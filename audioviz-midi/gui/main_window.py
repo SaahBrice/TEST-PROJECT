@@ -1146,15 +1146,20 @@ class MainWindow(QMainWindow):
     def _on_about(self):
         """Show About dialog."""
         from utils import __version__
+        
+        # Get app name from config
+        app_name = self.config.get('app', 'name', 'AudioViz MIDI')
+        
         QMessageBox.about(
             self,
-            'About AudioViz MIDI',
-            f'<h2>AudioViz MIDI</h2>'
+            f'About {app_name}',
+            f'<h2>{app_name}</h2>'
             f'<p>Version {__version__}</p>'
             '<p>Audio to MIDI Converter with Visualization</p>'
             '<p>Built with Python, PyQt5, and librosa</p>'
             '<p>© 2025 AudioViz MIDI Project</p>'
         )
+
     
     def _on_keyboard_shortcuts(self):
         """Show keyboard shortcuts dialog."""

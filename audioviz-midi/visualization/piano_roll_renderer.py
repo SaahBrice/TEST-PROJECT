@@ -69,8 +69,9 @@ class PianoRollRenderer:
         
         # Rendering parameters
         self.keyboard_width = 60  # Width of piano keyboard on left
-        self.note_height = 10  # Height of each note row in pixels
+        self.note_height = 12  # Height of each note row in pixels
         self.pixels_per_second = 200  # Horizontal scaling factor
+        
         
         # Pitch range (will be updated based on MIDI data)
         self.min_pitch = 36  # C2
@@ -274,7 +275,7 @@ class PianoRollRenderer:
     
     def _draw_note(self, note: Note, x_offset: int, width: int, height: int):
         """
-        Draw a single note rectangle.
+        Draw a single note rectangle with enhanced visual quality.
         
         Args:
             note: Note object to draw
@@ -295,20 +296,48 @@ class PianoRollRenderer:
         # Get note color based on scheme
         color = self._get_note_color(note)
         
-        # Draw note rectangle with slight rounding
+        # Create note rectangle
         note_rect = pygame.Rect(note_x, note_y, note_width, note_height)
-        pygame.draw.rect(self.surface, color, note_rect, border_radius=2)
         
-        # Draw note border (darker)
+        # ENHANCEMENT 1: Draw shadow (for depth)
+        shadow_offset = 2  # pixels
+        shadow_alpha = 76  # 30% opacity (0.3 * 255)
+        shadow_color = (0, 0, 0, shadow_alpha)  # Black with alpha
+        shadow_rect = note_rect.copy()
+        shadow_rect.x += shadow_offset
+        shadow_rect.y += shadow_offset
+        
+        # Create temporary surface for shadow with alpha
+        shadow_surface = pygame.Surface((note_width + shadow_offset, 
+                                         note_height + shadow_offset), 
+                                        pygame.SRCALPHA)
+        pygame.draw.rect(shadow_surface, shadow_color, 
+                        (shadow_offset, shadow_offset, note_width, note_height),
+                        border_radius=3)
+        self.surface.blit(shadow_surface, (note_x, note_y))
+        
+        # ENHANCEMENT 2: Draw main note body with rounded corners
+        pygame.draw.rect(self.surface, color, note_rect, border_radius=3)
+        
+        # ENHANCEMENT 3: Draw thicker border (2px instead of 1px)
         border_color = tuple(max(0, c - 40) for c in color)
-        pygame.draw.rect(self.surface, border_color, note_rect, 1, border_radius=2)
+        pygame.draw.rect(self.surface, border_color, note_rect, 2, border_radius=3)
+        
+        # ENHANCEMENT 4: Add inner highlight for depth (optional)
+        # Creates a subtle "3D" effect
+        if note_height > 8:  # Only for taller notes
+            highlight_color = tuple(min(255, c + 30) for c in color)
+            highlight_rect = pygame.Rect(note_x + 2, note_y + 1, 
+                                         note_width - 4, 1)
+            pygame.draw.rect(self.surface, highlight_color, highlight_rect)
         
         # Highlight if note is currently playing
         if note.is_active_at(self.current_time):
-            # Add bright glow effect
+            # Brighter glow for active notes
             glow_color = tuple(min(255, c + 80) for c in color)
             glow_rect = note_rect.inflate(4, 4)
-            pygame.draw.rect(self.surface, glow_color, glow_rect, 2, border_radius=3)
+            pygame.draw.rect(self.surface, glow_color, glow_rect, 2, border_radius=4)
+
     
     def _draw_playhead(self, x_offset: int, width: int, height: int):
         """

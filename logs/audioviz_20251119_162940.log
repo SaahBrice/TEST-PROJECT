@@ -1,0 +1,7 @@
+2025-11-19 16:29:40 - AudioVizMIDI - INFO - [logger.py:63] - Logging system initialized
+2025-11-19 16:29:40 - AudioVizMIDI - INFO - [logger.py:64] - Log file: logs/audioviz_20251119_162940.log
+2025-11-19 16:29:40 - AudioVizMIDI - INFO - [main.py:18] - ============================================================
+2025-11-19 16:29:40 - AudioVizMIDI - INFO - [main.py:19] - AudioViz MIDI Application Starting
+2025-11-19 16:29:40 - AudioVizMIDI - INFO - [main.py:20] - AudioViz MIDI v0.2.0-dev Starting
+2025-11-19 16:29:40 - AudioVizMIDI - INFO - [main.py:21] - ============================================================
+2025-11-19 16:29:40 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
