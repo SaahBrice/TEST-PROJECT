@@ -1,0 +1,3285 @@
+{
+  "format": "AudioViz MIDI JSON Export",
+  "version": "1.0",
+  "metadata": {
+    "total_notes": 363,
+    "duration_seconds": 196.51,
+    "pitch_range": {
+      "min": 40,
+      "max": 79
+    },
+    "average_note_duration": 0.53,
+    "average_velocity": 62.7,
+    "source_file": "ASMR test  (Add Vocal).mp3",
+    "export_date": "2025-11-19T14:15:19.433882"
+  },
+  "notes": [
+    {
+      "pitch": 52,
+      "note_name": "E3",
+      "start_time": 0.2786394557823129,
+      "end_time": 1.1145578231292517,
+      "duration": 0.8359183673469388,
+      "velocity": 61,
+      "frequency": 164.81377845643496
+    },
+    {
+      "pitch": 54,
+      "note_name": "F#3",
+      "start_time": 1.1145578231292517,
+      "end_time": 1.555736961451247,
+      "duration": 0.4411791383219954,
+      "velocity": 74,
+      "frequency": 184.9972113558172
+    },
+    {
+      "pitch": 44,
+      "note_name": "G#2",
+      "start_time": 1.555736961451247,
+      "end_time": 1.9736961451247166,
+      "duration": 0.4179591836734695,
+      "velocity": 57,
+      "frequency": 103.82617439498628
+    },
+    {
+      "pitch": 66,
+      "note_name": "F#4",
+      "start_time": 1.9736961451247166,
+      "end_time": 2.414875283446712,
+      "duration": 0.4411791383219956,
+      "velocity": 88,
+      "frequency": 369.9944227116344
+    },
+    {
+      "pitch": 65,
+      "note_name": "F4",
+      "start_time": 2.414875283446712,
+      "end_time": 2.8792743764172335,
+      "duration": 0.4643990929705213,
+      "velocity": 65,
+      "frequency": 349.2282314330039
+    },
+    {
+      "pitch": 42,
+      "note_name": "F#2",
+      "start_time": 2.8792743764172335,
+      "end_time": 3.3901133786848074,
+      "duration": 0.510839002267574,
+      "velocity": 53,
+      "frequency": 92.4986056779086
+    },
+    {
+      "pitch": 40,
+      "note_name": "E2",
+      "start_time": 3.3901133786848074,
+      "end_time": 3.9706122448979593,
+      "duration": 0.5804988662131518,
+      "velocity": 54,
+      "frequency": 82.4068892282175
+    },
+    {
+      "pitch": 48,
+      "note_name": "C3",
+      "start_time": 3.9706122448979593,
+      "end_time": 4.876190476190477,
+      "duration": 0.9055782312925174,
+      "velocity": 63,
+      "frequency": 130.8127826502993
+    },
+    {
+      "pitch": 49,
+      "note_name": "C#3",
+      "start_time": 4.876190476190477,
+      "end_time": 7.523265306122449,
+      "duration": 2.647074829931972,
+      "velocity": 49,
+      "frequency": 138.59131548843604
+    },
+    {
+      "pitch": 52,
+      "note_name": "E3",
+      "start_time": 7.7090249433106575,
+      "end_time": 8.17342403628118,
+      "duration": 0.4643990929705222,
+      "velocity": 53,
+      "frequency": 164.81377845643496
+    },
+    {
+      "pitch": 54,
+      "note_name": "F#3",
+      "start_time": 8.17342403628118,
+      "end_time": 8.591383219954649,
+      "duration": 0.41795918367346907,
+      "velocity": 56,
+      "frequency": 184.9972113558172
+    },
+    {
+      "pitch": 61,
+      "note_name": "C#4",
+      "start_time": 8.591383219954649,
+      "end_time": 9.009342403628118,
+      "duration": 0.41795918367346907,
+      "velocity": 81,
+      "frequency": 277.1826309768721
+    },
+    {
+      "pitch": 65,
+      "note_name": "F4",
+      "start_time": 9.009342403628118,
+      "end_time": 9.496961451247165,
+      "duration": 0.48761904761904695,
+      "velocity": 56,
+      "frequency": 349.2282314330039
+    },
+    {
+      "pitch": 71,
+      "note_name": "B4",
+      "start_time": 9.496961451247165,
+      "end_time": 9.93814058956916,
+      "duration": 0.4411791383219956,
+      "velocity": 80,
+      "frequency": 493.8833012561241
+    },
+    {
+      "pitch": 68,
+      "note_name": "G#4",
+      "start_time": 9.93814058956916,
+      "end_time": 10.402539682539683,
+      "duration": 0.4643990929705222,
+      "velocity": 66,
+      "frequency": 415.3046975799451
+    },
+    {
+      "pitch": 63,
+      "note_name": "D#4",
+      "start_time": 10.402539682539683,
+      "end_time": 10.913378684807256,
+      "duration": 0.5108390022675735,
+      "velocity": 50,
+      "frequency": 311.1269837220809
+    },
+    {
+      "pitch": 50,
+      "note_name": "D3",
+      "start_time": 10.913378684807256,
+      "end_time": 11.493877551020407,
+      "duration": 0.5804988662131514,
+      "velocity": 52,
+      "frequency": 146.8323839587038
+    },
+    {
+      "pitch": 48,
+      "note_name": "C3",
+      "start_time": 11.493877551020407,
+      "end_time": 12.469115646258503,
+      "duration": 0.9752380952380957,
+      "velocity": 54,
+      "frequency": 130.8127826502993
+    },
+    {
+      "pitch": 49,
+      "note_name": "C#3",
+      "start_time": 12.469115646258503,
+      "end_time": 14.048072562358277,
+      "duration": 1.5789569160997736,
+      "velocity": 49,
+      "frequency": 138.59131548843604
+    },
+    {
+      "pitch": 63,
+      "note_name": "D#4",
+      "start_time": 14.187392290249432,
+      "end_time": 14.721451247165533,
+      "duration": 0.5340589569161001,
+      "velocity": 52,
+      "frequency": 311.1269837220809
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 14.721451247165533,
+      "end_time": 15.209070294784581,
+      "duration": 0.48761904761904873,
+      "velocity": 76,
+      "frequency": 391.99543598174927
+    },
+    {
+      "pitch": 68,
+      "note_name": "G#4",
+      "start_time": 15.209070294784581,
+      "end_time": 15.301950113378684,
+      "duration": 0.09287981859410266,
+      "velocity": 56,
+      "frequency": 415.3046975799451
+    },
+    {
+      "pitch": 42,
+      "note_name": "F#2",
+      "start_time": 15.998548752834466,
+      "end_time": 16.137868480725622,
+      "duration": 0.13931972789115576,
+      "velocity": 49,
+      "frequency": 92.4986056779086
+    },
+    {
+      "pitch": 40,
+      "note_name": "E2",
+      "start_time": 16.137868480725622,
+      "end_time": 17.41496598639456,
+      "duration": 1.2770975056689373,
+      "velocity": 52,
+      "frequency": 82.4068892282175
+    },
+    {
+      "pitch": 49,
+      "note_name": "C#3",
+      "start_time": 17.41496598639456,
+      "end_time": 17.856145124716555,
+      "duration": 0.4411791383219956,
+      "velocity": 53,
+      "frequency": 138.59131548843604
+    },
+    {
+      "pitch": 40,
+      "note_name": "E2",
+      "start_time": 17.856145124716555,
+      "end_time": 18.274104308390022,
+      "duration": 0.4179591836734673,
+      "velocity": 50,
+      "frequency": 82.4068892282175
+    },
+    {
+      "pitch": 53,
+      "note_name": "F3",
+      "start_time": 18.274104308390022,
+      "end_time": 18.715283446712018,
+      "duration": 0.4411791383219956,
+      "velocity": 50,
+      "frequency": 174.61411571650194
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 18.715283446712018,
+      "end_time": 19.11002267573696,
+      "duration": 0.3947392290249425,
+      "velocity": 90,
+      "frequency": 391.99543598174927
+    },
+    {
+      "pitch": 69,
+      "note_name": "A4",
+      "start_time": 19.11002267573696,
+      "end_time": 19.17968253968254,
+      "duration": 0.06965986394557788,
+      "velocity": 61,
+      "frequency": 440.0
+    },
+    {
+      "pitch": 66,
+      "note_name": "F#4",
+      "start_time": 19.17968253968254,
+      "end_time": 19.574421768707484,
+      "duration": 0.39473922902494607,
+      "velocity": 70,
+      "frequency": 369.9944227116344
+    },
+    {
+      "pitch": 60,
+      "note_name": "C4",
+      "start_time": 19.574421768707484,
+      "end_time": 20.433560090702947,
+      "duration": 0.8591383219954629,
+      "velocity": 78,
+      "frequency": 261.6255653005986
+    },
+    {
+      "pitch": 50,
+      "note_name": "D3",
+      "start_time": 20.433560090702947,
+      "end_time": 20.897959183673468,
+      "duration": 0.4643990929705204,
+      "velocity": 53,
+      "frequency": 146.8323839587038
+    },
+    {
+      "pitch": 45,
+      "note_name": "A2",
+      "start_time": 20.897959183673468,
+      "end_time": 21.757097505668934,
+      "duration": 0.8591383219954665,
+      "velocity": 54,
+      "frequency": 110.0
+    },
+    {
+      "pitch": 40,
+      "note_name": "E2",
+      "start_time": 21.757097505668934,
+      "end_time": 22.151836734693877,
+      "duration": 0.3947392290249425,
+      "velocity": 50,
+      "frequency": 82.4068892282175
+    },
+    {
+      "pitch": 58,
+      "note_name": "A#3",
+      "start_time": 22.151836734693877,
+      "end_time": 22.569795918367348,
+      "duration": 0.41795918367347085,
+      "velocity": 65,
+      "frequency": 233.08188075904496
+    },
+    {
+      "pitch": 61,
+      "note_name": "C#4",
+      "start_time": 22.569795918367348,
+      "end_time": 23.08063492063492,
+      "duration": 0.5108390022675735,
+      "velocity": 57,
+      "frequency": 277.1826309768721
+    },
+    {
+      "pitch": 46,
+      "note_name": "A#2",
+      "start_time": 23.08063492063492,
+      "end_time": 23.521814058956917,
+      "duration": 0.4411791383219956,
+      "velocity": 70,
+      "frequency": 116.54094037952248
+    },
+    {
+      "pitch": 45,
+      "note_name": "A2",
+      "start_time": 23.521814058956917,
+      "end_time": 23.939773242630384,
+      "duration": 0.4179591836734673,
+      "velocity": 67,
+      "frequency": 110.0
+    },
+    {
+      "pitch": 47,
+      "note_name": "B2",
+      "start_time": 23.939773242630384,
+      "end_time": 24.357732426303855,
+      "duration": 0.41795918367347085,
+      "velocity": 62,
+      "frequency": 123.47082531403103
+    },
+    {
+      "pitch": 48,
+      "note_name": "C3",
+      "start_time": 24.357732426303855,
+      "end_time": 25.26331065759637,
+      "duration": 0.905578231292516,
+      "velocity": 57,
+      "frequency": 130.8127826502993
+    },
+    {
+      "pitch": 45,
+      "note_name": "A2",
+      "start_time": 26.563628117913833,
+      "end_time": 27.376326530612246,
+      "duration": 0.8126984126984134,
+      "velocity": 54,
+      "frequency": 110.0
+    },
+    {
+      "pitch": 52,
+      "note_name": "E3",
+      "start_time": 27.376326530612246,
+      "end_time": 27.817505668934242,
+      "duration": 0.4411791383219956,
+      "velocity": 55,
+      "frequency": 164.81377845643496
+    },
+    {
+      "pitch": 58,
+      "note_name": "A#3",
+      "start_time": 27.817505668934242,
+      "end_time": 28.258684807256238,
+      "duration": 0.4411791383219956,
+      "velocity": 55,
+      "frequency": 233.08188075904496
+    },
+    {
+      "pitch": 60,
+      "note_name": "C4",
+      "start_time": 28.258684807256238,
+      "end_time": 28.69986394557823,
+      "duration": 0.44117913832199207,
+      "velocity": 51,
+      "frequency": 261.6255653005986
+    },
+    {
+      "pitch": 57,
+      "note_name": "A3",
+      "start_time": 28.69986394557823,
+      "end_time": 29.071383219954647,
+      "duration": 0.37151927437641774,
+      "velocity": 73,
+      "frequency": 220.0
+    },
+    {
+      "pitch": 69,
+      "note_name": "A4",
+      "start_time": 29.071383219954647,
+      "end_time": 29.489342403628118,
+      "duration": 0.41795918367347085,
+      "velocity": 75,
+      "frequency": 440.0
+    },
+    {
+      "pitch": 66,
+      "note_name": "F#4",
+      "start_time": 29.489342403628118,
+      "end_time": 29.58222222222222,
+      "duration": 0.09287981859410266,
+      "velocity": 60,
+      "frequency": 369.9944227116344
+    },
+    {
+      "pitch": 64,
+      "note_name": "E4",
+      "start_time": 29.58222222222222,
+      "end_time": 30.00018140589569,
+      "duration": 0.41795918367347085,
+      "velocity": 55,
+      "frequency": 329.6275569128699
+    },
+    {
+      "pitch": 52,
+      "note_name": "E3",
+      "start_time": 30.00018140589569,
+      "end_time": 30.441360544217687,
+      "duration": 0.4411791383219956,
+      "velocity": 64,
+      "frequency": 164.81377845643496
+    },
+    {
+      "pitch": 57,
+      "note_name": "A3",
+      "start_time": 30.441360544217687,
+      "end_time": 30.905759637188208,
+      "duration": 0.4643990929705204,
+      "velocity": 74,
+      "frequency": 220.0
+    },
+    {
+      "pitch": 54,
+      "note_name": "F#3",
+      "start_time": 30.905759637188208,
+      "end_time": 31.32371882086168,
+      "duration": 0.41795918367347085,
+      "velocity": 59,
+      "frequency": 184.9972113558172
+    },
+    {
+      "pitch": 50,
+      "note_name": "D3",
+      "start_time": 31.32371882086168,
+      "end_time": 32.15963718820862,
+      "duration": 0.8359183673469417,
+      "velocity": 54,
+      "frequency": 146.8323839587038
+    },
+    {
+      "pitch": 57,
+      "note_name": "A3",
+      "start_time": 32.15963718820862,
+      "end_time": 32.57759637188209,
+      "duration": 0.4179591836734673,
+      "velocity": 67,
+      "frequency": 220.0
+    },
+    {
+      "pitch": 78,
+      "note_name": "F#5",
+      "start_time": 32.57759637188209,
+      "end_time": 32.97233560090703,
+      "duration": 0.3947392290249425,
+      "velocity": 86,
+      "frequency": 739.9888454232688
+    },
+    {
+      "pitch": 74,
+      "note_name": "D5",
+      "start_time": 32.97233560090703,
+      "end_time": 33.065215419501136,
+      "duration": 0.09287981859410621,
+      "velocity": 63,
+      "frequency": 587.3295358348151
+    },
+    {
+      "pitch": 64,
+      "note_name": "E4",
+      "start_time": 33.065215419501136,
+      "end_time": 33.483174603174604,
+      "duration": 0.4179591836734673,
+      "velocity": 59,
+      "frequency": 329.6275569128699
+    },
+    {
+      "pitch": 55,
+      "note_name": "G3",
+      "start_time": 33.483174603174604,
+      "end_time": 34.365532879818595,
+      "duration": 0.8823582766439912,
+      "velocity": 57,
+      "frequency": 195.99771799087463
+    },
+    {
+      "pitch": 50,
+      "note_name": "D3",
+      "start_time": 34.365532879818595,
+      "end_time": 35.66585034013605,
+      "duration": 1.3003174603174585,
+      "velocity": 49,
+      "frequency": 146.8323839587038
+    },
+    {
+      "pitch": 57,
+      "note_name": "A3",
+      "start_time": 36.13024943310658,
+      "end_time": 37.05904761904762,
+      "duration": 0.9287981859410408,
+      "velocity": 76,
+      "frequency": 220.0
+    },
+    {
+      "pitch": 44,
+      "note_name": "G#2",
+      "start_time": 37.05904761904762,
+      "end_time": 37.45378684807256,
+      "duration": 0.3947392290249425,
+      "velocity": 84,
+      "frequency": 103.82617439498628
+    },
+    {
+      "pitch": 43,
+      "note_name": "G2",
+      "start_time": 37.45378684807256,
+      "end_time": 37.918185941043085,
+      "duration": 0.46439909297052395,
+      "velocity": 77,
+      "frequency": 97.99885899543733
+    },
+    {
+      "pitch": 45,
+      "note_name": "A2",
+      "start_time": 37.918185941043085,
+      "end_time": 38.38258503401361,
+      "duration": 0.46439909297052395,
+      "velocity": 68,
+      "frequency": 110.0
+    },
+    {
+      "pitch": 59,
+      "note_name": "B3",
+      "start_time": 38.38258503401361,
+      "end_time": 39.75256235827664,
+      "duration": 1.3699773242630329,
+      "velocity": 65,
+      "frequency": 246.94165062806206
+    },
+    {
+      "pitch": 58,
+      "note_name": "A#3",
+      "start_time": 39.75256235827664,
+      "end_time": 40.170521541950116,
+      "duration": 0.4179591836734744,
+      "velocity": 50,
+      "frequency": 233.08188075904496
+    },
+    {
+      "pitch": 47,
+      "note_name": "B2",
+      "start_time": 40.61170068027211,
+      "end_time": 42.887256235827664,
+      "duration": 2.275555555555556,
+      "velocity": 79,
+      "frequency": 123.47082531403103
+    },
+    {
+      "pitch": 59,
+      "note_name": "B3",
+      "start_time": 42.887256235827664,
+      "end_time": 43.35165532879819,
+      "duration": 0.46439909297052395,
+      "velocity": 59,
+      "frequency": 246.94165062806206
+    },
+    {
+      "pitch": 77,
+      "note_name": "F5",
+      "start_time": 43.35165532879819,
+      "end_time": 43.699954648526074,
+      "duration": 0.34829931972788586,
+      "velocity": 76,
+      "frequency": 698.4564628660078
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 43.699954648526074,
+      "end_time": 43.79283446712018,
+      "duration": 0.09287981859410621,
+      "velocity": 59,
+      "frequency": 391.99543598174927
+    },
+    {
+      "pitch": 66,
+      "note_name": "F#4",
+      "start_time": 43.79283446712018,
+      "end_time": 44.23401360544218,
+      "duration": 0.4411791383219992,
+      "velocity": 55,
+      "frequency": 369.9944227116344
+    },
+    {
+      "pitch": 53,
+      "note_name": "F3",
+      "start_time": 44.23401360544218,
+      "end_time": 44.373333333333335,
+      "duration": 0.13931972789115576,
+      "velocity": 54,
+      "frequency": 174.61411571650194
+    },
+    {
+      "pitch": 58,
+      "note_name": "A#3",
+      "start_time": 44.373333333333335,
+      "end_time": 44.76807256235828,
+      "duration": 0.3947392290249425,
+      "velocity": 59,
+      "frequency": 233.08188075904496
+    },
+    {
+      "pitch": 40,
+      "note_name": "E2",
+      "start_time": 44.76807256235828,
+      "end_time": 45.186031746031745,
+      "duration": 0.4179591836734673,
+      "velocity": 55,
+      "frequency": 82.4068892282175
+    },
+    {
+      "pitch": 53,
+      "note_name": "F3",
+      "start_time": 45.186031746031745,
+      "end_time": 45.65043083900227,
+      "duration": 0.46439909297052395,
+      "velocity": 63,
+      "frequency": 174.61411571650194
+    },
+    {
+      "pitch": 60,
+      "note_name": "C4",
+      "start_time": 45.65043083900227,
+      "end_time": 46.4863492063492,
+      "duration": 0.8359183673469346,
+      "velocity": 64,
+      "frequency": 261.6255653005986
+    },
+    {
+      "pitch": 58,
+      "note_name": "A#3",
+      "start_time": 46.4863492063492,
+      "end_time": 46.74176870748299,
+      "duration": 0.25541950113378675,
+      "velocity": 57,
+      "frequency": 233.08188075904496
+    },
+    {
+      "pitch": 78,
+      "note_name": "F#5",
+      "start_time": 46.74176870748299,
+      "end_time": 46.95074829931973,
+      "duration": 0.2089795918367372,
+      "velocity": 80,
+      "frequency": 739.9888454232688
+    },
+    {
+      "pitch": 69,
+      "note_name": "A4",
+      "start_time": 46.95074829931973,
+      "end_time": 47.391927437641726,
+      "duration": 0.4411791383219992,
+      "velocity": 65,
+      "frequency": 440.0
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 47.391927437641726,
+      "end_time": 47.87954648526077,
+      "duration": 0.4876190476190416,
+      "velocity": 51,
+      "frequency": 391.99543598174927
+    },
+    {
+      "pitch": 42,
+      "note_name": "F#2",
+      "start_time": 47.87954648526077,
+      "end_time": 48.29750566893424,
+      "duration": 0.4179591836734744,
+      "velocity": 58,
+      "frequency": 92.4986056779086
+    },
+    {
+      "pitch": 41,
+      "note_name": "F2",
+      "start_time": 48.29750566893424,
+      "end_time": 49.20308390022676,
+      "duration": 0.905578231292516,
+      "velocity": 57,
+      "frequency": 87.30705785825097
+    },
+    {
+      "pitch": 44,
+      "note_name": "G#2",
+      "start_time": 49.20308390022676,
+      "end_time": 50.08544217687075,
+      "duration": 0.8823582766439912,
+      "velocity": 54,
+      "frequency": 103.82617439498628
+    },
+    {
+      "pitch": 40,
+      "note_name": "E2",
+      "start_time": 50.08544217687075,
+      "end_time": 50.52662131519274,
+      "duration": 0.44117913832199207,
+      "velocity": 50,
+      "frequency": 82.4068892282175
+    },
+    {
+      "pitch": 59,
+      "note_name": "B3",
+      "start_time": 50.52662131519274,
+      "end_time": 50.991020408163266,
+      "duration": 0.46439909297052395,
+      "velocity": 65,
+      "frequency": 246.94165062806206
+    },
+    {
+      "pitch": 62,
+      "note_name": "D4",
+      "start_time": 50.991020408163266,
+      "end_time": 51.43219954648526,
+      "duration": 0.44117913832199207,
+      "velocity": 54,
+      "frequency": 293.6647679174076
+    },
+    {
+      "pitch": 45,
+      "note_name": "A2",
+      "start_time": 51.43219954648526,
+      "end_time": 54.05605442176871,
+      "duration": 2.623854875283449,
+      "velocity": 79,
+      "frequency": 110.0
+    },
+    {
+      "pitch": 48,
+      "note_name": "C3",
+      "start_time": 54.05605442176871,
+      "end_time": 54.98485260770975,
+      "duration": 0.9287981859410408,
+      "velocity": 53,
+      "frequency": 130.8127826502993
+    },
+    {
+      "pitch": 45,
+      "note_name": "A2",
+      "start_time": 54.98485260770975,
+      "end_time": 57.608707482993196,
+      "duration": 2.623854875283449,
+      "velocity": 70,
+      "frequency": 110.0
+    },
+    {
+      "pitch": 50,
+      "note_name": "D3",
+      "start_time": 57.608707482993196,
+      "end_time": 58.049886621315196,
+      "duration": 0.4411791383219992,
+      "velocity": 53,
+      "frequency": 146.8323839587038
+    },
+    {
+      "pitch": 64,
+      "note_name": "E4",
+      "start_time": 58.049886621315196,
+      "end_time": 58.51428571428571,
+      "duration": 0.46439909297051685,
+      "velocity": 59,
+      "frequency": 329.6275569128699
+    },
+    {
+      "pitch": 56,
+      "note_name": "G#3",
+      "start_time": 58.51428571428571,
+      "end_time": 58.909024943310655,
+      "duration": 0.3947392290249425,
+      "velocity": 79,
+      "frequency": 207.65234878997256
+    },
+    {
+      "pitch": 47,
+      "note_name": "B2",
+      "start_time": 58.909024943310655,
+      "end_time": 59.791383219954646,
+      "duration": 0.8823582766439912,
+      "velocity": 77,
+      "frequency": 123.47082531403103
+    },
+    {
+      "pitch": 64,
+      "note_name": "E4",
+      "start_time": 59.791383219954646,
+      "end_time": 60.02358276643991,
+      "duration": 0.23219954648526198,
+      "velocity": 75,
+      "frequency": 329.6275569128699
+    },
+    {
+      "pitch": 57,
+      "note_name": "A3",
+      "start_time": 60.02358276643991,
+      "end_time": 60.09324263038549,
+      "duration": 0.06965986394558144,
+      "velocity": 64,
+      "frequency": 220.0
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 60.09324263038549,
+      "end_time": 60.279002267573695,
+      "duration": 0.18575963718820532,
+      "velocity": 73,
+      "frequency": 391.99543598174927
+    },
+    {
+      "pitch": 68,
+      "note_name": "G#4",
+      "start_time": 60.279002267573695,
+      "end_time": 60.74340136054422,
+      "duration": 0.46439909297052395,
+      "velocity": 70,
+      "frequency": 415.3046975799451
+    },
+    {
+      "pitch": 60,
+      "note_name": "C4",
+      "start_time": 60.74340136054422,
+      "end_time": 61.39356009070295,
+      "duration": 0.6501587301587293,
+      "velocity": 60,
+      "frequency": 261.6255653005986
+    },
+    {
+      "pitch": 64,
+      "note_name": "E4",
+      "start_time": 61.39356009070295,
+      "end_time": 61.74185941043084,
+      "duration": 0.34829931972789296,
+      "velocity": 57,
+      "frequency": 329.6275569128699
+    },
+    {
+      "pitch": 47,
+      "note_name": "B2",
+      "start_time": 61.74185941043084,
+      "end_time": 62.04371882086168,
+      "duration": 0.3018594104308363,
+      "velocity": 55,
+      "frequency": 123.47082531403103
+    },
+    {
+      "pitch": 43,
+      "note_name": "G2",
+      "start_time": 62.04371882086168,
+      "end_time": 62.55455782312925,
+      "duration": 0.5108390022675735,
+      "velocity": 56,
+      "frequency": 97.99885899543733
+    },
+    {
+      "pitch": 41,
+      "note_name": "F2",
+      "start_time": 62.55455782312925,
+      "end_time": 62.99573696145125,
+      "duration": 0.4411791383219992,
+      "velocity": 56,
+      "frequency": 87.30705785825097
+    },
+    {
+      "pitch": 40,
+      "note_name": "E2",
+      "start_time": 62.99573696145125,
+      "end_time": 63.43691609977324,
+      "duration": 0.44117913832199207,
+      "velocity": 55,
+      "frequency": 82.4068892282175
+    },
+    {
+      "pitch": 44,
+      "note_name": "G#2",
+      "start_time": 63.43691609977324,
+      "end_time": 64.31927437641724,
+      "duration": 0.8823582766439984,
+      "velocity": 54,
+      "frequency": 103.82617439498628
+    },
+    {
+      "pitch": 41,
+      "note_name": "F2",
+      "start_time": 64.31927437641724,
+      "end_time": 64.99265306122449,
+      "duration": 0.6733786848072469,
+      "velocity": 51,
+      "frequency": 87.30705785825097
+    },
+    {
+      "pitch": 64,
+      "note_name": "E4",
+      "start_time": 64.99265306122449,
+      "end_time": 65.64281179138322,
+      "duration": 0.6501587301587364,
+      "velocity": 71,
+      "frequency": 329.6275569128699
+    },
+    {
+      "pitch": 69,
+      "note_name": "A4",
+      "start_time": 65.64281179138322,
+      "end_time": 65.73569160997732,
+      "duration": 0.0928798185940991,
+      "velocity": 49,
+      "frequency": 440.0
+    },
+    {
+      "pitch": 64,
+      "note_name": "E4",
+      "start_time": 65.73569160997732,
+      "end_time": 66.20009070294785,
+      "duration": 0.46439909297052395,
+      "velocity": 62,
+      "frequency": 329.6275569128699
+    },
+    {
+      "pitch": 48,
+      "note_name": "C3",
+      "start_time": 66.20009070294785,
+      "end_time": 66.59482993197278,
+      "duration": 0.3947392290249354,
+      "velocity": 60,
+      "frequency": 130.8127826502993
+    },
+    {
+      "pitch": 58,
+      "note_name": "A#3",
+      "start_time": 66.59482993197278,
+      "end_time": 66.85024943310657,
+      "duration": 0.25541950113378675,
+      "velocity": 56,
+      "frequency": 233.08188075904496
+    },
+    {
+      "pitch": 75,
+      "note_name": "D#5",
+      "start_time": 66.85024943310657,
+      "end_time": 67.10566893424036,
+      "duration": 0.25541950113378675,
+      "velocity": 72,
+      "frequency": 622.2539674441618
+    },
+    {
+      "pitch": 69,
+      "note_name": "A4",
+      "start_time": 67.10566893424036,
+      "end_time": 67.54684807256236,
+      "duration": 0.4411791383219992,
+      "velocity": 73,
+      "frequency": 440.0
+    },
+    {
+      "pitch": 47,
+      "note_name": "B2",
+      "start_time": 67.54684807256236,
+      "end_time": 68.4756462585034,
+      "duration": 0.9287981859410479,
+      "velocity": 71,
+      "frequency": 123.47082531403103
+    },
+    {
+      "pitch": 53,
+      "note_name": "F3",
+      "start_time": 68.4756462585034,
+      "end_time": 68.94004535147393,
+      "duration": 0.46439909297052395,
+      "velocity": 63,
+      "frequency": 174.61411571650194
+    },
+    {
+      "pitch": 72,
+      "note_name": "C5",
+      "start_time": 68.94004535147393,
+      "end_time": 69.17224489795919,
+      "duration": 0.23219954648526198,
+      "velocity": 66,
+      "frequency": 523.2511306011972
+    },
+    {
+      "pitch": 64,
+      "note_name": "E4",
+      "start_time": 69.17224489795919,
+      "end_time": 69.86884353741496,
+      "duration": 0.6965986394557717,
+      "velocity": 64,
+      "frequency": 329.6275569128699
+    },
+    {
+      "pitch": 63,
+      "note_name": "D#4",
+      "start_time": 69.86884353741496,
+      "end_time": 70.33324263038548,
+      "duration": 0.46439909297052395,
+      "velocity": 59,
+      "frequency": 311.1269837220809
+    },
+    {
+      "pitch": 43,
+      "note_name": "G2",
+      "start_time": 70.33324263038548,
+      "end_time": 70.82086167800453,
+      "duration": 0.48761904761904873,
+      "velocity": 53,
+      "frequency": 97.99885899543733
+    },
+    {
+      "pitch": 59,
+      "note_name": "B3",
+      "start_time": 70.82086167800453,
+      "end_time": 71.84253968253968,
+      "duration": 1.021678004535147,
+      "velocity": 56,
+      "frequency": 246.94165062806206
+    },
+    {
+      "pitch": 61,
+      "note_name": "C#4",
+      "start_time": 71.84253968253968,
+      "end_time": 71.98185941043084,
+      "duration": 0.13931972789116287,
+      "velocity": 50,
+      "frequency": 277.1826309768721
+    },
+    {
+      "pitch": 59,
+      "note_name": "B3",
+      "start_time": 71.98185941043084,
+      "end_time": 72.14439909297052,
+      "duration": 0.16253968253967344,
+      "velocity": 56,
+      "frequency": 246.94165062806206
+    },
+    {
+      "pitch": 64,
+      "note_name": "E4",
+      "start_time": 72.14439909297052,
+      "end_time": 72.3998185941043,
+      "duration": 0.25541950113378675,
+      "velocity": 70,
+      "frequency": 329.6275569128699
+    },
+    {
+      "pitch": 66,
+      "note_name": "F#4",
+      "start_time": 72.3998185941043,
+      "end_time": 72.60879818594104,
+      "duration": 0.2089795918367372,
+      "velocity": 82,
+      "frequency": 369.9944227116344
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 72.60879818594104,
+      "end_time": 72.86421768707483,
+      "duration": 0.25541950113378675,
+      "velocity": 78,
+      "frequency": 391.99543598174927
+    },
+    {
+      "pitch": 69,
+      "note_name": "A4",
+      "start_time": 72.86421768707483,
+      "end_time": 73.60725623582766,
+      "duration": 0.7430385487528355,
+      "velocity": 73,
+      "frequency": 440.0
+    },
+    {
+      "pitch": 63,
+      "note_name": "D#4",
+      "start_time": 73.60725623582766,
+      "end_time": 74.02521541950114,
+      "duration": 0.4179591836734744,
+      "velocity": 59,
+      "frequency": 311.1269837220809
+    },
+    {
+      "pitch": 55,
+      "note_name": "G3",
+      "start_time": 74.02521541950114,
+      "end_time": 74.48961451247166,
+      "duration": 0.46439909297052395,
+      "velocity": 58,
+      "frequency": 195.99771799087463
+    },
+    {
+      "pitch": 47,
+      "note_name": "B2",
+      "start_time": 74.48961451247166,
+      "end_time": 75.55773242630386,
+      "duration": 1.0681179138321966,
+      "velocity": 57,
+      "frequency": 123.47082531403103
+    },
+    {
+      "pitch": 40,
+      "note_name": "E2",
+      "start_time": 75.55773242630386,
+      "end_time": 75.8595918367347,
+      "duration": 0.3018594104308363,
+      "velocity": 54,
+      "frequency": 82.4068892282175
+    },
+    {
+      "pitch": 54,
+      "note_name": "F#3",
+      "start_time": 75.8595918367347,
+      "end_time": 75.99891156462586,
+      "duration": 0.13931972789116287,
+      "velocity": 60,
+      "frequency": 184.9972113558172
+    },
+    {
+      "pitch": 40,
+      "note_name": "E2",
+      "start_time": 75.99891156462586,
+      "end_time": 76.25433106575964,
+      "duration": 0.25541950113378675,
+      "velocity": 53,
+      "frequency": 82.4068892282175
+    },
+    {
+      "pitch": 69,
+      "note_name": "A4",
+      "start_time": 76.25433106575964,
+      "end_time": 76.46331065759637,
+      "duration": 0.208979591836723,
+      "velocity": 59,
+      "frequency": 440.0
+    },
+    {
+      "pitch": 71,
+      "note_name": "B4",
+      "start_time": 76.46331065759637,
+      "end_time": 76.95092970521542,
+      "duration": 0.48761904761904873,
+      "velocity": 78,
+      "frequency": 493.8833012561241
+    },
+    {
+      "pitch": 63,
+      "note_name": "D#4",
+      "start_time": 76.95092970521542,
+      "end_time": 77.60108843537415,
+      "duration": 0.6501587301587364,
+      "velocity": 62,
+      "frequency": 311.1269837220809
+    },
+    {
+      "pitch": 66,
+      "note_name": "F#4",
+      "start_time": 77.60108843537415,
+      "end_time": 77.85650793650794,
+      "duration": 0.25541950113378675,
+      "velocity": 69,
+      "frequency": 369.9944227116344
+    },
+    {
+      "pitch": 68,
+      "note_name": "G#4",
+      "start_time": 77.85650793650794,
+      "end_time": 78.0887074829932,
+      "duration": 0.23219954648526198,
+      "velocity": 69,
+      "frequency": 415.3046975799451
+    },
+    {
+      "pitch": 64,
+      "note_name": "E4",
+      "start_time": 78.0887074829932,
+      "end_time": 79.20326530612245,
+      "duration": 1.1145578231292461,
+      "velocity": 62,
+      "frequency": 329.6275569128699
+    },
+    {
+      "pitch": 66,
+      "note_name": "F#4",
+      "start_time": 79.20326530612245,
+      "end_time": 79.43546485260771,
+      "duration": 0.23219954648526198,
+      "velocity": 65,
+      "frequency": 369.9944227116344
+    },
+    {
+      "pitch": 76,
+      "note_name": "E5",
+      "start_time": 79.43546485260771,
+      "end_time": 79.62122448979592,
+      "duration": 0.18575963718821242,
+      "velocity": 72,
+      "frequency": 659.2551138257398
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 79.62122448979592,
+      "end_time": 79.80698412698413,
+      "duration": 0.18575963718821242,
+      "velocity": 73,
+      "frequency": 391.99543598174927
+    },
+    {
+      "pitch": 63,
+      "note_name": "D#4",
+      "start_time": 79.80698412698413,
+      "end_time": 80.1320634920635,
+      "duration": 0.3250793650793611,
+      "velocity": 65,
+      "frequency": 311.1269837220809
+    },
+    {
+      "pitch": 59,
+      "note_name": "B3",
+      "start_time": 80.1320634920635,
+      "end_time": 80.36426303854876,
+      "duration": 0.23219954648526198,
+      "velocity": 57,
+      "frequency": 246.94165062806206
+    },
+    {
+      "pitch": 48,
+      "note_name": "C3",
+      "start_time": 80.36426303854876,
+      "end_time": 80.5732426303855,
+      "duration": 0.2089795918367372,
+      "velocity": 68,
+      "frequency": 130.8127826502993
+    },
+    {
+      "pitch": 46,
+      "note_name": "A#2",
+      "start_time": 80.5732426303855,
+      "end_time": 81.26984126984127,
+      "duration": 0.6965986394557717,
+      "velocity": 67,
+      "frequency": 116.54094037952248
+    },
+    {
+      "pitch": 45,
+      "note_name": "A2",
+      "start_time": 81.26984126984127,
+      "end_time": 83.03455782312925,
+      "duration": 1.7647165532879825,
+      "velocity": 67,
+      "frequency": 110.0
+    },
+    {
+      "pitch": 46,
+      "note_name": "A#2",
+      "start_time": 83.03455782312925,
+      "end_time": 83.54539682539682,
+      "duration": 0.5108390022675735,
+      "velocity": 53,
+      "frequency": 116.54094037952248
+    },
+    {
+      "pitch": 63,
+      "note_name": "D#4",
+      "start_time": 83.54539682539682,
+      "end_time": 83.9633560090703,
+      "duration": 0.4179591836734744,
+      "velocity": 51,
+      "frequency": 311.1269837220809
+    },
+    {
+      "pitch": 45,
+      "note_name": "A2",
+      "start_time": 83.9633560090703,
+      "end_time": 85.96027210884354,
+      "duration": 1.9969160997732445,
+      "velocity": 60,
+      "frequency": 110.0
+    },
+    {
+      "pitch": 63,
+      "note_name": "D#4",
+      "start_time": 85.96027210884354,
+      "end_time": 86.1924716553288,
+      "duration": 0.23219954648526198,
+      "velocity": 62,
+      "frequency": 311.1269837220809
+    },
+    {
+      "pitch": 66,
+      "note_name": "F#4",
+      "start_time": 86.1924716553288,
+      "end_time": 86.42467120181406,
+      "duration": 0.23219954648526198,
+      "velocity": 73,
+      "frequency": 369.9944227116344
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 86.42467120181406,
+      "end_time": 86.65687074829933,
+      "duration": 0.23219954648526198,
+      "velocity": 76,
+      "frequency": 391.99543598174927
+    },
+    {
+      "pitch": 69,
+      "note_name": "A4",
+      "start_time": 86.65687074829933,
+      "end_time": 86.88907029478457,
+      "duration": 0.23219954648524777,
+      "velocity": 72,
+      "frequency": 440.0
+    },
+    {
+      "pitch": 72,
+      "note_name": "C5",
+      "start_time": 86.88907029478457,
+      "end_time": 87.12126984126984,
+      "duration": 0.23219954648526198,
+      "velocity": 66,
+      "frequency": 523.2511306011972
+    },
+    {
+      "pitch": 75,
+      "note_name": "D#5",
+      "start_time": 87.12126984126984,
+      "end_time": 87.37668934240362,
+      "duration": 0.25541950113378675,
+      "velocity": 71,
+      "frequency": 622.2539674441618
+    },
+    {
+      "pitch": 76,
+      "note_name": "E5",
+      "start_time": 87.37668934240362,
+      "end_time": 87.60888888888888,
+      "duration": 0.23219954648526198,
+      "velocity": 72,
+      "frequency": 659.2551138257398
+    },
+    {
+      "pitch": 56,
+      "note_name": "G#3",
+      "start_time": 87.60888888888888,
+      "end_time": 88.97886621315193,
+      "duration": 1.369977324263047,
+      "velocity": 64,
+      "frequency": 207.65234878997256
+    },
+    {
+      "pitch": 61,
+      "note_name": "C#4",
+      "start_time": 88.97886621315193,
+      "end_time": 89.62902494331065,
+      "duration": 0.6501587301587222,
+      "velocity": 59,
+      "frequency": 277.1826309768721
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 89.62902494331065,
+      "end_time": 89.86122448979592,
+      "duration": 0.23219954648526198,
+      "velocity": 67,
+      "frequency": 391.99543598174927
+    },
+    {
+      "pitch": 75,
+      "note_name": "D#5",
+      "start_time": 89.86122448979592,
+      "end_time": 90.34884353741496,
+      "duration": 0.48761904761904873,
+      "velocity": 68,
+      "frequency": 622.2539674441618
+    },
+    {
+      "pitch": 71,
+      "note_name": "B4",
+      "start_time": 90.34884353741496,
+      "end_time": 90.58104308390023,
+      "duration": 0.23219954648526198,
+      "velocity": 56,
+      "frequency": 493.8833012561241
+    },
+    {
+      "pitch": 69,
+      "note_name": "A4",
+      "start_time": 90.58104308390023,
+      "end_time": 90.79002267573696,
+      "duration": 0.2089795918367372,
+      "velocity": 64,
+      "frequency": 440.0
+    },
+    {
+      "pitch": 78,
+      "note_name": "F#5",
+      "start_time": 90.79002267573696,
+      "end_time": 91.25442176870749,
+      "duration": 0.46439909297052395,
+      "velocity": 85,
+      "frequency": 739.9888454232688
+    },
+    {
+      "pitch": 73,
+      "note_name": "C#5",
+      "start_time": 91.25442176870749,
+      "end_time": 92.13678004535147,
+      "duration": 0.8823582766439841,
+      "velocity": 62,
+      "frequency": 554.3652619537442
+    },
+    {
+      "pitch": 69,
+      "note_name": "A4",
+      "start_time": 92.13678004535147,
+      "end_time": 93.042358276644,
+      "duration": 0.9055782312925231,
+      "velocity": 55,
+      "frequency": 440.0
+    },
+    {
+      "pitch": 78,
+      "note_name": "F#5",
+      "start_time": 93.042358276644,
+      "end_time": 93.59963718820862,
+      "duration": 0.5572789115646231,
+      "velocity": 85,
+      "frequency": 739.9888454232688
+    },
+    {
+      "pitch": 79,
+      "note_name": "G5",
+      "start_time": 93.59963718820862,
+      "end_time": 93.69251700680272,
+      "duration": 0.0928798185940991,
+      "velocity": 56,
+      "frequency": 783.9908719634985
+    },
+    {
+      "pitch": 77,
+      "note_name": "F5",
+      "start_time": 93.69251700680272,
+      "end_time": 94.01759637188209,
+      "duration": 0.3250793650793753,
+      "velocity": 64,
+      "frequency": 698.4564628660078
+    },
+    {
+      "pitch": 76,
+      "note_name": "E5",
+      "start_time": 94.01759637188209,
+      "end_time": 94.36589569160998,
+      "duration": 0.34829931972788586,
+      "velocity": 63,
+      "frequency": 659.2551138257398
+    },
+    {
+      "pitch": 74,
+      "note_name": "D5",
+      "start_time": 94.36589569160998,
+      "end_time": 94.62131519274377,
+      "duration": 0.25541950113378675,
+      "velocity": 70,
+      "frequency": 587.3295358348151
+    },
+    {
+      "pitch": 73,
+      "note_name": "C#5",
+      "start_time": 94.62131519274377,
+      "end_time": 94.89995464852608,
+      "duration": 0.27863945578231153,
+      "velocity": 59,
+      "frequency": 554.3652619537442
+    },
+    {
+      "pitch": 51,
+      "note_name": "D#3",
+      "start_time": 94.89995464852608,
+      "end_time": 95.8055328798186,
+      "duration": 0.9055782312925231,
+      "velocity": 68,
+      "frequency": 155.56349186104046
+    },
+    {
+      "pitch": 47,
+      "note_name": "B2",
+      "start_time": 95.8055328798186,
+      "end_time": 96.26993197278911,
+      "duration": 0.46439909297050974,
+      "velocity": 54,
+      "frequency": 123.47082531403103
+    },
+    {
+      "pitch": 60,
+      "note_name": "C4",
+      "start_time": 96.26993197278911,
+      "end_time": 96.94331065759637,
+      "duration": 0.6733786848072612,
+      "velocity": 51,
+      "frequency": 261.6255653005986
+    },
+    {
+      "pitch": 62,
+      "note_name": "D4",
+      "start_time": 96.94331065759637,
+      "end_time": 97.15229024943311,
+      "duration": 0.2089795918367372,
+      "velocity": 64,
+      "frequency": 293.6647679174076
+    },
+    {
+      "pitch": 71,
+      "note_name": "B4",
+      "start_time": 97.15229024943311,
+      "end_time": 97.80244897959183,
+      "duration": 0.6501587301587222,
+      "velocity": 72,
+      "frequency": 493.8833012561241
+    },
+    {
+      "pitch": 70,
+      "note_name": "A#4",
+      "start_time": 97.80244897959183,
+      "end_time": 98.08108843537416,
+      "duration": 0.27863945578232574,
+      "velocity": 84,
+      "frequency": 466.1637615180899
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 98.08108843537416,
+      "end_time": 98.54548752834467,
+      "duration": 0.46439909297050974,
+      "velocity": 71,
+      "frequency": 391.99543598174927
+    },
+    {
+      "pitch": 65,
+      "note_name": "F4",
+      "start_time": 98.54548752834467,
+      "end_time": 99.21886621315193,
+      "duration": 0.6733786848072612,
+      "velocity": 73,
+      "frequency": 349.2282314330039
+    },
+    {
+      "pitch": 74,
+      "note_name": "D5",
+      "start_time": 99.21886621315193,
+      "end_time": 99.45106575963719,
+      "duration": 0.23219954648526198,
+      "velocity": 63,
+      "frequency": 587.3295358348151
+    },
+    {
+      "pitch": 64,
+      "note_name": "E4",
+      "start_time": 99.45106575963719,
+      "end_time": 99.91546485260771,
+      "duration": 0.46439909297052395,
+      "velocity": 59,
+      "frequency": 329.6275569128699
+    },
+    {
+      "pitch": 66,
+      "note_name": "F#4",
+      "start_time": 99.91546485260771,
+      "end_time": 100.1708843537415,
+      "duration": 0.25541950113378675,
+      "velocity": 62,
+      "frequency": 369.9944227116344
+    },
+    {
+      "pitch": 68,
+      "note_name": "G#4",
+      "start_time": 100.1708843537415,
+      "end_time": 100.42630385487529,
+      "duration": 0.25541950113378675,
+      "velocity": 62,
+      "frequency": 415.3046975799451
+    },
+    {
+      "pitch": 78,
+      "note_name": "F#5",
+      "start_time": 100.42630385487529,
+      "end_time": 101.35510204081632,
+      "duration": 0.9287981859410337,
+      "velocity": 57,
+      "frequency": 739.9888454232688
+    },
+    {
+      "pitch": 76,
+      "note_name": "E5",
+      "start_time": 101.35510204081632,
+      "end_time": 101.51764172335601,
+      "duration": 0.16253968253968765,
+      "velocity": 49,
+      "frequency": 659.2551138257398
+    },
+    {
+      "pitch": 71,
+      "note_name": "B4",
+      "start_time": 101.51764172335601,
+      "end_time": 101.79628117913832,
+      "duration": 0.27863945578231153,
+      "velocity": 76,
+      "frequency": 493.8833012561241
+    },
+    {
+      "pitch": 79,
+      "note_name": "G5",
+      "start_time": 101.79628117913832,
+      "end_time": 102.0517006802721,
+      "duration": 0.25541950113378675,
+      "velocity": 83,
+      "frequency": 783.9908719634985
+    },
+    {
+      "pitch": 78,
+      "note_name": "F#5",
+      "start_time": 102.0517006802721,
+      "end_time": 102.28390022675737,
+      "duration": 0.23219954648526198,
+      "velocity": 94,
+      "frequency": 739.9888454232688
+    },
+    {
+      "pitch": 70,
+      "note_name": "A#4",
+      "start_time": 102.28390022675737,
+      "end_time": 103.60743764172335,
+      "duration": 1.3235374149659833,
+      "velocity": 66,
+      "frequency": 466.1637615180899
+    },
+    {
+      "pitch": 76,
+      "note_name": "E5",
+      "start_time": 103.60743764172335,
+      "end_time": 104.0950566893424,
+      "duration": 0.48761904761904873,
+      "velocity": 79,
+      "frequency": 659.2551138257398
+    },
+    {
+      "pitch": 58,
+      "note_name": "A#3",
+      "start_time": 104.0950566893424,
+      "end_time": 105.27927437641723,
+      "duration": 1.1842176870748347,
+      "velocity": 56,
+      "frequency": 233.08188075904496
+    },
+    {
+      "pitch": 66,
+      "note_name": "F#4",
+      "start_time": 105.27927437641723,
+      "end_time": 105.46503401360545,
+      "duration": 0.18575963718821242,
+      "velocity": 62,
+      "frequency": 369.9944227116344
+    },
+    {
+      "pitch": 73,
+      "note_name": "C#5",
+      "start_time": 105.46503401360545,
+      "end_time": 105.69723356009071,
+      "duration": 0.23219954648526198,
+      "velocity": 84,
+      "frequency": 554.3652619537442
+    },
+    {
+      "pitch": 74,
+      "note_name": "D5",
+      "start_time": 105.69723356009071,
+      "end_time": 105.76689342403628,
+      "duration": 0.06965986394557433,
+      "velocity": 77,
+      "frequency": 587.3295358348151
+    },
+    {
+      "pitch": 71,
+      "note_name": "B4",
+      "start_time": 105.76689342403628,
+      "end_time": 105.97587301587302,
+      "duration": 0.2089795918367372,
+      "velocity": 82,
+      "frequency": 493.8833012561241
+    },
+    {
+      "pitch": 68,
+      "note_name": "G#4",
+      "start_time": 105.97587301587302,
+      "end_time": 106.57959183673469,
+      "duration": 0.6037188208616726,
+      "velocity": 68,
+      "frequency": 415.3046975799451
+    },
+    {
+      "pitch": 57,
+      "note_name": "A3",
+      "start_time": 106.57959183673469,
+      "end_time": 106.64925170068027,
+      "duration": 0.06965986394557433,
+      "velocity": 59,
+      "frequency": 220.0
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 106.64925170068027,
+      "end_time": 107.06721088435374,
+      "duration": 0.4179591836734744,
+      "velocity": 80,
+      "frequency": 391.99543598174927
+    },
+    {
+      "pitch": 65,
+      "note_name": "F4",
+      "start_time": 107.06721088435374,
+      "end_time": 107.53160997732427,
+      "duration": 0.46439909297052395,
+      "velocity": 67,
+      "frequency": 349.2282314330039
+    },
+    {
+      "pitch": 61,
+      "note_name": "C#4",
+      "start_time": 107.53160997732427,
+      "end_time": 107.76380952380953,
+      "duration": 0.23219954648526198,
+      "velocity": 68,
+      "frequency": 277.1826309768721
+    },
+    {
+      "pitch": 60,
+      "note_name": "C4",
+      "start_time": 107.76380952380953,
+      "end_time": 107.99600907029479,
+      "duration": 0.23219954648526198,
+      "velocity": 64,
+      "frequency": 261.6255653005986
+    },
+    {
+      "pitch": 62,
+      "note_name": "D4",
+      "start_time": 107.99600907029479,
+      "end_time": 108.22820861678005,
+      "duration": 0.23219954648526198,
+      "velocity": 70,
+      "frequency": 293.6647679174076
+    },
+    {
+      "pitch": 57,
+      "note_name": "A3",
+      "start_time": 108.22820861678005,
+      "end_time": 108.66938775510204,
+      "duration": 0.44117913832198496,
+      "velocity": 65,
+      "frequency": 220.0
+    },
+    {
+      "pitch": 58,
+      "note_name": "A#3",
+      "start_time": 108.66938775510204,
+      "end_time": 108.92480725623582,
+      "duration": 0.25541950113378675,
+      "velocity": 63,
+      "frequency": 233.08188075904496
+    },
+    {
+      "pitch": 55,
+      "note_name": "G3",
+      "start_time": 108.92480725623582,
+      "end_time": 109.13378684807256,
+      "duration": 0.2089795918367372,
+      "velocity": 74,
+      "frequency": 195.99771799087463
+    },
+    {
+      "pitch": 53,
+      "note_name": "F3",
+      "start_time": 109.13378684807256,
+      "end_time": 109.3427664399093,
+      "duration": 0.2089795918367372,
+      "velocity": 57,
+      "frequency": 174.61411571650194
+    },
+    {
+      "pitch": 55,
+      "note_name": "G3",
+      "start_time": 109.3427664399093,
+      "end_time": 109.57496598639456,
+      "duration": 0.23219954648526198,
+      "velocity": 73,
+      "frequency": 195.99771799087463
+    },
+    {
+      "pitch": 53,
+      "note_name": "F3",
+      "start_time": 109.57496598639456,
+      "end_time": 110.03936507936508,
+      "duration": 0.46439909297052395,
+      "velocity": 65,
+      "frequency": 174.61411571650194
+    },
+    {
+      "pitch": 45,
+      "note_name": "A2",
+      "start_time": 110.03936507936508,
+      "end_time": 110.50376417233561,
+      "duration": 0.46439909297052395,
+      "velocity": 61,
+      "frequency": 110.0
+    },
+    {
+      "pitch": 50,
+      "note_name": "D3",
+      "start_time": 110.50376417233561,
+      "end_time": 110.66630385487528,
+      "duration": 0.16253968253967344,
+      "velocity": 65,
+      "frequency": 146.8323839587038
+    },
+    {
+      "pitch": 56,
+      "note_name": "G#3",
+      "start_time": 110.66630385487528,
+      "end_time": 110.92172335600907,
+      "duration": 0.25541950113378675,
+      "velocity": 64,
+      "frequency": 207.65234878997256
+    },
+    {
+      "pitch": 50,
+      "note_name": "D3",
+      "start_time": 110.92172335600907,
+      "end_time": 112.75609977324262,
+      "duration": 1.8343764172335568,
+      "velocity": 56,
+      "frequency": 146.8323839587038
+    },
+    {
+      "pitch": 49,
+      "note_name": "C#3",
+      "start_time": 113.22049886621315,
+      "end_time": 113.66167800453515,
+      "duration": 0.4411791383219992,
+      "velocity": 55,
+      "frequency": 138.59131548843604
+    },
+    {
+      "pitch": 56,
+      "note_name": "G#3",
+      "start_time": 113.66167800453515,
+      "end_time": 113.87065759637188,
+      "duration": 0.2089795918367372,
+      "velocity": 64,
+      "frequency": 207.65234878997256
+    },
+    {
+      "pitch": 59,
+      "note_name": "B3",
+      "start_time": 113.87065759637188,
+      "end_time": 114.35827664399093,
+      "duration": 0.48761904761904873,
+      "velocity": 67,
+      "frequency": 246.94165062806206
+    },
+    {
+      "pitch": 64,
+      "note_name": "E4",
+      "start_time": 114.35827664399093,
+      "end_time": 114.5904761904762,
+      "duration": 0.23219954648526198,
+      "velocity": 76,
+      "frequency": 329.6275569128699
+    },
+    {
+      "pitch": 68,
+      "note_name": "G#4",
+      "start_time": 114.5904761904762,
+      "end_time": 114.75301587301587,
+      "duration": 0.16253968253967344,
+      "velocity": 72,
+      "frequency": 415.3046975799451
+    },
+    {
+      "pitch": 71,
+      "note_name": "B4",
+      "start_time": 114.75301587301587,
+      "end_time": 115.1245351473923,
+      "duration": 0.37151927437642485,
+      "velocity": 64,
+      "frequency": 493.8833012561241
+    },
+    {
+      "pitch": 72,
+      "note_name": "C5",
+      "start_time": 115.1245351473923,
+      "end_time": 115.4031746031746,
+      "duration": 0.27863945578231153,
+      "velocity": 66,
+      "frequency": 523.2511306011972
+    },
+    {
+      "pitch": 71,
+      "note_name": "B4",
+      "start_time": 115.4031746031746,
+      "end_time": 115.70503401360544,
+      "duration": 0.3018594104308363,
+      "velocity": 59,
+      "frequency": 493.8833012561241
+    },
+    {
+      "pitch": 72,
+      "note_name": "C5",
+      "start_time": 115.70503401360544,
+      "end_time": 116.00689342403628,
+      "duration": 0.3018594104308363,
+      "velocity": 62,
+      "frequency": 523.2511306011972
+    },
+    {
+      "pitch": 70,
+      "note_name": "A#4",
+      "start_time": 116.00689342403628,
+      "end_time": 116.65705215419501,
+      "duration": 0.6501587301587364,
+      "velocity": 55,
+      "frequency": 466.1637615180899
+    },
+    {
+      "pitch": 76,
+      "note_name": "E5",
+      "start_time": 116.65705215419501,
+      "end_time": 116.9124716553288,
+      "duration": 0.25541950113378675,
+      "velocity": 64,
+      "frequency": 659.2551138257398
+    },
+    {
+      "pitch": 74,
+      "note_name": "D5",
+      "start_time": 116.9124716553288,
+      "end_time": 117.40009070294785,
+      "duration": 0.48761904761904873,
+      "velocity": 70,
+      "frequency": 587.3295358348151
+    },
+    {
+      "pitch": 62,
+      "note_name": "D4",
+      "start_time": 117.40009070294785,
+      "end_time": 117.77160997732426,
+      "duration": 0.37151927437641064,
+      "velocity": 56,
+      "frequency": 293.6647679174076
+    },
+    {
+      "pitch": 49,
+      "note_name": "C#3",
+      "start_time": 117.77160997732426,
+      "end_time": 118.02702947845805,
+      "duration": 0.25541950113378675,
+      "velocity": 54,
+      "frequency": 138.59131548843604
+    },
+    {
+      "pitch": 77,
+      "note_name": "F5",
+      "start_time": 118.02702947845805,
+      "end_time": 118.28244897959183,
+      "duration": 0.25541950113378675,
+      "velocity": 68,
+      "frequency": 698.4564628660078
+    },
+    {
+      "pitch": 78,
+      "note_name": "F#5",
+      "start_time": 118.28244897959183,
+      "end_time": 118.70040816326531,
+      "duration": 0.4179591836734744,
+      "velocity": 63,
+      "frequency": 739.9888454232688
+    },
+    {
+      "pitch": 74,
+      "note_name": "D5",
+      "start_time": 118.70040816326531,
+      "end_time": 119.3970068027211,
+      "duration": 0.6965986394557859,
+      "velocity": 61,
+      "frequency": 587.3295358348151
+    },
+    {
+      "pitch": 72,
+      "note_name": "C5",
+      "start_time": 119.3970068027211,
+      "end_time": 119.62920634920636,
+      "duration": 0.23219954648526198,
+      "velocity": 72,
+      "frequency": 523.2511306011972
+    },
+    {
+      "pitch": 71,
+      "note_name": "B4",
+      "start_time": 119.62920634920636,
+      "end_time": 120.07038548752834,
+      "duration": 0.44117913832198496,
+      "velocity": 67,
+      "frequency": 493.8833012561241
+    },
+    {
+      "pitch": 69,
+      "note_name": "A4",
+      "start_time": 120.07038548752834,
+      "end_time": 120.51156462585034,
+      "duration": 0.4411791383219992,
+      "velocity": 59,
+      "frequency": 440.0
+    },
+    {
+      "pitch": 68,
+      "note_name": "G#4",
+      "start_time": 120.51156462585034,
+      "end_time": 120.72054421768708,
+      "duration": 0.2089795918367372,
+      "velocity": 59,
+      "frequency": 415.3046975799451
+    },
+    {
+      "pitch": 69,
+      "note_name": "A4",
+      "start_time": 120.72054421768708,
+      "end_time": 121.41714285714286,
+      "duration": 0.6965986394557859,
+      "velocity": 83,
+      "frequency": 440.0
+    },
+    {
+      "pitch": 66,
+      "note_name": "F#4",
+      "start_time": 121.41714285714286,
+      "end_time": 121.83510204081632,
+      "duration": 0.4179591836734602,
+      "velocity": 71,
+      "frequency": 369.9944227116344
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 121.83510204081632,
+      "end_time": 122.09052154195011,
+      "duration": 0.25541950113378675,
+      "velocity": 58,
+      "frequency": 391.99543598174927
+    },
+    {
+      "pitch": 70,
+      "note_name": "A#4",
+      "start_time": 122.09052154195011,
+      "end_time": 122.32272108843537,
+      "duration": 0.23219954648526198,
+      "velocity": 74,
+      "frequency": 466.1637615180899
+    },
+    {
+      "pitch": 63,
+      "note_name": "D#4",
+      "start_time": 122.32272108843537,
+      "end_time": 122.94965986394558,
+      "duration": 0.6269387755102116,
+      "velocity": 69,
+      "frequency": 311.1269837220809
+    },
+    {
+      "pitch": 62,
+      "note_name": "D4",
+      "start_time": 122.94965986394558,
+      "end_time": 123.20507936507937,
+      "duration": 0.25541950113378675,
+      "velocity": 80,
+      "frequency": 293.6647679174076
+    },
+    {
+      "pitch": 59,
+      "note_name": "B3",
+      "start_time": 123.20507936507937,
+      "end_time": 123.46049886621316,
+      "duration": 0.25541950113378675,
+      "velocity": 73,
+      "frequency": 246.94165062806206
+    },
+    {
+      "pitch": 55,
+      "note_name": "G3",
+      "start_time": 123.46049886621316,
+      "end_time": 123.64625850340136,
+      "duration": 0.1857596371881982,
+      "velocity": 64,
+      "frequency": 195.99771799087463
+    },
+    {
+      "pitch": 54,
+      "note_name": "F#3",
+      "start_time": 123.64625850340136,
+      "end_time": 123.71591836734694,
+      "duration": 0.06965986394558854,
+      "velocity": 59,
+      "frequency": 184.9972113558172
+    },
+    {
+      "pitch": 51,
+      "note_name": "D#3",
+      "start_time": 123.71591836734694,
+      "end_time": 124.11065759637188,
+      "duration": 0.3947392290249354,
+      "velocity": 64,
+      "frequency": 155.56349186104046
+    },
+    {
+      "pitch": 54,
+      "note_name": "F#3",
+      "start_time": 124.11065759637188,
+      "end_time": 124.5750566893424,
+      "duration": 0.46439909297052395,
+      "velocity": 58,
+      "frequency": 184.9972113558172
+    },
+    {
+      "pitch": 47,
+      "note_name": "B2",
+      "start_time": 124.5750566893424,
+      "end_time": 125.03945578231293,
+      "duration": 0.46439909297052395,
+      "velocity": 56,
+      "frequency": 123.47082531403103
+    },
+    {
+      "pitch": 40,
+      "note_name": "E2",
+      "start_time": 125.03945578231293,
+      "end_time": 125.48063492063493,
+      "duration": 0.4411791383219992,
+      "velocity": 54,
+      "frequency": 82.4068892282175
+    },
+    {
+      "pitch": 44,
+      "note_name": "G#2",
+      "start_time": 125.48063492063493,
+      "end_time": 126.20045351473922,
+      "duration": 0.7198185941042965,
+      "velocity": 53,
+      "frequency": 103.82617439498628
+    },
+    {
+      "pitch": 58,
+      "note_name": "A#3",
+      "start_time": 126.20045351473922,
+      "end_time": 126.40943310657596,
+      "duration": 0.2089795918367372,
+      "velocity": 58,
+      "frequency": 233.08188075904496
+    },
+    {
+      "pitch": 62,
+      "note_name": "D4",
+      "start_time": 126.40943310657596,
+      "end_time": 126.6184126984127,
+      "duration": 0.2089795918367372,
+      "velocity": 54,
+      "frequency": 293.6647679174076
+    },
+    {
+      "pitch": 61,
+      "note_name": "C#4",
+      "start_time": 126.6184126984127,
+      "end_time": 126.68807256235827,
+      "duration": 0.06965986394557433,
+      "velocity": 51,
+      "frequency": 277.1826309768721
+    },
+    {
+      "pitch": 66,
+      "note_name": "F#4",
+      "start_time": 126.68807256235827,
+      "end_time": 126.85061224489796,
+      "duration": 0.16253968253968765,
+      "velocity": 76,
+      "frequency": 369.9944227116344
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 126.85061224489796,
+      "end_time": 127.10603174603175,
+      "duration": 0.25541950113378675,
+      "velocity": 76,
+      "frequency": 391.99543598174927
+    },
+    {
+      "pitch": 65,
+      "note_name": "F4",
+      "start_time": 127.10603174603175,
+      "end_time": 127.80263038548753,
+      "duration": 0.6965986394557859,
+      "velocity": 63,
+      "frequency": 349.2282314330039
+    },
+    {
+      "pitch": 64,
+      "note_name": "E4",
+      "start_time": 127.80263038548753,
+      "end_time": 128.70820861678004,
+      "duration": 0.9055782312925089,
+      "velocity": 67,
+      "frequency": 329.6275569128699
+    },
+    {
+      "pitch": 62,
+      "note_name": "D4",
+      "start_time": 128.70820861678004,
+      "end_time": 129.14938775510205,
+      "duration": 0.4411791383220134,
+      "velocity": 74,
+      "frequency": 293.6647679174076
+    },
+    {
+      "pitch": 61,
+      "note_name": "C#4",
+      "start_time": 129.14938775510205,
+      "end_time": 129.61378684807255,
+      "duration": 0.46439909297049553,
+      "velocity": 57,
+      "frequency": 277.1826309768721
+    },
+    {
+      "pitch": 65,
+      "note_name": "F4",
+      "start_time": 129.61378684807255,
+      "end_time": 130.4497052154195,
+      "duration": 0.8359183673469488,
+      "velocity": 52,
+      "frequency": 349.2282314330039
+    },
+    {
+      "pitch": 59,
+      "note_name": "B3",
+      "start_time": 130.4497052154195,
+      "end_time": 131.40172335600906,
+      "duration": 0.9520181405895585,
+      "velocity": 50,
+      "frequency": 246.94165062806206
+    },
+    {
+      "pitch": 48,
+      "note_name": "C3",
+      "start_time": 131.40172335600906,
+      "end_time": 132.07510204081632,
+      "duration": 0.6733786848072612,
+      "velocity": 66,
+      "frequency": 130.8127826502993
+    },
+    {
+      "pitch": 52,
+      "note_name": "E3",
+      "start_time": 132.07510204081632,
+      "end_time": 132.77170068027212,
+      "duration": 0.6965986394558001,
+      "velocity": 65,
+      "frequency": 164.81377845643496
+    },
+    {
+      "pitch": 70,
+      "note_name": "A#4",
+      "start_time": 132.77170068027212,
+      "end_time": 133.4682993197279,
+      "duration": 0.6965986394557717,
+      "velocity": 60,
+      "frequency": 466.1637615180899
+    },
+    {
+      "pitch": 59,
+      "note_name": "B3",
+      "start_time": 133.4682993197279,
+      "end_time": 133.70049886621314,
+      "duration": 0.23219954648524777,
+      "velocity": 58,
+      "frequency": 246.94165062806206
+    },
+    {
+      "pitch": 63,
+      "note_name": "D#4",
+      "start_time": 133.70049886621314,
+      "end_time": 133.90947845804988,
+      "duration": 0.2089795918367372,
+      "velocity": 57,
+      "frequency": 311.1269837220809
+    },
+    {
+      "pitch": 55,
+      "note_name": "G3",
+      "start_time": 133.90947845804988,
+      "end_time": 134.1184580498866,
+      "duration": 0.2089795918367372,
+      "velocity": 60,
+      "frequency": 195.99771799087463
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 134.1184580498866,
+      "end_time": 134.55963718820863,
+      "duration": 0.4411791383220134,
+      "velocity": 70,
+      "frequency": 391.99543598174927
+    },
+    {
+      "pitch": 61,
+      "note_name": "C#4",
+      "start_time": 134.55963718820863,
+      "end_time": 134.8150566893424,
+      "duration": 0.25541950113378675,
+      "velocity": 62,
+      "frequency": 277.1826309768721
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 134.8150566893424,
+      "end_time": 135.04725623582766,
+      "duration": 0.23219954648524777,
+      "velocity": 59,
+      "frequency": 391.99543598174927
+    },
+    {
+      "pitch": 65,
+      "note_name": "F4",
+      "start_time": 135.04725623582766,
+      "end_time": 135.51165532879818,
+      "duration": 0.46439909297052395,
+      "velocity": 64,
+      "frequency": 349.2282314330039
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 135.51165532879818,
+      "end_time": 135.67419501133787,
+      "duration": 0.16253968253968765,
+      "velocity": 63,
+      "frequency": 391.99543598174927
+    },
+    {
+      "pitch": 53,
+      "note_name": "F3",
+      "start_time": 135.67419501133787,
+      "end_time": 136.39401360544218,
+      "duration": 0.7198185941043107,
+      "velocity": 59,
+      "frequency": 174.61411571650194
+    },
+    {
+      "pitch": 68,
+      "note_name": "G#4",
+      "start_time": 136.39401360544218,
+      "end_time": 136.8584126984127,
+      "duration": 0.46439909297052395,
+      "velocity": 55,
+      "frequency": 415.3046975799451
+    },
+    {
+      "pitch": 50,
+      "note_name": "D3",
+      "start_time": 136.8584126984127,
+      "end_time": 137.09061224489795,
+      "duration": 0.23219954648524777,
+      "velocity": 55,
+      "frequency": 146.8323839587038
+    },
+    {
+      "pitch": 62,
+      "note_name": "D4",
+      "start_time": 137.09061224489795,
+      "end_time": 137.53179138321997,
+      "duration": 0.4411791383220134,
+      "velocity": 60,
+      "frequency": 293.6647679174076
+    },
+    {
+      "pitch": 56,
+      "note_name": "G#3",
+      "start_time": 137.53179138321997,
+      "end_time": 137.71755102040817,
+      "duration": 0.1857596371881982,
+      "velocity": 54,
+      "frequency": 207.65234878997256
+    },
+    {
+      "pitch": 74,
+      "note_name": "D5",
+      "start_time": 137.71755102040817,
+      "end_time": 138.2051700680272,
+      "duration": 0.4876190476190345,
+      "velocity": 57,
+      "frequency": 587.3295358348151
+    },
+    {
+      "pitch": 72,
+      "note_name": "C5",
+      "start_time": 138.2051700680272,
+      "end_time": 138.6463492063492,
+      "duration": 0.4411791383220134,
+      "velocity": 53,
+      "frequency": 523.2511306011972
+    },
+    {
+      "pitch": 47,
+      "note_name": "B2",
+      "start_time": 138.6463492063492,
+      "end_time": 139.11074829931974,
+      "duration": 0.46439909297052395,
+      "velocity": 56,
+      "frequency": 123.47082531403103
+    },
+    {
+      "pitch": 40,
+      "note_name": "E2",
+      "start_time": 139.11074829931974,
+      "end_time": 139.34294784580499,
+      "duration": 0.23219954648524777,
+      "velocity": 60,
+      "frequency": 82.4068892282175
+    },
+    {
+      "pitch": 52,
+      "note_name": "E3",
+      "start_time": 139.34294784580499,
+      "end_time": 139.55192743764172,
+      "duration": 0.2089795918367372,
+      "velocity": 64,
+      "frequency": 164.81377845643496
+    },
+    {
+      "pitch": 54,
+      "note_name": "F#3",
+      "start_time": 139.55192743764172,
+      "end_time": 140.01632653061225,
+      "duration": 0.46439909297052395,
+      "velocity": 74,
+      "frequency": 184.9972113558172
+    },
+    {
+      "pitch": 63,
+      "note_name": "D#4",
+      "start_time": 140.01632653061225,
+      "end_time": 140.2485260770975,
+      "duration": 0.23219954648524777,
+      "velocity": 62,
+      "frequency": 311.1269837220809
+    },
+    {
+      "pitch": 69,
+      "note_name": "A4",
+      "start_time": 140.2485260770975,
+      "end_time": 140.55038548752833,
+      "duration": 0.3018594104308363,
+      "velocity": 56,
+      "frequency": 440.0
+    },
+    {
+      "pitch": 68,
+      "note_name": "G#4",
+      "start_time": 140.55038548752833,
+      "end_time": 140.8522448979592,
+      "duration": 0.3018594104308647,
+      "velocity": 57,
+      "frequency": 415.3046975799451
+    },
+    {
+      "pitch": 55,
+      "note_name": "G3",
+      "start_time": 140.8522448979592,
+      "end_time": 141.17732426303854,
+      "duration": 0.32507936507934687,
+      "velocity": 57,
+      "frequency": 195.99771799087463
+    },
+    {
+      "pitch": 40,
+      "note_name": "E2",
+      "start_time": 141.17732426303854,
+      "end_time": 141.40952380952382,
+      "duration": 0.2321995464852762,
+      "velocity": 57,
+      "frequency": 82.4068892282175
+    },
+    {
+      "pitch": 62,
+      "note_name": "D4",
+      "start_time": 141.40952380952382,
+      "end_time": 142.33832199546487,
+      "duration": 0.9287981859410479,
+      "velocity": 57,
+      "frequency": 293.6647679174076
+    },
+    {
+      "pitch": 52,
+      "note_name": "E3",
+      "start_time": 142.33832199546487,
+      "end_time": 142.80272108843536,
+      "duration": 0.46439909297049553,
+      "velocity": 60,
+      "frequency": 164.81377845643496
+    },
+    {
+      "pitch": 43,
+      "note_name": "G2",
+      "start_time": 142.80272108843536,
+      "end_time": 143.24390022675738,
+      "duration": 0.4411791383220134,
+      "velocity": 58,
+      "frequency": 97.99885899543733
+    },
+    {
+      "pitch": 40,
+      "note_name": "E2",
+      "start_time": 143.24390022675738,
+      "end_time": 144.56743764172336,
+      "duration": 1.3235374149659833,
+      "velocity": 59,
+      "frequency": 82.4068892282175
+    },
+    {
+      "pitch": 53,
+      "note_name": "F3",
+      "start_time": 144.56743764172336,
+      "end_time": 145.03183673469388,
+      "duration": 0.46439909297052395,
+      "velocity": 58,
+      "frequency": 174.61411571650194
+    },
+    {
+      "pitch": 70,
+      "note_name": "A#4",
+      "start_time": 145.03183673469388,
+      "end_time": 145.54267573696146,
+      "duration": 0.5108390022675735,
+      "velocity": 56,
+      "frequency": 466.1637615180899
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 145.54267573696146,
+      "end_time": 145.96063492063493,
+      "duration": 0.4179591836734744,
+      "velocity": 54,
+      "frequency": 391.99543598174927
+    },
+    {
+      "pitch": 57,
+      "note_name": "A3",
+      "start_time": 145.96063492063493,
+      "end_time": 146.88943310657595,
+      "duration": 0.9287981859410195,
+      "velocity": 63,
+      "frequency": 220.0
+    },
+    {
+      "pitch": 45,
+      "note_name": "A2",
+      "start_time": 146.88943310657595,
+      "end_time": 147.77179138321995,
+      "duration": 0.8823582766439984,
+      "velocity": 58,
+      "frequency": 110.0
+    },
+    {
+      "pitch": 70,
+      "note_name": "A#4",
+      "start_time": 147.77179138321995,
+      "end_time": 148.5148299319728,
+      "duration": 0.7430385487528497,
+      "velocity": 74,
+      "frequency": 466.1637615180899
+    },
+    {
+      "pitch": 45,
+      "note_name": "A2",
+      "start_time": 148.5148299319728,
+      "end_time": 148.72380952380954,
+      "duration": 0.2089795918367372,
+      "velocity": 52,
+      "frequency": 110.0
+    },
+    {
+      "pitch": 69,
+      "note_name": "A4",
+      "start_time": 148.72380952380954,
+      "end_time": 148.97922902494332,
+      "duration": 0.25541950113378675,
+      "velocity": 80,
+      "frequency": 440.0
+    },
+    {
+      "pitch": 68,
+      "note_name": "G#4",
+      "start_time": 148.97922902494332,
+      "end_time": 149.65260770975055,
+      "duration": 0.6733786848072327,
+      "velocity": 69,
+      "frequency": 415.3046975799451
+    },
+    {
+      "pitch": 64,
+      "note_name": "E4",
+      "start_time": 149.65260770975055,
+      "end_time": 150.53496598639455,
+      "duration": 0.8823582766439984,
+      "velocity": 64,
+      "frequency": 329.6275569128699
+    },
+    {
+      "pitch": 66,
+      "note_name": "F#4",
+      "start_time": 150.53496598639455,
+      "end_time": 150.8368253968254,
+      "duration": 0.3018594104308363,
+      "velocity": 73,
+      "frequency": 369.9944227116344
+    },
+    {
+      "pitch": 64,
+      "note_name": "E4",
+      "start_time": 150.8368253968254,
+      "end_time": 151.23156462585035,
+      "duration": 0.39473922902496383,
+      "velocity": 65,
+      "frequency": 329.6275569128699
+    },
+    {
+      "pitch": 62,
+      "note_name": "D4",
+      "start_time": 151.23156462585035,
+      "end_time": 151.51020408163265,
+      "duration": 0.2786394557822973,
+      "velocity": 57,
+      "frequency": 293.6647679174076
+    },
+    {
+      "pitch": 63,
+      "note_name": "D#4",
+      "start_time": 151.51020408163265,
+      "end_time": 151.76562358276644,
+      "duration": 0.25541950113378675,
+      "velocity": 76,
+      "frequency": 311.1269837220809
+    },
+    {
+      "pitch": 62,
+      "note_name": "D4",
+      "start_time": 151.76562358276644,
+      "end_time": 152.4622222222222,
+      "duration": 0.6965986394557717,
+      "velocity": 68,
+      "frequency": 293.6647679174076
+    },
+    {
+      "pitch": 66,
+      "note_name": "F#4",
+      "start_time": 152.4622222222222,
+      "end_time": 153.11238095238096,
+      "duration": 0.6501587301587506,
+      "velocity": 64,
+      "frequency": 369.9944227116344
+    },
+    {
+      "pitch": 54,
+      "note_name": "F#3",
+      "start_time": 153.11238095238096,
+      "end_time": 153.87863945578232,
+      "duration": 0.7662585034013603,
+      "velocity": 62,
+      "frequency": 184.9972113558172
+    },
+    {
+      "pitch": 56,
+      "note_name": "G#3",
+      "start_time": 153.87863945578232,
+      "end_time": 154.34303854875284,
+      "duration": 0.46439909297052395,
+      "velocity": 63,
+      "frequency": 207.65234878997256
+    },
+    {
+      "pitch": 40,
+      "note_name": "E2",
+      "start_time": 154.34303854875284,
+      "end_time": 154.78421768707483,
+      "duration": 0.44117913832198496,
+      "velocity": 59,
+      "frequency": 82.4068892282175
+    },
+    {
+      "pitch": 42,
+      "note_name": "F#2",
+      "start_time": 154.78421768707483,
+      "end_time": 155.7362358276644,
+      "duration": 0.9520181405895585,
+      "velocity": 57,
+      "frequency": 92.4986056779086
+    },
+    {
+      "pitch": 40,
+      "note_name": "E2",
+      "start_time": 155.7362358276644,
+      "end_time": 156.15419501133786,
+      "duration": 0.4179591836734744,
+      "velocity": 55,
+      "frequency": 82.4068892282175
+    },
+    {
+      "pitch": 53,
+      "note_name": "F3",
+      "start_time": 156.15419501133786,
+      "end_time": 156.6185941043084,
+      "duration": 0.46439909297052395,
+      "velocity": 60,
+      "frequency": 174.61411571650194
+    },
+    {
+      "pitch": 51,
+      "note_name": "D#3",
+      "start_time": 156.6185941043084,
+      "end_time": 157.0829931972789,
+      "duration": 0.46439909297052395,
+      "velocity": 59,
+      "frequency": 155.56349186104046
+    },
+    {
+      "pitch": 40,
+      "note_name": "E2",
+      "start_time": 157.0829931972789,
+      "end_time": 159.40498866213153,
+      "duration": 2.3219954648526198,
+      "velocity": 60,
+      "frequency": 82.4068892282175
+    },
+    {
+      "pitch": 46,
+      "note_name": "A#2",
+      "start_time": 159.40498866213153,
+      "end_time": 159.89260770975056,
+      "duration": 0.4876190476190345,
+      "velocity": 52,
+      "frequency": 116.54094037952248
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 159.89260770975056,
+      "end_time": 160.38022675736963,
+      "duration": 0.48761904761906294,
+      "velocity": 76,
+      "frequency": 391.99543598174927
+    },
+    {
+      "pitch": 66,
+      "note_name": "F#4",
+      "start_time": 160.38022675736963,
+      "end_time": 160.86784580498866,
+      "duration": 0.4876190476190345,
+      "velocity": 54,
+      "frequency": 369.9944227116344
+    },
+    {
+      "pitch": 53,
+      "note_name": "F3",
+      "start_time": 160.86784580498866,
+      "end_time": 160.9839455782313,
+      "duration": 0.1160997732426381,
+      "velocity": 59,
+      "frequency": 174.61411571650194
+    },
+    {
+      "pitch": 40,
+      "note_name": "E2",
+      "start_time": 160.9839455782313,
+      "end_time": 163.14340136054423,
+      "duration": 2.159455782312932,
+      "velocity": 61,
+      "frequency": 82.4068892282175
+    },
+    {
+      "pitch": 46,
+      "note_name": "A#2",
+      "start_time": 163.14340136054423,
+      "end_time": 163.58458049886622,
+      "duration": 0.44117913832198496,
+      "velocity": 55,
+      "frequency": 116.54094037952248
+    },
+    {
+      "pitch": 66,
+      "note_name": "F#4",
+      "start_time": 163.58458049886622,
+      "end_time": 164.51337868480726,
+      "duration": 0.9287981859410479,
+      "velocity": 76,
+      "frequency": 369.9944227116344
+    },
+    {
+      "pitch": 61,
+      "note_name": "C#4",
+      "start_time": 164.51337868480726,
+      "end_time": 165.0009977324263,
+      "duration": 0.4876190476190345,
+      "velocity": 64,
+      "frequency": 277.1826309768721
+    },
+    {
+      "pitch": 45,
+      "note_name": "A2",
+      "start_time": 165.0009977324263,
+      "end_time": 165.41895691609977,
+      "duration": 0.4179591836734744,
+      "velocity": 57,
+      "frequency": 110.0
+    },
+    {
+      "pitch": 43,
+      "note_name": "G2",
+      "start_time": 165.41895691609977,
+      "end_time": 166.7889342403628,
+      "duration": 1.3699773242630329,
+      "velocity": 55,
+      "frequency": 97.99885899543733
+    },
+    {
+      "pitch": 40,
+      "note_name": "E2",
+      "start_time": 166.7889342403628,
+      "end_time": 167.20689342403628,
+      "duration": 0.4179591836734744,
+      "velocity": 52,
+      "frequency": 82.4068892282175
+    },
+    {
+      "pitch": 59,
+      "note_name": "B3",
+      "start_time": 167.20689342403628,
+      "end_time": 167.71773242630385,
+      "duration": 0.5108390022675735,
+      "velocity": 58,
+      "frequency": 246.94165062806206
+    },
+    {
+      "pitch": 62,
+      "note_name": "D4",
+      "start_time": 167.71773242630385,
+      "end_time": 168.13569160997733,
+      "duration": 0.4179591836734744,
+      "velocity": 56,
+      "frequency": 293.6647679174076
+    },
+    {
+      "pitch": 47,
+      "note_name": "B2",
+      "start_time": 168.13569160997733,
+      "end_time": 168.60009070294785,
+      "duration": 0.46439909297052395,
+      "velocity": 63,
+      "frequency": 123.47082531403103
+    },
+    {
+      "pitch": 45,
+      "note_name": "A2",
+      "start_time": 168.60009070294785,
+      "end_time": 171.34004535147392,
+      "duration": 2.7399546485260657,
+      "velocity": 64,
+      "frequency": 110.0
+    },
+    {
+      "pitch": 48,
+      "note_name": "C3",
+      "start_time": 171.78122448979593,
+      "end_time": 172.24562358276643,
+      "duration": 0.46439909297049553,
+      "velocity": 62,
+      "frequency": 130.8127826502993
+    },
+    {
+      "pitch": 45,
+      "note_name": "A2",
+      "start_time": 172.24562358276643,
+      "end_time": 172.68680272108844,
+      "duration": 0.4411791383220134,
+      "velocity": 65,
+      "frequency": 110.0
+    },
+    {
+      "pitch": 48,
+      "note_name": "C3",
+      "start_time": 172.68680272108844,
+      "end_time": 173.12798185941043,
+      "duration": 0.44117913832198496,
+      "velocity": 62,
+      "frequency": 130.8127826502993
+    },
+    {
+      "pitch": 45,
+      "note_name": "A2",
+      "start_time": 173.12798185941043,
+      "end_time": 174.05678004535147,
+      "duration": 0.9287981859410479,
+      "velocity": 56,
+      "frequency": 110.0
+    },
+    {
+      "pitch": 50,
+      "note_name": "D3",
+      "start_time": 174.05678004535147,
+      "end_time": 174.91591836734693,
+      "duration": 0.8591383219954594,
+      "velocity": 50,
+      "frequency": 146.8323839587038
+    },
+    {
+      "pitch": 64,
+      "note_name": "E4",
+      "start_time": 174.91591836734693,
+      "end_time": 175.44997732426305,
+      "duration": 0.5340589569161125,
+      "velocity": 56,
+      "frequency": 329.6275569128699
+    },
+    {
+      "pitch": 65,
+      "note_name": "F4",
+      "start_time": 175.44997732426305,
+      "end_time": 175.91437641723357,
+      "duration": 0.46439909297052395,
+      "velocity": 61,
+      "frequency": 349.2282314330039
+    },
+    {
+      "pitch": 57,
+      "note_name": "A3",
+      "start_time": 175.91437641723357,
+      "end_time": 176.1233560090703,
+      "duration": 0.2089795918367372,
+      "velocity": 56,
+      "frequency": 220.0
+    },
+    {
+      "pitch": 73,
+      "note_name": "C#5",
+      "start_time": 176.1233560090703,
+      "end_time": 176.35555555555555,
+      "duration": 0.23219954648524777,
+      "velocity": 61,
+      "frequency": 554.3652619537442
+    },
+    {
+      "pitch": 59,
+      "note_name": "B3",
+      "start_time": 176.35555555555555,
+      "end_time": 176.77351473922903,
+      "duration": 0.4179591836734744,
+      "velocity": 65,
+      "frequency": 246.94165062806206
+    },
+    {
+      "pitch": 65,
+      "note_name": "F4",
+      "start_time": 176.77351473922903,
+      "end_time": 177.00571428571428,
+      "duration": 0.23219954648524777,
+      "velocity": 59,
+      "frequency": 349.2282314330039
+    },
+    {
+      "pitch": 72,
+      "note_name": "C5",
+      "start_time": 177.00571428571428,
+      "end_time": 177.26113378684806,
+      "duration": 0.25541950113378675,
+      "velocity": 71,
+      "frequency": 523.2511306011972
+    },
+    {
+      "pitch": 69,
+      "note_name": "A4",
+      "start_time": 177.26113378684806,
+      "end_time": 177.7255328798186,
+      "duration": 0.46439909297052395,
+      "velocity": 63,
+      "frequency": 440.0
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 177.7255328798186,
+      "end_time": 178.1667120181406,
+      "duration": 0.4411791383220134,
+      "velocity": 52,
+      "frequency": 391.99543598174927
+    },
+    {
+      "pitch": 58,
+      "note_name": "A#3",
+      "start_time": 178.1667120181406,
+      "end_time": 178.39891156462585,
+      "duration": 0.23219954648524777,
+      "velocity": 49,
+      "frequency": 233.08188075904496
+    },
+    {
+      "pitch": 65,
+      "note_name": "F4",
+      "start_time": 178.39891156462585,
+      "end_time": 178.74721088435373,
+      "duration": 0.34829931972788586,
+      "velocity": 51,
+      "frequency": 349.2282314330039
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 178.74721088435373,
+      "end_time": 179.09551020408162,
+      "duration": 0.34829931972788586,
+      "velocity": 62,
+      "frequency": 391.99543598174927
+    },
+    {
+      "pitch": 64,
+      "note_name": "E4",
+      "start_time": 179.09551020408162,
+      "end_time": 179.37414965986395,
+      "duration": 0.27863945578232574,
+      "velocity": 59,
+      "frequency": 329.6275569128699
+    },
+    {
+      "pitch": 48,
+      "note_name": "C3",
+      "start_time": 179.37414965986395,
+      "end_time": 179.58312925170068,
+      "duration": 0.2089795918367372,
+      "velocity": 57,
+      "frequency": 130.8127826502993
+    },
+    {
+      "pitch": 40,
+      "note_name": "E2",
+      "start_time": 179.58312925170068,
+      "end_time": 180.00108843537416,
+      "duration": 0.4179591836734744,
+      "velocity": 57,
+      "frequency": 82.4068892282175
+    },
+    {
+      "pitch": 53,
+      "note_name": "F3",
+      "start_time": 180.00108843537416,
+      "end_time": 180.46548752834468,
+      "duration": 0.46439909297052395,
+      "velocity": 58,
+      "frequency": 174.61411571650194
+    },
+    {
+      "pitch": 46,
+      "note_name": "A#2",
+      "start_time": 180.46548752834468,
+      "end_time": 181.3942857142857,
+      "duration": 0.9287981859410195,
+      "velocity": 55,
+      "frequency": 116.54094037952248
+    },
+    {
+      "pitch": 40,
+      "note_name": "E2",
+      "start_time": 181.3942857142857,
+      "end_time": 182.13732426303855,
+      "duration": 0.7430385487528497,
+      "velocity": 53,
+      "frequency": 82.4068892282175
+    },
+    {
+      "pitch": 64,
+      "note_name": "E4",
+      "start_time": 182.13732426303855,
+      "end_time": 182.85714285714286,
+      "duration": 0.7198185941043107,
+      "velocity": 54,
+      "frequency": 329.6275569128699
+    },
+    {
+      "pitch": 55,
+      "note_name": "G3",
+      "start_time": 182.85714285714286,
+      "end_time": 183.32154195011339,
+      "duration": 0.46439909297052395,
+      "velocity": 60,
+      "frequency": 195.99771799087463
+    },
+    {
+      "pitch": 62,
+      "note_name": "D4",
+      "start_time": 183.32154195011339,
+      "end_time": 183.80916099773242,
+      "duration": 0.4876190476190345,
+      "velocity": 57,
+      "frequency": 293.6647679174076
+    },
+    {
+      "pitch": 60,
+      "note_name": "C4",
+      "start_time": 183.80916099773242,
+      "end_time": 184.08780045351475,
+      "duration": 0.27863945578232574,
+      "velocity": 67,
+      "frequency": 261.6255653005986
+    },
+    {
+      "pitch": 67,
+      "note_name": "G4",
+      "start_time": 184.08780045351475,
+      "end_time": 184.38965986394558,
+      "duration": 0.3018594104308363,
+      "velocity": 71,
+      "frequency": 391.99543598174927
+    },
+    {
+      "pitch": 69,
+      "note_name": "A4",
+      "start_time": 184.38965986394558,
+      "end_time": 185.0165986394558,
+      "duration": 0.6269387755102116,
+      "velocity": 58,
+      "frequency": 440.0
+    },
+    {
+      "pitch": 49,
+      "note_name": "C#3",
+      "start_time": 185.0165986394558,
+      "end_time": 185.59709750566893,
+      "duration": 0.5804988662131336,
+      "velocity": 61,
+      "frequency": 138.59131548843604
+    },
+    {
+      "pitch": 47,
+      "note_name": "B2",
+      "start_time": 185.59709750566893,
+      "end_time": 187.19927437641724,
+      "duration": 1.602176870748309,
+      "velocity": 60,
+      "frequency": 123.47082531403103
+    },
+    {
+      "pitch": 62,
+      "note_name": "D4",
+      "start_time": 187.19927437641724,
+      "end_time": 189.38195011337868,
+      "duration": 2.1826757369614427,
+      "velocity": 53,
+      "frequency": 293.6647679174076
+    },
+    {
+      "pitch": 64,
+      "note_name": "E4",
+      "start_time": 189.38195011337868,
+      "end_time": 191.21632653061224,
+      "duration": 1.8343764172335568,
+      "velocity": 52,
+      "frequency": 329.6275569128699
+    },
+    {
+      "pitch": 50,
+      "note_name": "D3",
+      "start_time": 191.21632653061224,
+      "end_time": 191.47174603174602,
+      "duration": 0.25541950113378675,
+      "velocity": 56,
+      "frequency": 146.8323839587038
+    },
+    {
+      "pitch": 44,
+      "note_name": "G#2",
+      "start_time": 191.47174603174602,
+      "end_time": 191.6342857142857,
+      "duration": 0.16253968253968765,
+      "velocity": 65,
+      "frequency": 103.82617439498628
+    },
+    {
+      "pitch": 49,
+      "note_name": "C#3",
+      "start_time": 191.6342857142857,
+      "end_time": 191.7968253968254,
+      "duration": 0.16253968253968765,
+      "velocity": 63,
+      "frequency": 138.59131548843604
+    },
+    {
+      "pitch": 55,
+      "note_name": "G3",
+      "start_time": 191.7968253968254,
+      "end_time": 191.9825850340136,
+      "duration": 0.1857596371881982,
+      "velocity": 74,
+      "frequency": 195.99771799087463
+    },
+    {
+      "pitch": 41,
+      "note_name": "F2",
+      "start_time": 191.9825850340136,
+      "end_time": 196.7891156462585,
+      "duration": 4.806530612244899,
+      "velocity": 51,
+      "frequency": 87.30705785825097
+    }
+  ]
+}

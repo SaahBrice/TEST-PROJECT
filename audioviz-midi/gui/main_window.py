@@ -21,6 +21,8 @@ from PyQt5.QtGui import QIcon, QKeySequence
 from utils.logger import get_logger
 from utils.config import ConfigManager
 from export import MIDIExporter, JSONExporter
+from utils import ErrorHandler
+
 
 
 logger = get_logger(__name__)
@@ -378,7 +380,7 @@ class MainWindow(QMainWindow):
         help_action.setStatusTip('Show workflow help')
         help_action.triggered.connect(self._show_workflow_help)
         toolbar.addAction(help_action)
-        
+
         logger.debug("Toolbar created")
     
 
@@ -558,8 +560,8 @@ class MainWindow(QMainWindow):
         # Get filename
         filename = os.path.basename(file_path)
         
-        # Validate file using AudioLoader
         try:
+            # Validate file using AudioLoader
             from audio import AudioLoader
             loader = AudioLoader()
             is_valid, message = loader.validate_file(file_path)
@@ -585,31 +587,18 @@ class MainWindow(QMainWindow):
                 
                 # Show success message if it's a warning (large file)
                 if 'Warning' in message:
-                    from PyQt5.QtWidgets import QMessageBox
-                    QMessageBox.warning(self, 'Large File', message)
+                    ErrorHandler.show_warning(self, 'Large File', message)
             else:
                 # File is invalid
                 logger.error(f"Invalid file: {message}")
-                
-                from PyQt5.QtWidgets import QMessageBox
-                QMessageBox.critical(
-                    self,
-                    'Invalid File',
-                    f'Cannot load file:\n\n{message}'
-                )
-                
-                # Reset widget
+                ErrorHandler.show_warning(self, 'Invalid File', 
+                    f'Cannot load file:\n\n{message}')
                 self.file_drop_widget.reset()
                 
         except Exception as e:
-            logger.error(f"Error loading dropped file: {str(e)}")
-            from PyQt5.QtWidgets import QMessageBox
-            QMessageBox.critical(
-                self,
-                'Error',
-                f'Error loading file:\n\n{str(e)}'
-            )
+            ErrorHandler.handle_file_error(self, e, file_path)
             self.file_drop_widget.reset()
+
 
 
 
@@ -617,6 +606,10 @@ class MainWindow(QMainWindow):
         """Handle Transcribe action."""
         if not self.current_file:
             logger.warning("No file loaded to transcribe")
+            return
+        
+        # Validate state
+        if not self._validate_can_transcribe():
             return
         
         if self.is_processing:
@@ -857,134 +850,208 @@ class MainWindow(QMainWindow):
         else:
             self.file_drop_widget.reset()
         
-        # Show error message
+        # Show error with helpful suggestions
+        suggestions = []
+        
+        if "memory" in error_message.lower():
+            suggestions.append("• Close other applications to free up memory")
+            suggestions.append("• Try a shorter audio clip")
+        elif "audio" in error_message.lower() or "load" in error_message.lower():
+            suggestions.append("• Check that the audio file is not corrupted")
+            suggestions.append("• Try converting to WAV format")
+        elif "pitch" in error_message.lower() or "frequency" in error_message.lower():
+            suggestions.append("• Ensure audio contains clear musical notes")
+            suggestions.append("• Try audio with less background noise")
+        else:
+            suggestions.append("• Check the log files for detailed error information")
+            suggestions.append("• Try a different audio file")
+        
+        message = f"Transcription failed:\n\n{error_message}\n"
+        
+        if suggestions:
+            message += "\nSuggestions:\n" + "\n".join(suggestions)
+        
         from PyQt5.QtWidgets import QMessageBox
-        QMessageBox.critical(
-            self,
-            'Processing Error',
-            f'Transcription failed:\n\n{error_message}\n\n'
-            f'Please check the audio file and try again.'
-        )
+        QMessageBox.critical(self, 'Processing Error', message)
+
 
 
 
     def _on_export_midi(self):
         """Handle Export MIDI action."""
         if not self.midi_data:
-            logger.warning("No MIDI data to export")
-            from PyQt5.QtWidgets import QMessageBox
-            QMessageBox.warning(self, 'No Data', 'Please transcribe audio first.')
+            ErrorHandler.show_warning(self, 'No Data', 
+                'Please transcribe audio first before exporting.')
             return
         
         logger.info("Export MIDI triggered")
         
-        # Get default filename
-        default_name = self.midi_exporter.get_default_filename(self.current_file)
-        default_dir = self.config.get('export', 'default_directory', 'exports')
-        
-        # Create exports directory if it doesn't exist
-        import os
-        if not os.path.exists(default_dir):
-            os.makedirs(default_dir)
-        
-        default_path = os.path.join(default_dir, default_name)
-        
-        # Show save dialog
-        from PyQt5.QtWidgets import QFileDialog
-        file_path, _ = QFileDialog.getSaveFileName(
-            self,
-            'Export MIDI File',
-            default_path,
-            'MIDI Files (*.mid);;All Files (*.*)'
-        )
-        
-        if file_path:
-            # Ensure .mid extension
-            if not file_path.lower().endswith('.mid'):
-                file_path += '.mid'
+        try:
+            # Get default filename
+            default_name = self.midi_exporter.get_default_filename(self.current_file)
+            default_dir = self.config.get('export', 'default_directory', 'exports')
             
-            # Export
-            success = self.midi_exporter.export(self.midi_data, file_path)
+            # Create exports directory if it doesn't exist
+            import os
+            if not os.path.exists(default_dir):
+                try:
+                    os.makedirs(default_dir)
+                except Exception as e:
+                    logger.warning(f"Could not create exports directory: {e}")
+                    default_dir = os.path.expanduser('~')  # Fall back to home directory
             
-            if success:
-                logger.info(f"MIDI exported to: {file_path}")
-                self.set_status(f"MIDI exported: {os.path.basename(file_path)}")
+            default_path = os.path.join(default_dir, default_name)
+            
+            # Show save dialog
+            from PyQt5.QtWidgets import QFileDialog
+            file_path, _ = QFileDialog.getSaveFileName(
+                self,
+                'Export MIDI File',
+                default_path,
+                'MIDI Files (*.mid);;All Files (*.*)'
+            )
+            
+            if file_path:
+                # Ensure .mid extension
+                if not file_path.lower().endswith('.mid'):
+                    file_path += '.mid'
                 
-                from PyQt5.QtWidgets import QMessageBox
-                QMessageBox.information(
-                    self,
-                    'Export Successful',
-                    f'MIDI file saved successfully!\n\n{file_path}'
-                )
-            else:
-                logger.error("MIDI export failed")
-                from PyQt5.QtWidgets import QMessageBox
-                QMessageBox.critical(
-                    self,
-                    'Export Failed',
-                    'Failed to export MIDI file. Check logs for details.'
-                )
+                # Check if file exists and confirm overwrite
+                if os.path.exists(file_path):
+                    from PyQt5.QtWidgets import QMessageBox
+                    reply = QMessageBox.question(
+                        self,
+                        'Confirm Overwrite',
+                        f'File already exists:\n{file_path}\n\nOverwrite?',
+                        QMessageBox.Yes | QMessageBox.No,
+                        QMessageBox.No
+                    )
+                    if reply == QMessageBox.No:
+                        return
+                
+                # Export
+                success = self.midi_exporter.export(self.midi_data, file_path)
+                
+                if success:
+                    logger.info(f"MIDI exported to: {file_path}")
+                    self.set_status(f"MIDI exported: {os.path.basename(file_path)}")
+                    
+                    ErrorHandler.show_info(
+                        self,
+                        'Export Successful',
+                        f'MIDI file saved successfully!\n\n{file_path}'
+                    )
+                else:
+                    raise Exception("Export failed - check logs for details")
+                    
+        except Exception as e:
+            ErrorHandler.handle_export_error(self, e, 'MIDI', 
+                file_path if 'file_path' in locals() else 'unknown')
+
     
     def _on_export_json(self):
         """Handle Export JSON action."""
         if not self.midi_data:
-            logger.warning("No MIDI data to export")
-            from PyQt5.QtWidgets import QMessageBox
-            QMessageBox.warning(self, 'No Data', 'Please transcribe audio first.')
+            ErrorHandler.show_warning(self, 'No Data', 
+                'Please transcribe audio first before exporting.')
             return
         
         logger.info("Export JSON triggered")
         
-        # Get default filename
-        default_name = self.json_exporter.get_default_filename(self.current_file)
-        default_dir = self.config.get('export', 'default_directory', 'exports')
-        
-        # Create exports directory if it doesn't exist
-        import os
-        if not os.path.exists(default_dir):
-            os.makedirs(default_dir)
-        
-        default_path = os.path.join(default_dir, default_name)
-        
-        # Show save dialog
-        from PyQt5.QtWidgets import QFileDialog
-        file_path, _ = QFileDialog.getSaveFileName(
-            self,
-            'Export JSON File',
-            default_path,
-            'JSON Files (*.json);;All Files (*.*)'
-        )
-        
-        if file_path:
-            # Ensure .json extension
-            if not file_path.lower().endswith('.json'):
-                file_path += '.json'
+        try:
+            # Get default filename
+            default_name = self.json_exporter.get_default_filename(self.current_file)
+            default_dir = self.config.get('export', 'default_directory', 'exports')
             
-            # Export
-            success = self.json_exporter.export(
-                self.midi_data, 
-                file_path,
-                source_file=self.current_file
+            # Create exports directory if it doesn't exist
+            import os
+            if not os.path.exists(default_dir):
+                try:
+                    os.makedirs(default_dir)
+                except Exception as e:
+                    logger.warning(f"Could not create exports directory: {e}")
+                    default_dir = os.path.expanduser('~')
+            
+            default_path = os.path.join(default_dir, default_name)
+            
+            # Show save dialog
+            from PyQt5.QtWidgets import QFileDialog
+            file_path, _ = QFileDialog.getSaveFileName(
+                self,
+                'Export JSON File',
+                default_path,
+                'JSON Files (*.json);;All Files (*.*)'
             )
             
-            if success:
-                logger.info(f"JSON exported to: {file_path}")
-                self.set_status(f"JSON exported: {os.path.basename(file_path)}")
+            if file_path:
+                # Ensure .json extension
+                if not file_path.lower().endswith('.json'):
+                    file_path += '.json'
                 
-                from PyQt5.QtWidgets import QMessageBox
-                QMessageBox.information(
-                    self,
-                    'Export Successful',
-                    f'JSON file saved successfully!\n\n{file_path}'
+                # Check if file exists and confirm overwrite
+                if os.path.exists(file_path):
+                    from PyQt5.QtWidgets import QMessageBox
+                    reply = QMessageBox.question(
+                        self,
+                        'Confirm Overwrite',
+                        f'File already exists:\n{file_path}\n\nOverwrite?',
+                        QMessageBox.Yes | QMessageBox.No,
+                        QMessageBox.No
+                    )
+                    if reply == QMessageBox.No:
+                        return
+                
+                # Export
+                success = self.json_exporter.export(
+                    self.midi_data, 
+                    file_path,
+                    source_file=self.current_file
                 )
-            else:
-                logger.error("JSON export failed")
-                from PyQt5.QtWidgets import QMessageBox
-                QMessageBox.critical(
-                    self,
-                    'Export Failed',
-                    'Failed to export JSON file. Check logs for details.'
-                )
+                
+                if success:
+                    logger.info(f"JSON exported to: {file_path}")
+                    self.set_status(f"JSON exported: {os.path.basename(file_path)}")
+                    
+                    ErrorHandler.show_info(
+                        self,
+                        'Export Successful',
+                        f'JSON file saved successfully!\n\n{file_path}'
+                    )
+                else:
+                    raise Exception("Export failed - check logs for details")
+                    
+        except Exception as e:
+            ErrorHandler.handle_export_error(self, e, 'JSON', 
+                file_path if 'file_path' in locals() else 'unknown')
+
+    def _validate_can_transcribe(self) -> bool:
+        """
+        Validate that transcription can proceed.
+        
+        Returns:
+            True if ready to transcribe
+        """
+        if not self.current_file:
+            ErrorHandler.show_warning(self, 'No File', 
+                'Please load an audio file first.')
+            return False
+        
+        if self.is_processing:
+            ErrorHandler.show_warning(self, 'Already Processing', 
+                'Please wait for current transcription to complete.')
+            return False
+        
+        # Check file still exists
+        import os
+        if not os.path.exists(self.current_file):
+            ErrorHandler.show_warning(self, 'File Not Found', 
+                f'The audio file no longer exists:\n{self.current_file}\n\n'
+                'Please load the file again.')
+            self.current_file = None
+            self.file_drop_widget.reset()
+            return False
+        
+        return True
 
     
     def _on_settings(self):
