@@ -85,6 +85,9 @@ class MainWindow(QMainWindow):
         # Apply dark theme
         self._apply_theme()
         
+        # Set up keyboard shortcuts
+        self._setup_keyboard_shortcuts()
+
         logger.debug("UI components created")
     
     def _setup_window(self):
@@ -221,6 +224,15 @@ class MainWindow(QMainWindow):
         # Help Menu
         help_menu = menubar.addMenu('&Help')
         
+        # Keyboard Shortcuts action - ADD THIS
+        shortcuts_action = QAction('&Keyboard Shortcuts...', self)
+        shortcuts_action.setShortcut('F1')
+        shortcuts_action.setStatusTip('View keyboard shortcuts')
+        shortcuts_action.triggered.connect(self._on_keyboard_shortcuts)
+        help_menu.addAction(shortcuts_action)
+        
+        help_menu.addSeparator()
+        
         # About action
         about_action = QAction('&About...', self)
         about_action.setStatusTip('About AudioViz MIDI')
@@ -229,6 +241,102 @@ class MainWindow(QMainWindow):
         
         logger.debug("Menu bar created")
     
+    def _check_workflow_state(self) -> dict:
+        """
+        Check current workflow state for UI guidance.
+        
+        Returns:
+            Dictionary with workflow state information
+        """
+        return {
+            'has_file': self.current_file is not None,
+            'has_transcription': self.midi_data is not None,
+            'is_processing': self.is_processing,
+            'can_transcribe': self.current_file is not None and not self.is_processing,
+            'can_play': self.midi_data is not None,
+            'can_export': self.midi_data is not None
+        }
+
+
+
+    def _setup_keyboard_shortcuts(self):
+        """Set up additional keyboard shortcuts beyond menu items."""
+        from PyQt5.QtWidgets import QShortcut
+        from PyQt5.QtGui import QKeySequence
+        
+        # Spacebar for Play/Pause toggle
+        self.play_pause_shortcut = QShortcut(QKeySequence(Qt.Key_Space), self)
+        self.play_pause_shortcut.activated.connect(self._toggle_play_pause)
+        
+        # Escape to stop playback
+        self.stop_shortcut = QShortcut(QKeySequence(Qt.Key_Escape), self)
+        self.stop_shortcut.activated.connect(self._on_stop)
+        
+        # Arrow keys for seeking
+        self.seek_forward_shortcut = QShortcut(QKeySequence(Qt.Key_Right), self)
+        self.seek_forward_shortcut.activated.connect(self._seek_forward)
+        
+        self.seek_backward_shortcut = QShortcut(QKeySequence(Qt.Key_Left), self)
+        self.seek_backward_shortcut.activated.connect(self._seek_backward)
+        
+        # Ctrl+T for transcribe
+        self.transcribe_shortcut = QShortcut(QKeySequence('Ctrl+T'), self)
+        self.transcribe_shortcut.activated.connect(self._on_transcribe)
+        
+        # Ctrl+E for quick export (MIDI)
+        self.quick_export_shortcut = QShortcut(QKeySequence('Ctrl+E'), self)
+        self.quick_export_shortcut.activated.connect(self._on_export_midi)
+        
+        logger.info("Keyboard shortcuts configured")
+
+    def _toggle_play_pause(self):
+        """Toggle between play and pause (Spacebar)."""
+        from playback import PlaybackState
+        
+        if not self.midi_data:
+            return
+        
+        state = self.playback_controller.get_state()
+        
+        if state == PlaybackState.PLAYING:
+            self._on_pause()
+        elif state in [PlaybackState.STOPPED, PlaybackState.PAUSED]:
+            self._on_play()
+    
+    def _seek_forward(self):
+        """Seek forward 5 seconds (Right Arrow)."""
+        if not self.midi_data:
+            return
+        
+        current_time = self.playback_controller.get_current_time()
+        stats = self.midi_data.get_statistics()
+        duration = stats['duration']
+        
+        # Move forward 5 seconds
+        new_time = min(current_time + 5.0, duration)
+        position = new_time / duration if duration > 0 else 0
+        
+        self.playback_controller.seek(position)
+        logger.debug(f"Seek forward to {new_time:.1f}s")
+    
+    def _seek_backward(self):
+        """Seek backward 5 seconds (Left Arrow)."""
+        if not self.midi_data:
+            return
+        
+        current_time = self.playback_controller.get_current_time()
+        stats = self.midi_data.get_statistics()
+        duration = stats['duration']
+        
+        # Move backward 5 seconds
+        new_time = max(current_time - 5.0, 0.0)
+        position = new_time / duration if duration > 0 else 0
+        
+        self.playback_controller.seek(position)
+        logger.debug(f"Seek backward to {new_time:.1f}s")
+
+
+
     def _create_toolbar(self):
         """Create the toolbar with quick action buttons."""
         toolbar = QToolBar('Main Toolbar')
@@ -244,6 +352,7 @@ class MainWindow(QMainWindow):
         
         toolbar.addSeparator()
         
+
         # Transcribe button
         transcribe_action = QAction('Transcribe', self)
         transcribe_action.setStatusTip('Start audio transcription')
@@ -261,6 +370,14 @@ class MainWindow(QMainWindow):
         export_action.triggered.connect(self._on_export_midi)
         toolbar.addAction(export_action)
         self.export_action = export_action
+        
+        toolbar.addSeparator()
+
+        # Help button
+        help_action = QAction('Help', self)
+        help_action.setStatusTip('Show workflow help')
+        help_action.triggered.connect(self._show_workflow_help)
+        toolbar.addAction(help_action)
         
         logger.debug("Toolbar created")
     
@@ -966,6 +1083,34 @@ class MainWindow(QMainWindow):
             '<p>© 2025 AudioViz MIDI Project</p>'
         )
     
+    def _on_keyboard_shortcuts(self):
+        """Show keyboard shortcuts dialog."""
+        shortcuts_text = """
+        <h3>Keyboard Shortcuts</h3>
+        <table cellpadding="5">
+        <tr><td><b>Ctrl+O</b></td><td>Open Audio File</td></tr>
+        <tr><td><b>Ctrl+T</b></td><td>Transcribe Audio</td></tr>
+        <tr><td><b>Ctrl+M</b></td><td>Export MIDI</td></tr>
+        <tr><td><b>Ctrl+J</b></td><td>Export JSON</td></tr>
+        <tr><td><b>Ctrl+E</b></td><td>Quick Export (MIDI)</td></tr>
+        <tr><td><b>Ctrl+Q</b></td><td>Quit Application</td></tr>
+        <tr><td><b>Ctrl+0</b></td><td>Reset Window Size</td></tr>
+        <tr><td><b>F11</b></td><td>Toggle Fullscreen</td></tr>
+        <tr><td colspan="2"><hr></td></tr>
+        <tr><td><b>Space</b></td><td>Play / Pause</td></tr>
+        <tr><td><b>Escape</b></td><td>Stop Playback</td></tr>
+        <tr><td><b>Left Arrow</b></td><td>Seek Backward 5s</td></tr>
+        <tr><td><b>Right Arrow</b></td><td>Seek Forward 5s</td></tr>
+        </table>
+        """
+        
+        QMessageBox.information(
+            self,
+            'Keyboard Shortcuts',
+            shortcuts_text
+        )
+
+    
     # Public Methods
     
     def set_status(self, message: str, timeout: int = 0):
@@ -978,8 +1123,24 @@ class MainWindow(QMainWindow):
         """
         self.status_label.setText(message)
         if timeout > 0:
-            QTimer.singleShot(timeout, lambda: self.status_label.setText('Ready'))
+            QTimer.singleShot(timeout, lambda: self._set_ready_status())
         logger.debug(f"Status: {message}")
+    
+    def _set_ready_status(self):
+        """Set status to ready with workflow hint."""
+        state = self._check_workflow_state()
+        
+        if state['is_processing']:
+            return  # Don't override processing status
+        elif not state['has_file']:
+            self.status_label.setText('Ready - Open an audio file to begin')
+        elif not state['has_transcription']:
+            self.status_label.setText('Ready - Click Transcribe to analyze audio')
+        elif state['has_transcription']:
+            self.status_label.setText('Ready - Use playback controls or export')
+        else:
+            self.status_label.setText('Ready')
+
     
     def show_progress(self, show: bool = True):
         """
@@ -1001,6 +1162,40 @@ class MainWindow(QMainWindow):
         """
         self.progress_bar.setValue(value)
     
+    def _show_workflow_help(self):
+        """Show contextual help based on current workflow state."""
+        state = self._check_workflow_state()
+        
+        if not state['has_file']:
+            message = (
+                "To get started:\n\n"
+                "1. Click 'Open Audio' or drag & drop an audio file\n"
+                "2. Supported formats: WAV, MP3, FLAC, OGG\n\n"
+                "Tip: Press Ctrl+O to open file dialog"
+            )
+        elif not state['has_transcription']:
+            message = (
+                "Next steps:\n\n"
+                "1. Click 'Transcribe' to analyze the audio\n"
+                "2. Wait for processing to complete\n"
+                "3. The piano roll will display your notes\n\n"
+                "Tip: Press Ctrl+T to start transcription"
+            )
+        else:
+            message = (
+                "You can now:\n\n"
+                "• Press Space to play/pause\n"
+                "• Use arrow keys to seek through audio\n"
+                "• Export MIDI file (Ctrl+M)\n"
+                "• Export JSON data (Ctrl+J)\n\n"
+                "Tip: Press F1 to see all keyboard shortcuts"
+            )
+        
+        from PyQt5.QtWidgets import QMessageBox
+        QMessageBox.information(self, 'Quick Help', message)
+
+
+
     def closeEvent(self, event):
         """Handle window close event."""
         # Clean up playback
