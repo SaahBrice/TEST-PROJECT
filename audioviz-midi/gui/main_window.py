@@ -11,6 +11,7 @@ from PyQt5.QtWidgets import (
     QLabel, QFileDialog, QMessageBox, QProgressBar
 )
 from gui.control_panel import ControlPanel
+from visualization import PygameWidget
 from gui.processing_thread import ProcessingThread
 from gui.file_drop_widget import FileDropWidget
 from PyQt5.QtCore import Qt, QTimer, QSize
@@ -46,6 +47,8 @@ class MainWindow(QMainWindow):
         self.is_processing = False
         self.processing_thread = None
         self.midi_data = None  # Store transcription result
+        self.pygame_widget = None
+
         # Initialize UI components
         self._init_ui()
         
@@ -262,17 +265,30 @@ class MainWindow(QMainWindow):
         main_layout.setContentsMargins(10, 10, 10, 10)
         main_layout.setSpacing(10)
         
-        # Use FileDropWidget instead of plain QLabel
-        self.visualization_widget = FileDropWidget()
-        self.visualization_widget.file_dropped.connect(self._on_file_dropped)
-        main_layout.addWidget(self.visualization_widget, stretch=1)
+        # Create container for file drop and pygame visualization
+        from PyQt5.QtWidgets import QStackedWidget
+        self.visualization_stack = QStackedWidget()
+        
+        # File drop widget (shown when no file loaded)
+        self.file_drop_widget = FileDropWidget()
+        self.file_drop_widget.file_dropped.connect(self._on_file_dropped)
+        self.visualization_stack.addWidget(self.file_drop_widget)  # Index 0
+        
+        # Pygame visualization widget (shown during/after transcription)
+        self.pygame_widget = PygameWidget()
+        self.visualization_stack.addWidget(self.pygame_widget)  # Index 1
+        
+        # Start with file drop widget
+        self.visualization_stack.setCurrentIndex(0)
+        
+        main_layout.addWidget(self.visualization_stack, stretch=1)
         
         # Control panel with playback controls
         self.control_panel = ControlPanel()
         self.control_panel.setMinimumHeight(100)
         self.control_panel.setMaximumHeight(120)
         
-        # Connect control panel signals (implementation in next phase)
+        # Connect control panel signals
         self.control_panel.play_clicked.connect(self._on_play)
         self.control_panel.pause_clicked.connect(self._on_pause)
         self.control_panel.stop_clicked.connect(self._on_stop)
@@ -280,10 +296,9 @@ class MainWindow(QMainWindow):
         self.control_panel.speed_changed.connect(self._on_speed_changed)
         
         main_layout.addWidget(self.control_panel)
-
-        main_layout.addWidget(self.control_panel)
         
-        logger.debug("Central widget created with drag-and-drop support")
+        logger.debug("Central widget created with Pygame visualization")
+
 
 
 
@@ -396,7 +411,7 @@ class MainWindow(QMainWindow):
             self.transcribe_action.setEnabled(True)
             
             # Update visualization widget to GREEN state
-            self.visualization_widget.set_file_loaded(filename)
+            self.file_drop_widget.set_file_loaded(filename)
             
             logger.info(f"File loaded successfully via menu: {filename}")
     
@@ -436,7 +451,7 @@ class MainWindow(QMainWindow):
                 self.transcribe_action.setEnabled(True)
                 
                 # Update visualization widget to GREEN state
-                self.visualization_widget.set_file_loaded(filename)
+                self.file_drop_widget.set_file_loaded(filename)
                 
                 logger.info(f"File loaded successfully via drag-and-drop: {filename}")
                 
@@ -456,7 +471,7 @@ class MainWindow(QMainWindow):
                 )
                 
                 # Reset widget
-                self.visualization_widget.reset()
+                self.file_drop_widget.reset()
                 
         except Exception as e:
             logger.error(f"Error loading dropped file: {str(e)}")
@@ -466,7 +481,7 @@ class MainWindow(QMainWindow):
                 'Error',
                 f'Error loading file:\n\n{str(e)}'
             )
-            self.visualization_widget.reset()
+            self.file_drop_widget.reset()
 
 
 
@@ -496,13 +511,13 @@ class MainWindow(QMainWindow):
         self.set_progress(0)
         self.set_status("Processing...")
         
-        # Update visualization widget
+        # Show processing state on file drop widget
         import os
-        self.visualization_widget.setText(
+        self.file_drop_widget.setText(
             f'Processing Audio...\n\n{os.path.basename(self.current_file)}\n\n'
             'Please wait...'
         )
-        self.visualization_widget.setStyleSheet("""
+        self.file_drop_widget.setStyleSheet("""
             QLabel {
                 background-color: #2a2a38;
                 color: #4a9eff;
@@ -534,6 +549,7 @@ class MainWindow(QMainWindow):
         self.set_status(message)
         logger.debug(f"Progress: {percentage}% - {message}")
     
+
     def _on_processing_complete(self, midi_data):
         """
         Handle successful completion of processing.
@@ -560,32 +576,14 @@ class MainWindow(QMainWindow):
         self.export_json_action.setEnabled(True)
         self.export_action.setEnabled(True)
         
+        # Switch to Pygame visualization (THIS IS THE NEW PART)
+        self.visualization_stack.setCurrentIndex(1)
+        
         # Update status
-        stats = midi_data.get_statistics()
         self.set_status(
             f"Transcription complete! {stats['total_notes']} notes, "
             f"{stats['duration']:.1f}s duration"
         )
-        
-        # Update visualization widget
-        import os
-        self.visualization_widget.setText(
-            f'✓ Transcription Complete!\n\n'
-            f'{os.path.basename(self.current_file)}\n\n'
-            f'{stats["total_notes"]} notes detected\n'
-            f'Duration: {stats["duration"]:.1f}s\n'
-            f'Pitch range: {stats["pitch_range"][0]}-{stats["pitch_range"][1]}\n\n'
-            'Click "Export" to save MIDI file'
-        )
-        self.visualization_widget.setStyleSheet("""
-            QLabel {
-                background-color: #1e2e1e;
-                color: #6c6;
-                border: 3px solid #6c6;
-                border-radius: 12px;
-                padding: 20px;
-            }
-        """)
         
         # Show success message
         from PyQt5.QtWidgets import QMessageBox
@@ -600,6 +598,8 @@ class MainWindow(QMainWindow):
         
         # Enable transcribe button for re-processing
         self.transcribe_action.setEnabled(True)
+
+
 
     def _on_play(self):
         """Handle play button from control panel."""
@@ -682,9 +682,9 @@ class MainWindow(QMainWindow):
         # Reset visualization widget
         import os
         if self.current_file:
-            self.visualization_widget.set_file_loaded(os.path.basename(self.current_file))
+            self.file_drop_widget.set_file_loaded(os.path.basename(self.current_file))
         else:
-            self.visualization_widget.reset()
+            self.file_drop_widget.reset()
         
         # Show error message
         from PyQt5.QtWidgets import QMessageBox
@@ -840,6 +840,10 @@ class MainWindow(QMainWindow):
     
     def closeEvent(self, event):
         """Handle window close event."""
+        # Clean up Pygame
+        if self.pygame_widget:
+            self.pygame_widget.cleanup()
+        
         # Save window size to config
         self.config.set('ui', 'window_width', self.width())
         self.config.set('ui', 'window_height', self.height())
@@ -847,3 +851,4 @@ class MainWindow(QMainWindow):
         
         logger.info("Main window closing")
         event.accept()
+
