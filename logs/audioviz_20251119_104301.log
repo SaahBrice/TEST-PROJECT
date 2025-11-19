@@ -1,0 +1,72 @@
+2025-11-19 10:43:01 - AudioVizMIDI - INFO - [logger.py:63] - Logging system initialized
+2025-11-19 10:43:01 - AudioVizMIDI - INFO - [logger.py:64] - Log file: logs/audioviz_20251119_104301.log
+2025-11-19 10:43:01 - AudioVizMIDI - INFO - [test_midi_converter.py:16] - Testing MIDI Converter Module...
+2025-11-19 10:43:01 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 10:43:01 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:53] - AudioLoader initialized
+2025-11-19 10:43:01 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 10:43:01 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:51] - PitchDetector initialized with algorithm: piptrack
+2025-11-19 10:43:01 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 10:43:01 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:51] - OnsetDetector initialized
+2025-11-19 10:43:01 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 10:43:01 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:41] - MIDIConverter initialized
+2025-11-19 10:43:01 - AudioVizMIDI - INFO - [test_midi_converter.py:28] - Created scale with 5 notes
+2025-11-19 10:43:01 - AudioVizMIDI - INFO - [test_midi_converter.py:30] -   C4 at 0.00s
+2025-11-19 10:43:01 - AudioVizMIDI - INFO - [test_midi_converter.py:30] -   D4 at 0.60s
+2025-11-19 10:43:01 - AudioVizMIDI - INFO - [test_midi_converter.py:30] -   E4 at 1.20s
+2025-11-19 10:43:01 - AudioVizMIDI - INFO - [test_midi_converter.py:30] -   F4 at 1.80s
+2025-11-19 10:43:01 - AudioVizMIDI - INFO - [test_midi_converter.py:30] -   G4 at 2.40s
+2025-11-19 10:43:01 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:73] - Loading audio file: test_scale.wav
+2025-11-19 10:43:05 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:98] - Audio loaded successfully
+2025-11-19 10:43:05 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:112] - Preprocessing complete. Duration: 3.00s
+2025-11-19 10:43:05 - AudioVizMIDI - INFO - [test_midi_converter.py:35] - Audio loaded: 66150 samples
+2025-11-19 10:43:05 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:78] - Starting pitch detection using piptrack algorithm...
+2025-11-19 10:43:05 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:101] - Pitch detection complete
+2025-11-19 10:43:05 - AudioVizMIDI - INFO - [test_midi_converter.py:40] - Pitch detection complete: 130 frames
+2025-11-19 10:43:05 - AudioVizMIDI - INFO - [test_midi_converter.py:43] - Pitch coverage: 96.2%
+2025-11-19 10:43:05 - AudioVizMIDI - INFO - [test_midi_converter.py:44] - Average confidence: 0.432
+2025-11-19 10:43:05 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:72] - Detecting onsets using 'energy' method...
+2025-11-19 10:43:06 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:115] - Onset detection complete: 9 onsets detected
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:49] - Detected 9 onsets
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:50] - Onset times: [0.510839   0.60371882 1.09133787 1.20743764 1.69505669 1.78793651
+ 2.29877551 2.39165533 2.92571429]
+2025-11-19 10:43:06 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:63] - Converting audio analysis to MIDI notes...
+2025-11-19 10:43:06 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:75] - Conversion complete: 4 notes created
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:58] - Created 4 MIDI notes
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:62] -   Note(pitch=62, note=D4, start=0.604s, duration=0.488s, velocity=84)
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:62] -   Note(pitch=64, note=E4, start=1.207s, duration=0.488s, velocity=83)
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:62] -   Note(pitch=65, note=F4, start=1.788s, duration=0.511s, velocity=81)
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:62] -   Note(pitch=67, note=G4, start=2.392s, duration=0.534s, velocity=80)
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:75] - ✗ Expected: C4 at 0.00s, Detected: D4 at 0.60s (error: 0.604s)
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:75] - ✗ Expected: D4 at 0.60s, Detected: E4 at 1.21s (error: 0.607s)
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:75] - ✗ Expected: E4 at 1.20s, Detected: F4 at 1.79s (error: 0.588s)
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:75] - ✗ Expected: F4 at 1.80s, Detected: G4 at 2.39s (error: 0.592s)
+2025-11-19 10:43:06 - AudioVizMIDI - WARNING - [test_midi_converter.py:81] - ✗ Expected note G4 at 2.40s not detected
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:86] - MIDI Data Statistics:
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:91] -   total_notes: 4
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:89] -   duration: 2.322
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:91] -   pitch_range: (62, 67)
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:89] -   avg_note_duration: 0.505
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:89] -   min_note_duration: 0.488
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:89] -   max_note_duration: 0.534
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:89] -   avg_velocity: 82.000
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:91] -   min_velocity: 80
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:91] -   max_velocity: 84
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:89] -   first_note_time: 0.604
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:89] -   last_note_time: 2.926
+2025-11-19 10:43:06 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:63] - Converting audio analysis to MIDI notes...
+2025-11-19 10:43:06 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:75] - Conversion complete: 5 notes created
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:99] - Continuous mode created 5 notes
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:100] - Notes in continuous mode:
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:102] -   Note(pitch=60, note=C4, start=0.000s, duration=0.511s, velocity=82)
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:102] -   Note(pitch=62, note=D4, start=0.580s, duration=0.534s, velocity=81)
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:102] -   Note(pitch=64, note=E4, start=1.184s, duration=0.534s, velocity=80)
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:102] -   Note(pitch=65, note=F4, start=1.788s, duration=0.511s, velocity=81)
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:102] -   Note(pitch=67, note=G4, start=2.392s, duration=0.511s, velocity=81)
+2025-11-19 10:43:06 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:349] - Minimum note duration set to 0.1s
+2025-11-19 10:43:06 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:365] - Confidence threshold set to 0.15
+2025-11-19 10:43:06 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:63] - Converting audio analysis to MIDI notes...
+2025-11-19 10:43:06 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:75] - Conversion complete: 4 notes created
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:113] - With stricter settings: 4 notes
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:114] - (Should be fewer due to higher thresholds)
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:120] - Notes active at 1.0s: 1
+2025-11-19 10:43:06 - AudioVizMIDI - INFO - [test_midi_converter.py:122] -   D4

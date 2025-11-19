@@ -1,0 +1,86 @@
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [logger.py:63] - Logging system initialized
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [logger.py:64] - Log file: logs/audioviz_20251119_105227.log
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:13] - Testing Note Quantizer Module...
+2025-11-19 10:52:27 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 10:52:27 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:49] - NoteQuantizer initialized
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:22] - Created 8 test notes:
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:24] -   Note(pitch=60, note=C4, start=0.000s, duration=0.500s, velocity=80)
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:24] -   Note(pitch=62, note=D4, start=0.600s, duration=0.020s, velocity=75)
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:24] -   Note(pitch=64, note=E4, start=0.700s, duration=0.300s, velocity=85)
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:24] -   Note(pitch=64, note=E4, start=1.050s, duration=0.250s, velocity=82)
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:24] -   Note(pitch=65, note=F4, start=1.400s, duration=0.200s, velocity=25)
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:24] -   Note(pitch=67, note=G4, start=1.700s, duration=0.300s, velocity=90)
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:24] -   Note(pitch=69, note=A4, start=1.800s, duration=0.300s, velocity=70)
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:24] -   Note(pitch=72, note=C5, start=2.200s, duration=0.500s, velocity=85)
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:28] - Original duration: 2.700s
+2025-11-19 10:52:27 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:63] - Starting note quantization...
+2025-11-19 10:52:27 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:124] - Removed 1 short notes
+2025-11-19 10:52:27 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:149] - Removed 1 low velocity notes
+2025-11-19 10:52:27 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:243] - Filled 1 gaps
+2025-11-19 10:52:27 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:288] - Removed 1 overlapping notes
+2025-11-19 10:52:27 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:99] - Quantization complete: 8 -> 5 notes
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:34] - Quantized: 8 -> 5 notes
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:35] - Quantized notes:
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:37] -   Note(pitch=60, note=C4, start=0.000s, duration=0.500s, velocity=80)
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:37] -   Note(pitch=64, note=E4, start=0.700s, duration=0.350s, velocity=85)
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:37] -   Note(pitch=64, note=E4, start=1.050s, duration=0.250s, velocity=82)
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:37] -   Note(pitch=67, note=G4, start=1.700s, duration=0.300s, velocity=90)
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:37] -   Note(pitch=72, note=C5, start=2.200s, duration=0.500s, velocity=85)
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:43] - Before quantization:
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:44] -   Total notes: 8
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:45] -   Avg duration: 0.296s
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:46] -   Min duration: 0.020s
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:48] - After quantization:
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:49] -   Total notes: 5
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:51] -   Avg duration: 0.380s
+2025-11-19 10:52:27 - AudioVizMIDI - INFO - [test_note_quantizer.py:52] -   Min duration: 0.250s
+2025-11-19 10:52:27 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 10:52:27 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:53] - AudioLoader initialized
+2025-11-19 10:52:27 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 10:52:27 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:51] - PitchDetector initialized with algorithm: piptrack
+2025-11-19 10:52:27 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-19 10:52:27 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:41] - MIDIConverter initialized
+2025-11-19 10:52:27 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:73] - Loading audio file: test_scale.wav
+2025-11-19 10:52:30 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:98] - Audio loaded successfully
+2025-11-19 10:52:30 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:112] - Preprocessing complete. Duration: 3.00s
+2025-11-19 10:52:30 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:78] - Starting pitch detection using piptrack algorithm...
+2025-11-19 10:52:30 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:101] - Pitch detection complete
+2025-11-19 10:52:30 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:63] - Converting audio analysis to MIDI notes...
+2025-11-19 10:52:30 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:75] - Conversion complete: 5 notes created
+2025-11-19 10:52:30 - AudioVizMIDI - INFO - [test_note_quantizer.py:76] - Raw conversion: 5 notes
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:63] - Starting note quantization...
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:243] - Filled 4 gaps
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:99] - Quantization complete: 5 -> 5 notes
+2025-11-19 10:52:30 - AudioVizMIDI - INFO - [test_note_quantizer.py:81] - After quantization: 5 notes
+2025-11-19 10:52:30 - AudioVizMIDI - INFO - [test_note_quantizer.py:82] - Quantized notes from real audio:
+2025-11-19 10:52:30 - AudioVizMIDI - INFO - [test_note_quantizer.py:84] -   Note(pitch=60, note=C4, start=0.000s, duration=0.580s, velocity=82)
+2025-11-19 10:52:30 - AudioVizMIDI - INFO - [test_note_quantizer.py:84] -   Note(pitch=62, note=D4, start=0.580s, duration=0.604s, velocity=81)
+2025-11-19 10:52:30 - AudioVizMIDI - INFO - [test_note_quantizer.py:84] -   Note(pitch=64, note=E4, start=1.184s, duration=0.604s, velocity=80)
+2025-11-19 10:52:30 - AudioVizMIDI - INFO - [test_note_quantizer.py:84] -   Note(pitch=65, note=F4, start=1.788s, duration=0.604s, velocity=81)
+2025-11-19 10:52:30 - AudioVizMIDI - INFO - [test_note_quantizer.py:84] -   Note(pitch=67, note=G4, start=2.392s, duration=0.511s, velocity=81)
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:63] - Starting note quantization...
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:243] - Filled 1 gaps
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:99] - Quantization complete: 2 -> 2 notes
+2025-11-19 10:52:30 - AudioVizMIDI - INFO - [test_note_quantizer.py:101] - Gap filling test: 2 -> 2 notes
+2025-11-19 10:52:30 - AudioVizMIDI - INFO - [test_note_quantizer.py:103] - First note duration: 0.550s
+2025-11-19 10:52:30 - AudioVizMIDI - INFO - [test_note_quantizer.py:104] - (Should be extended to fill the gap)
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:306] - Minimum note duration set to 0.1s
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:319] - Gap fill threshold set to 0.15s
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:332] - Merge threshold set to 0.1s
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:63] - Starting note quantization...
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:124] - Removed 1 short notes
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:149] - Removed 1 low velocity notes
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:196] - Merged 1 adjacent note pairs
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:243] - Filled 1 gaps
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:288] - Removed 1 overlapping notes
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:99] - Quantization complete: 8 -> 4 notes
+2025-11-19 10:52:30 - AudioVizMIDI - INFO - [test_note_quantizer.py:113] - With adjusted settings: 4 notes
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:337] - Short note removal: disabled
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:342] - Gap filling: disabled
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:63] - Starting note quantization...
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:149] - Removed 1 low velocity notes
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:196] - Merged 1 adjacent note pairs
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:288] - Removed 1 overlapping notes
+2025-11-19 10:52:30 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:99] - Quantization complete: 8 -> 5 notes
+2025-11-19 10:52:30 - AudioVizMIDI - INFO - [test_note_quantizer.py:121] - With features disabled: 5 notes
+2025-11-19 10:52:30 - AudioVizMIDI - INFO - [test_note_quantizer.py:122] - (Should be same or more than with features enabled)

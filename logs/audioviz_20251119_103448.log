@@ -1,0 +1,47 @@
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [logger.py:63] - Logging system initialized
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [logger.py:64] - Log file: logs/audioviz_20251119_103448.log
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:13] - Testing MIDI Data Model...
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:18] - Created: Note(pitch=60, note=C4, start=0.000s, duration=0.500s, velocity=80)
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:19] - Note name: C4
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:20] - Frequency: 261.63 Hz
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:21] - Duration: 0.50s
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:33] - ✓ 440.00 Hz -> Pitch 69 (A4) -> 440.00 Hz
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:33] - ✓ 261.63 Hz -> Pitch 60 (C4) -> 261.63 Hz
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:33] - ✓ 329.63 Hz -> Pitch 64 (E4) -> 329.63 Hz
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:33] - ✓ 523.25 Hz -> Pitch 72 (C5) -> 523.25 Hz
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:46] - Added: C4 at 0.00s
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:46] - Added: D4 at 0.50s
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:46] - Added: E4 at 1.00s
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:46] - Added: F4 at 1.50s
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:46] - Added: G4 at 2.00s
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:46] - Added: A4 at 2.50s
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:46] - Added: B4 at 3.00s
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:46] - Added: C5 at 3.50s
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:48] - Total notes in collection: 8
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:54] - Notes active at 1.5s: 1
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:56] -   - F4
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:61] - Notes between 1.0s and 2.5s: 3
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:63] -   - E4 (1.00s - 1.40s)
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:63] -   - F4 (1.50s - 1.90s)
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:63] -   - G4 (2.00s - 2.40s)
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:68] - Notes with pitch 67 (G4): 1
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:73] - Collection Statistics:
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:78] -   total_notes: 8
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:76] -   duration: 3.900
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:78] -   pitch_range: (60, 72)
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:76] -   avg_note_duration: 0.400
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:76] -   min_note_duration: 0.400
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:76] -   max_note_duration: 0.400
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:76] -   avg_velocity: 80.000
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:78] -   min_velocity: 80
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:78] -   max_velocity: 80
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:76] -   first_note_time: 0.000
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:76] -   last_note_time: 3.900
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:86] - Note A and B overlap: True (expected: True)
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:87] - Note A and C overlap: False (expected: False)
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:88] - Note B and C overlap: False (expected: False)
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:93] - Note as dictionary: {'pitch': 60, 'note_name': 'C4', 'start_time': 0.0, 'end_time': 0.5, 'duration': 0.5, 'velocity': 80, 'frequency': 261.6255653005986}
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:96] - Serialized 8 notes to dictionary list
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:100] - Reconstructed 8 notes from dictionary
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:108] - ✓ Correctly caught invalid pitch: Pitch must be between 0 and 127, got 200
+2025-11-19 10:34:48 - AudioVizMIDI - INFO - [test_midi_data_model.py:114] - ✓ Correctly caught invalid timing: End time (0.5) must be greater than start time (1.0)
