@@ -251,6 +251,27 @@ class MainWindow(QMainWindow):
             self.theme_actions.append(action)
         
         view_menu.addSeparator()
+        
+        # Grid display toggle
+        self.grid_action = QAction('Show &Grid', self)
+        self.grid_action.setCheckable(True)
+        self.grid_action.setChecked(self.config.get('visualization', 'show_grid', True))
+        self.grid_action.setStatusTip('Toggle grid display')
+        self.grid_action.triggered.connect(self._on_toggle_grid)
+        view_menu.addAction(self.grid_action)
+        
+        # Measure lines toggle
+        self.measure_lines_action = QAction('Show &Measure Lines', self)
+        self.measure_lines_action.setCheckable(True)
+        self.measure_lines_action.setChecked(
+            self.config.get('visualization', 'show_measure_lines', True)
+        )
+        self.measure_lines_action.setStatusTip('Toggle measure line markers')
+        self.measure_lines_action.triggered.connect(self._on_toggle_measure_lines)
+        view_menu.addAction(self.measure_lines_action)
+
+
+        view_menu.addSeparator()
 
 
         # Help Menu
@@ -1291,7 +1312,48 @@ class MainWindow(QMainWindow):
             value: Progress percentage (0-100)
         """
         self.progress_bar.setValue(value)
+
+    def _on_toggle_grid(self, checked: bool):
+        """
+        Handle grid display toggle.
+        
+        Args:
+            checked: True if grid should be shown
+        """
+        logger.info(f"Grid display: {'enabled' if checked else 'disabled'}")
+        
+        # Update renderer if it exists
+        if hasattr(self, 'pygame_widget') and self.pygame_widget:
+            if hasattr(self.pygame_widget, 'renderer') and self.pygame_widget.renderer:
+                self.pygame_widget.renderer.show_grid = checked
+                
+                # Update config
+                self.config.set('visualization', 'show_grid', checked)
+                self.config.save_config()
+                
+                self.set_status(f"Grid {'shown' if checked else 'hidden'}")
     
+    def _on_toggle_measure_lines(self, checked: bool):
+        """
+        Handle measure lines toggle.
+        
+        Args:
+            checked: True if measure lines should be shown
+        """
+        logger.info(f"Measure lines: {'enabled' if checked else 'disabled'}")
+        
+        # Update renderer if it exists
+        if hasattr(self, 'pygame_widget') and self.pygame_widget:
+            if hasattr(self.pygame_widget, 'renderer') and self.pygame_widget.renderer:
+                self.pygame_widget.renderer.show_measure_lines = checked
+                
+                # Update config
+                self.config.set('visualization', 'show_measure_lines', checked)
+                self.config.save_config()
+                
+                self.set_status(f"Measure lines {'shown' if checked else 'hidden'}")
+
+
     def _show_workflow_help(self):
         """Show contextual help based on current workflow state."""
         state = self._check_workflow_state()

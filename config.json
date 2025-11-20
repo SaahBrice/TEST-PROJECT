@@ -40,7 +40,9 @@
             100,
             100
         ],
-        "theme": "studio_light"
+        "theme": "neon_flashy",
+        "show_measure_lines": false,
+        "measure_interval": 4
     },
     "playback": {
         "default_speed": 1.0,

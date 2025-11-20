@@ -57,6 +57,9 @@ class PianoRollRenderer:
         # Load configuration
         self.color_scheme = self.config.get('visualization', 'color_scheme', 'chromatic')
         self.show_grid = self.config.get('visualization', 'show_grid', True)
+        self.show_measure_lines = self.config.get('visualization', 'show_measure_lines', True)
+        self.measure_interval = self.config.get('visualization', 'measure_interval', 4)
+
         self.show_keyboard = self.config.get('visualization', 'show_keyboard', True)
 
         # Theme system
@@ -168,44 +171,97 @@ class PianoRollRenderer:
     
     def _draw_grid(self, x_offset: int, width: int, height: int):
         """
-        Draw grid lines for timing and pitch reference.
+        Draw enhanced grid lines for timing and pitch reference.
+        
+        Implements two-tier grid system:
+        - Primary grid: Octave lines (C notes) - thicker and brighter
+        - Secondary grid: Semitone lines - thinner and subtle
+        - Vertical grid: Time markers with dashed lines
         
         Args:
             x_offset: X offset for grid start
             width: Grid width
             height: Grid height
         """
-        # Horizontal lines (pitch/octave lines)
+        # HORIZONTAL LINES (Pitch Grid)
         num_pitches = self.max_pitch - self.min_pitch + 1
         
         for i in range(num_pitches + 1):
             pitch = self.min_pitch + i
             y = self._pitch_to_y(pitch, height)
             
-            # Thicker line for C notes (octave markers)
+            # PRIMARY GRID: C notes (octave markers) - thicker and brighter
             if pitch % 12 == 0:
                 thickness = 2
-                color = tuple(min(c + 20, 255) for c in self.grid_color)
+                # Make octave lines 20% brighter than base grid color
+                brightness_boost = 1.2
+                color = tuple(min(int(c * brightness_boost), 255) for c in self.grid_color)
+                pygame.draw.line(self.surface, color,
+                               (x_offset, y), (x_offset + width, y), thickness)
+            
+            # SECONDARY GRID: All other notes - subtle
             else:
                 thickness = 1
                 color = self.grid_color
-            
-            pygame.draw.line(self.surface, color,
-                           (x_offset, y), (x_offset + width, y), thickness)
+                pygame.draw.line(self.surface, color,
+                               (x_offset, y), (x_offset + width, y), thickness)
         
-        # Vertical lines (time markers - every second)
+        # VERTICAL LINES (Time Grid)
         if self.duration > 0:
-            # Calculate visible time range (center on current time)
-            visible_duration = width / self.pixels_per_second
-            start_time = max(0, self.current_time - visible_duration / 3)
-            end_time = start_time + visible_duration
+            self._draw_vertical_grid(x_offset, width, height)
+    
+    def _draw_vertical_grid(self, x_offset: int, width: int, height: int):
+        """
+        Draw vertical time grid with dashed lines.
+        
+        Args:
+            x_offset: X offset for grid start
+            width: Grid width
+            height: Grid height
+        """
+        # Calculate visible time range
+        visible_duration = width / self.pixels_per_second
+        start_time = max(0, self.current_time - visible_duration / 3)
+        end_time = start_time + visible_duration
+        
+        # Draw dashed line every second
+        for t in range(int(start_time), int(end_time) + 1):
+            x = self._time_to_x(t, x_offset, width)
             
-            # Draw line every second
-            for t in range(int(start_time), int(end_time) + 1):
-                x = self._time_to_x(t, x_offset, width)
-                if x_offset <= x <= x_offset + width:
+            if x_offset <= x <= x_offset + width:
+                # Draw dashed line instead of solid
+                dash_length = 6
+                gap_length = 4
+                total_length = dash_length + gap_length
+                
+                # Draw dashes from top to bottom
+                y = 0
+                while y < height:
+                    # Draw dash segment
+                    dash_end = min(y + dash_length, height)
                     pygame.draw.line(self.surface, self.grid_color,
-                                   (x, 0), (x, height), 1)
+                                   (x, y), (x, dash_end), 1)
+                    y += total_length
+        
+        # Optional: Draw measure markers (every 4 seconds as example)
+        # This creates stronger vertical lines at regular intervals
+        # Draw measure markers if enabled
+        if not self.show_measure_lines:
+            return
+            
+        measure_interval = self.measure_interval  # From config
+
+        for t in range(int(start_time), int(end_time) + 1):
+            if t % measure_interval == 0 and t > 0:
+                x = self._time_to_x(t, x_offset, width)
+                
+                if x_offset <= x <= x_offset + width:
+                    # Thicker solid line for measures
+                    brightness_boost = 1.15
+                    color = tuple(min(int(c * brightness_boost), 255) for c in self.grid_color)
+                    pygame.draw.line(self.surface, color,
+                                   (x, 0), (x, height), 2)
+
     
     def _draw_keyboard(self, height: int):
         """
