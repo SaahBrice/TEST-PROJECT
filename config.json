@@ -40,8 +40,8 @@
             100,
             100
         ],
-        "theme": "neon_flashy",
-        "show_measure_lines": false,
+        "theme": "studio_light",
+        "show_measure_lines": true,
         "measure_interval": 4
     },
     "playback": {
