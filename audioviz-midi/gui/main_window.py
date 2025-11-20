@@ -367,7 +367,18 @@ class MainWindow(QMainWindow):
         self.quick_export_shortcut = QShortcut(QKeySequence('Ctrl+E'), self)
         self.quick_export_shortcut.activated.connect(self._on_export_midi)
         
+        # Grid toggle shortcut
+        self.grid_shortcut = QShortcut(QKeySequence('G'), self)
+        self.grid_shortcut.activated.connect(self._toggle_grid_shortcut)
+
+
         logger.info("Keyboard shortcuts configured")
+        
+    def _toggle_grid_shortcut(self):
+        """Toggle grid with G key."""
+        current_state = self.grid_action.isChecked()
+        self.grid_action.setChecked(not current_state)
+        self._on_toggle_grid(not current_state)
 
     def _toggle_play_pause(self):
         """Toggle between play and pause (Spacebar)."""
