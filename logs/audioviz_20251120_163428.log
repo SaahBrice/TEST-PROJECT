@@ -1,0 +1,73 @@
+2025-11-20 16:34:28 - AudioVizMIDI - INFO - [logger.py:63] - Logging system initialized
+2025-11-20 16:34:28 - AudioVizMIDI - INFO - [logger.py:64] - Log file: logs/audioviz_20251120_163428.log
+2025-11-20 16:34:28 - AudioVizMIDI - INFO - [test_velocity_data.py:212] - 
+============================================================
+2025-11-20 16:34:28 - AudioVizMIDI - INFO - [test_velocity_data.py:213] - STARTING VELOCITY VALIDATION TEST SUITE
+2025-11-20 16:34:28 - AudioVizMIDI - INFO - [test_velocity_data.py:214] - ============================================================
+2025-11-20 16:34:28 - AudioVizMIDI - INFO - [test_velocity_data.py:169] - 
+============================================================
+2025-11-20 16:34:28 - AudioVizMIDI - INFO - [test_velocity_data.py:170] - TEST: Velocity Edge Cases
+2025-11-20 16:34:28 - AudioVizMIDI - INFO - [test_velocity_data.py:171] - ============================================================
+2025-11-20 16:34:28 - AudioVizMIDI - INFO - [test_velocity_data.py:177] - ✓ Very soft note (velocity=1)
+2025-11-20 16:34:28 - AudioVizMIDI - INFO - [test_velocity_data.py:182] - ✓ Very loud note (velocity=127)
+2025-11-20 16:34:28 - AudioVizMIDI - INFO - [test_velocity_data.py:187] - ✓ Medium note (velocity=64)
+2025-11-20 16:34:28 - AudioVizMIDI - INFO - [test_velocity_data.py:191] - ✓ Velocity attribute exists
+2025-11-20 16:34:28 - AudioVizMIDI - INFO - [test_velocity_data.py:197] - ✓ Velocity in dict representation
+2025-11-20 16:34:28 - AudioVizMIDI - INFO - [test_velocity_data.py:199] - 
+✅ Velocity Edge Cases Test PASSED
+2025-11-20 16:34:28 - AudioVizMIDI - INFO - [test_velocity_data.py:70] - 
+============================================================
+2025-11-20 16:34:28 - AudioVizMIDI - INFO - [test_velocity_data.py:71] - TEST: Velocity Data Capture
+2025-11-20 16:34:28 - AudioVizMIDI - INFO - [test_velocity_data.py:72] - ============================================================
+2025-11-20 16:34:28 - AudioVizMIDI - INFO - [test_velocity_data.py:27] - Creating test audio with dynamics...
+2025-11-20 16:34:28 - AudioVizMIDI - INFO - [test_velocity_data.py:62] - Test audio created: test_velocity_dynamics.wav
+2025-11-20 16:34:28 - AudioVizMIDI - INFO - [test_velocity_data.py:63] - Expected velocities: [25, 50, 76, 101, 127]
+2025-11-20 16:34:28 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-20 16:34:28 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:53] - AudioLoader initialized
+2025-11-20 16:34:28 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:73] - Loading audio file: test_velocity_dynamics.wav
+2025-11-20 16:34:31 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:98] - Audio loaded successfully
+2025-11-20 16:34:31 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:112] - Preprocessing complete. Duration: 3.00s
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:81] - ✓ Audio loaded: 66150 samples
+2025-11-20 16:34:31 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-20 16:34:31 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:51] - PitchDetector initialized with algorithm: piptrack
+2025-11-20 16:34:31 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:78] - Starting pitch detection using piptrack algorithm...
+2025-11-20 16:34:31 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:101] - Pitch detection complete
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:86] - ✓ Pitch detected: 130 frames
+2025-11-20 16:34:31 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-20 16:34:31 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:51] - OnsetDetector initialized
+2025-11-20 16:34:31 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:72] - Detecting onsets using 'energy' method...
+2025-11-20 16:34:31 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:115] - Onset detection complete: 5 onsets detected
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:91] - ✓ Onsets detected: 5 onsets
+2025-11-20 16:34:31 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-20 16:34:31 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:41] - MIDIConverter initialized
+2025-11-20 16:34:31 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:63] - Converting audio analysis to MIDI notes...
+2025-11-20 16:34:31 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:75] - Conversion complete: 4 notes created
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:96] - ✓ MIDI conversion: 4 notes created
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:99] - 
+Validating velocity data:
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:117] -   Note 0: velocity=54, pitch=69, start=0.60s
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:117] -   Note 1: velocity=63, pitch=69, start=1.21s
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:117] -   Note 2: velocity=70, pitch=69, start=1.79s
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:117] -   Note 3: velocity=81, pitch=69, start=2.39s
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:123] - 
+✓ All notes have velocity attribute
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:130] - 
+Velocity Statistics:
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:131] -   Min: 54
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:132] -   Max: 81
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:133] -   Average: 67.0
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:134] -   Range: 27
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:141] - ✓ All velocities in valid range (0-127)
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:147] - ✓ Velocity variation detected: 4 unique values
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:153] - ✓ Velocity trend matches dynamics (increasing)
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:159] - 
+✅ Velocity Data Capture Test PASSED
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:225] - 
+============================================================
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:226] - TEST SUMMARY
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:227] - ============================================================
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:231] - ✅ PASS - Edge Cases
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:231] - ✅ PASS - Velocity Capture
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:236] - ============================================================
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:237] - Results: 2/2 tests passed
+2025-11-20 16:34:31 - AudioVizMIDI - INFO - [test_velocity_data.py:238] - ============================================================

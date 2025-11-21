@@ -2,7 +2,17 @@
 """
 Integration tests for AudioViz MIDI.
 Tests the complete end-to-end workflow.
+
+Note: This file is a standalone integration test runner intended to be
+executed directly (python test_integration.py). It is not pytest-friendly
+and therefore skipped when running `pytest` by default. To run this
+integration suite, execute the file with the project's Python interpreter.
 """
+
+import pytest
+
+# Skip this module during pytest discovery; run it directly instead.
+pytest.skip("Integration test runner - skip during pytest runs. Run directly with Python.", allow_module_level=True)
 
 import sys
 import os

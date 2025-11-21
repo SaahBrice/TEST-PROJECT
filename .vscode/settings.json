@@ -1,3 +1,8 @@
 {
-    "window.density.editorTabHeight": "default"
+    "window.density.editorTabHeight": "default",
+    "python.testing.pytestArgs": [
+        "audioviz-midi"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }

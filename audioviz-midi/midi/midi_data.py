@@ -187,7 +187,8 @@ class MIDIData:
                 'duration': 0.0,
                 'pitch_range': (0, 0),
                 'avg_note_duration': 0.0,
-                'avg_velocity': 0.0
+                'avg_velocity': 0.0,
+                'velocity_range': (0, 0)
             }
         
         durations = [note.duration for note in self._notes]
@@ -204,6 +205,7 @@ class MIDIData:
             'avg_velocity': float(np.mean(velocities)),
             'min_velocity': int(np.min(velocities)),
             'max_velocity': int(np.max(velocities)),
+            'velocity_range': (int(np.min(velocities)), int(np.max(velocities))),
             'first_note_time': self._notes[0].start_time,
             'last_note_time': self._notes[-1].end_time
         }
