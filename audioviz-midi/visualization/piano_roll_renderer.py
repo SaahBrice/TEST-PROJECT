@@ -1,7 +1,7 @@
 # visualization/piano_roll_renderer.py
 """
 Piano Roll Renderer for AudioViz MIDI.
-Renders MIDI notes as horizontal rectangles in a scrolling piano roll visualization.
+Renders MIDI notes as vertical rectangles in a scrolling piano roll visualization (waterfall style).
 """
 
 import pygame
@@ -20,8 +20,9 @@ class PianoRollRenderer:
     """
     Renders MIDI data as a piano roll visualization.
     
-    Displays notes as horizontal colored rectangles positioned by time and pitch,
-    with a piano keyboard reference on the left and grid lines for reference.
+    Displays notes as vertical colored rectangles that flow from top to bottom (waterfall style)
+    positioned by time (Y axis) and pitch (X axis), with a piano keyboard reference at the bottom
+    and grid lines for reference.
     """
     
     # Note names for keyboard display
@@ -76,10 +77,10 @@ class PianoRollRenderer:
         logger.info(f"Theme loaded: {self.current_theme.display_name}")
 
         
-        # Rendering parameters
-        self.keyboard_width = 70  # Width of piano keyboard on left
-        self.note_height = self.config.get('visualization', 'note_height', 12)  # Load from config
-        self.pixels_per_second = 200  # Horizontal scaling factor
+        # Rendering parameters (rotated 90° clockwise: keyboard at bottom, notes flow vertically)
+        self.keyboard_height = 70  # Height of piano keyboard at bottom (was width on left)
+        self.note_width = self.config.get('visualization', 'note_height', 12)  # Width per pitch (was note_height)
+        self.pixels_per_second = 200  # Vertical scaling factor (was horizontal)
         
         
         # Pitch range (will be updated based on MIDI data)
@@ -140,24 +141,24 @@ class PianoRollRenderer:
         # Get surface dimensions
         width, height = self.surface.get_size()
         
-        # Calculate visible area (excluding keyboard)
-        vis_x = self.keyboard_width if self.show_keyboard else 0
-        vis_width = width - vis_x
-        vis_height = height
+        # Calculate visible area (excluding keyboard at bottom)
+        vis_y = 0
+        vis_height = height - (self.keyboard_height if self.show_keyboard else 0)
+        vis_width = width
         
         # Draw grid if enabled
         if self.show_grid:
-            self._draw_grid(vis_x, vis_width, vis_height)
+            self._draw_grid(vis_width, vis_height)
         
-        # Draw piano keyboard if enabled
+        # Draw piano keyboard if enabled (now at bottom)
         if self.show_keyboard:
-            self._draw_keyboard(vis_height)
+            self._draw_keyboard(width)
         
         # Draw notes
-        self._draw_notes(vis_x, vis_width, vis_height)
+        self._draw_notes(vis_width, vis_height)
         
         # Draw playhead
-        self._draw_playhead(vis_x, vis_width, vis_height)
+        self._draw_playhead(vis_width, vis_height)
     
     def _render_no_data(self):
         """Render message when no MIDI data is available."""
@@ -169,17 +170,15 @@ class PianoRollRenderer:
                                           self.surface.get_height() // 2))
         self.surface.blit(text, text_rect)
     
-    def _draw_grid(self, x_offset: int, width: int, height: int):
+    def _draw_grid(self, width: int, height: int):
         """
         Draw enhanced grid lines for timing and pitch reference.
         
-        Implements two-tier grid system:
-        - Primary grid: Octave lines (C notes) - thicker and brighter
-        - Secondary grid: Semitone lines - thinner and subtle
-        - Vertical grid: Time markers with dashed lines
+        Rotated layout: 
+        - Vertical lines (on screen) are now time markers
+        - Horizontal lines (on screen) are now pitch markers
         
         Args:
-            x_offset: X offset for grid start
             width: Grid width
             height: Grid height
         """
@@ -188,7 +187,7 @@ class PianoRollRenderer:
         
         for i in range(num_pitches + 1):
             pitch = self.min_pitch + i
-            y = self._pitch_to_y(pitch, height)
+            x = self._pitch_to_x(pitch, width)
             
             # PRIMARY GRID: C notes (octave markers) - thicker and brighter
             if pitch % 12 == 0:
@@ -197,18 +196,18 @@ class PianoRollRenderer:
                 brightness_boost = 1.2
                 color = tuple(min(int(c * brightness_boost), 255) for c in self.grid_color)
                 pygame.draw.line(self.surface, color,
-                               (x_offset, y), (x_offset + width, y), thickness)
+                               (x, 0), (x, height), thickness)
             
             # SECONDARY GRID: All other notes - subtle
             else:
                 thickness = 1
                 color = self.grid_color
                 pygame.draw.line(self.surface, color,
-                               (x_offset, y), (x_offset + width, y), thickness)
+                               (x, 0), (x, height), thickness)
         
-        # VERTICAL LINES (Time Grid)
+        # HORIZONTAL LINES (Time Grid)
         if self.duration > 0:
-            self._draw_vertical_grid(x_offset, width, height)
+            self._draw_horizontal_grid(width, height)
     
     def _draw_vertical_grid(self, x_offset: int, width: int, height: int):
         """
@@ -262,20 +261,71 @@ class PianoRollRenderer:
                     pygame.draw.line(self.surface, color,
                                    (x, 0), (x, height), 2)
 
+    def _draw_horizontal_grid(self, width: int, height: int):
+        """
+        Draw horizontal time grid with dashed lines (for rotated layout).
+        
+        Args:
+            width: Grid width
+            height: Grid height
+        """
+        # Calculate visible time range
+        visible_duration = height / self.pixels_per_second
+        start_time = max(0, self.current_time - visible_duration / 3)
+        end_time = start_time + visible_duration
+        
+        # Draw dashed line every second
+        for t in range(int(start_time), int(end_time) + 1):
+            y = self._time_to_y(t, height)
+            
+            if 0 <= y <= height:
+                # Draw dashed line instead of solid
+                dash_length = 6
+                gap_length = 4
+                total_length = dash_length + gap_length
+                
+                # Draw dashes from left to right
+                x = 0
+                while x < width:
+                    # Draw dash segment
+                    dash_end = min(x + dash_length, width)
+                    pygame.draw.line(self.surface, self.grid_color,
+                                   (x, y), (dash_end, y), 1)
+                    x += total_length
+        
+        # Optional: Draw measure markers
+        if not self.show_measure_lines:
+            return
+            
+        measure_interval = self.measure_interval
+
+        for t in range(int(start_time), int(end_time) + 1):
+            if t % measure_interval == 0 and t > 0:
+                y = self._time_to_y(t, height)
+                
+                if 0 <= y <= height:
+                    # Thicker solid line for measures
+                    brightness_boost = 1.15
+                    color = tuple(min(int(c * brightness_boost), 255) for c in self.grid_color)
+                    pygame.draw.line(self.surface, color,
+                                   (0, y), (width, y), 2)
+
     
     def _draw_keyboard(self, height: int):
         """
-        Draw piano keyboard reference on the left side.
+        Draw piano keyboard reference at the bottom (horizontal layout).
         
         Args:
-            height: Available height for keyboard
+            height: Available width for keyboard display (width parameter)
         """
+        width = height  # Parameter is actually surface width
         num_pitches = self.max_pitch - self.min_pitch + 1
+        keyboard_y = self.surface.get_height() - self.keyboard_height
         
         for i in range(num_pitches):
             pitch = self.min_pitch + i
-            y = self._pitch_to_y(pitch, height)
-            key_height = self.note_height
+            x = self._pitch_to_x(pitch, width)
+            key_width = self.note_width
             
             # Determine if this is a black key
             note_class = pitch % 12
@@ -284,18 +334,18 @@ class PianoRollRenderer:
             # Draw key 
             if is_black_key:
                 key_color = self.current_theme.keyboard_black_key
-                key_width = self.keyboard_width - 18  # Narrower for black keys
+                key_height = self.keyboard_height - 18  # Narrower for black keys
             else:
                 key_color = self.current_theme.keyboard_white_key
-                key_width = self.keyboard_width - 8  # Slightly wider white keys
+                key_height = self.keyboard_height - 8  # Slightly wider white keys
 
             
             pygame.draw.rect(self.surface, key_color,
-                           (2, y, key_width, key_height))
+                           (x, keyboard_y, key_width, key_height))
             
             # Draw key border using theme color
             pygame.draw.rect(self.surface, self.current_theme.keyboard_border,
-                        (2, y, key_width, key_height), 1)
+                        (x, keyboard_y, key_width, key_height), 1)
 
             
             # Draw note name for C notes
@@ -303,18 +353,17 @@ class PianoRollRenderer:
                 octave = (pitch // 12) - 1
                 note_name = f'C{octave}'
                 text = self.small_font.render(note_name, True, self.current_theme.keyboard_text)
-                # Center text horizontally in key
-                text_x = 8
-                text_y = y + (key_height - text.get_height()) // 2
+                # Center text in key
+                text_x = x + (key_width - text.get_width()) // 2
+                text_y = keyboard_y + 8
                 self.surface.blit(text, (text_x, text_y))
 
     
-    def _draw_notes(self, x_offset: int, width: int, height: int):
+    def _draw_notes(self, width: int, height: int):
         """
-        Draw MIDI notes as horizontal rectangles.
+        Draw MIDI notes as vertical rectangles (notes flow top to bottom).
         
         Args:
-            x_offset: X offset for drawing area
             width: Drawing area width
             height: Drawing area height
         """
@@ -322,7 +371,7 @@ class PianoRollRenderer:
             return
         
         # Calculate visible time range
-        visible_duration = width / self.pixels_per_second
+        visible_duration = height / self.pixels_per_second
         start_time = max(0, self.current_time - visible_duration / 3)
         end_time = start_time + visible_duration
         
@@ -334,31 +383,30 @@ class PianoRollRenderer:
             # Draw simplified version for many notes
             logger.warning(f"Many notes visible ({len(visible_notes)}), using simplified rendering")
             for note in visible_notes[::2]:  # Draw every other note
-                self._draw_note(note, x_offset, width, height)
+                self._draw_note(note, width, height)
         else:
             # Draw each note normally
             for note in visible_notes:
-                self._draw_note(note, x_offset, width, height)
+                self._draw_note(note, width, height)
 
     
-    def _draw_note(self, note: Note, x_offset: int, width: int, height: int):
+    def _draw_note(self, note: Note, width: int, height: int):
         """
-        Draw a single note rectangle with enhanced visual quality.
+        Draw a single note rectangle with enhanced visual quality (vertical orientation).
         
         Args:
             note: Note object to draw
-            x_offset: X offset for drawing area
             width: Drawing area width
             height: Drawing area height
         """
-        # Calculate note position and size
-        note_x = self._time_to_x(note.start_time, x_offset, width)
-        note_y = self._pitch_to_y(note.pitch, height)
-        note_width = int(note.duration * self.pixels_per_second)
-        note_height = self.note_height
+        # Calculate note position and size (rotated 90°)
+        note_x = self._pitch_to_x(note.pitch, width)
+        note_y = self._time_to_y(note.start_time, height)
+        note_width = self.note_width
+        note_height = int(note.duration * self.pixels_per_second)
         
         # Skip if note is outside visible area
-        if note_x + note_width < x_offset or note_x > x_offset + width:
+        if note_y + note_height < 0 or note_y > height:
             return
         
         # Get note color based on scheme
@@ -393,10 +441,10 @@ class PianoRollRenderer:
         
         # ENHANCEMENT 4: Add inner highlight for depth (optional)
         # Creates a subtle "3D" effect
-        if note_height > 8:  # Only for taller notes
+        if note_width > 8:  # Only for wider notes
             highlight_color = tuple(min(255, c + 30) for c in color)
-            highlight_rect = pygame.Rect(note_x + 2, note_y + 1, 
-                                         note_width - 4, 1)
+            highlight_rect = pygame.Rect(note_x + 1, note_y + 2, 
+                                         1, note_height - 4)
             pygame.draw.rect(self.surface, highlight_color, highlight_rect)
         
         # Highlight if note is currently playing
@@ -407,27 +455,26 @@ class PianoRollRenderer:
             pygame.draw.rect(self.surface, glow_color, glow_rect, 2, border_radius=4)
 
     
-    def _draw_playhead(self, x_offset: int, width: int, height: int):
+    def _draw_playhead(self, width: int, height: int):
         """
-        Draw the moving playhead indicator.
+        Draw the moving playhead indicator (now horizontal line).
         
         Args:
-            x_offset: X offset for drawing area
             width: Drawing area width
             height: Drawing area height
         """
-        # Playhead at 1/3 from left edge (allows seeing upcoming notes)
-        playhead_x = x_offset + width // 3
+        # Playhead at 2/3 from top (notes flow down toward it)
+        playhead_y = (2 * height) // 3
         
-        # Draw vertical line
+        # Draw horizontal line
         pygame.draw.line(self.surface, self.playhead_color,
-                        (playhead_x, 0), (playhead_x, height), 4)
+                        (0, playhead_y), (width, playhead_y), 4)
         
-        # Draw small triangle at top
+        # Draw small triangle at left
         triangle_points = [
-            (playhead_x, 0),
-            (playhead_x - 8, 15),
-            (playhead_x + 8, 15)
+            (0, playhead_y),
+            (15, playhead_y - 8),
+            (15, playhead_y + 8)
         ]
         pygame.draw.polygon(self.surface, self.playhead_color, triangle_points)
     
@@ -481,7 +528,7 @@ class PianoRollRenderer:
     
     def _pitch_to_y(self, pitch: int, height: int) -> int:
         """
-        Convert MIDI pitch to Y coordinate with spacing between rows.
+        Convert MIDI pitch to Y coordinate with spacing between rows (deprecated - for backwards compatibility).
         
         Args:
             pitch: MIDI pitch number
@@ -495,17 +542,35 @@ class PianoRollRenderer:
         
         # Calculate base position
         note_spacing = 1  # 1px gap between notes
-        total_note_height = self.note_height + note_spacing
+        total_note_height = self.note_width + note_spacing
         
         # Position with spacing included
         y_position = int((pitch_index / num_pitches) * height)
         
         return y_position
 
-    
+    def _pitch_to_x(self, pitch: int, width: int) -> int:
+        """
+        Convert MIDI pitch to X coordinate (rotated layout).
+        
+        Args:
+            pitch: MIDI pitch number
+            width: Available width
+        
+        Returns:
+            X coordinate in pixels
+        """
+        num_pitches = self.max_pitch - self.min_pitch + 1
+        pitch_index = pitch - self.min_pitch  # Lower pitch = lower X
+        
+        # Calculate position
+        x_position = int((pitch_index / num_pitches) * width)
+        
+        return x_position
+
     def _time_to_x(self, time: float, x_offset: int, width: int) -> int:
         """
-        Convert time to X coordinate (scrolling with playhead).
+        Convert time to X coordinate (scrolling with playhead) - deprecated for rotated layout.
         
         Args:
             time: Time in seconds
@@ -523,6 +588,31 @@ class PianoRollRenderer:
         pixel_offset = int(time_offset * self.pixels_per_second)
         
         return playhead_x + pixel_offset
+
+    def _time_to_y(self, time: float, height: int) -> int:
+        """
+        Convert time to Y coordinate (vertical flow for rotated layout).
+        Notes flow from top to bottom (like falling rain/waterfall).
+        
+        Args:
+            time: Time in seconds
+            height: Drawing area height
+        
+        Returns:
+            Y coordinate in pixels
+        """
+        # Playhead is at 2/3 from top (notes flow down toward it)
+        playhead_y = (2 * height) // 3
+        
+        # Calculate offset from current time
+        # Earlier notes (negative offset) should be HIGHER on screen (smaller Y)
+        # Later notes (positive offset) should be LOWER on screen (larger Y)
+        # We need to INVERT the pixel_offset so that negative offsets go UP
+        time_offset = time - self.current_time
+        pixel_offset = int(time_offset * self.pixels_per_second)
+        
+        # Invert: earlier times (negative offset) move UP the screen
+        return playhead_y - pixel_offset
 
     def set_theme(self, theme_name: str):
         """
