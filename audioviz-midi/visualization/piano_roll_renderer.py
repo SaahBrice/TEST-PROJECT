@@ -16,6 +16,110 @@ from visualization.theme_manager import ThemeManager, Theme
 logger = get_logger(__name__)
 
 
+class Particle:
+    """Represents a single particle in the particle system."""
+    
+    def __init__(self, x: float, y: float, vx: float, vy: float, 
+                 color: Tuple[int, int, int], lifetime: float = 1.0):
+        """
+        Initialize a particle.
+        
+        Args:
+            x: X position
+            y: Y position
+            vx: X velocity
+            vy: Y velocity
+            color: RGB color tuple
+            lifetime: How long particle lives (seconds)
+        """
+        self.x = x
+        self.y = y
+        self.vx = vx
+        self.vy = vy
+        self.color = color
+        self.lifetime = lifetime
+        self.age = 0.0
+    
+    def update(self, dt: float) -> bool:
+        """
+        Update particle position and age.
+        
+        Args:
+            dt: Delta time in seconds
+        
+        Returns:
+            True if particle is still alive, False if expired
+        """
+        self.x += self.vx * dt
+        self.y += self.vy * dt
+        self.age += dt
+        
+        return self.age < self.lifetime
+    
+    def get_alpha(self) -> int:
+        """Get current alpha value based on age (fades out)."""
+        progress = self.age / self.lifetime
+        return int((1.0 - progress) * 255)
+
+
+class Chord:
+    """Chord detection and naming utility."""
+    
+    # Common chord patterns (semitone intervals from root)
+    CHORD_PATTERNS = {
+        'major': (0, 4, 7),
+        'minor': (0, 3, 7),
+        'major7': (0, 4, 7, 11),
+        'minor7': (0, 3, 7, 10),
+        'dom7': (0, 4, 7, 10),
+        'maj7': (0, 4, 7, 11),
+        'dim': (0, 3, 6),
+        'aug': (0, 4, 8),
+        'sus2': (0, 2, 7),
+        'sus4': (0, 5, 7),
+        'add9': (0, 4, 7, 14),
+        '7sus4': (0, 5, 7, 10),
+    }
+    
+    NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
+    
+    @staticmethod
+    def detect_chord(pitches: list) -> Optional[str]:
+        """
+        Detect chord from a list of MIDI pitches.
+        
+        Args:
+            pitches: List of MIDI note numbers
+        
+        Returns:
+            Chord name string or None if no match found
+        """
+        if len(pitches) < 2:
+            return None
+        
+        # Normalize pitches to single octave
+        pitches = sorted(set([p % 12 for p in pitches]))
+        
+        if len(pitches) < 2:
+            return None
+        
+        # Try to find chord starting from lowest note
+        for root_idx, root in enumerate(pitches):
+            # Calculate intervals from this root
+            intervals = tuple(sorted(set([(p - root) % 12 for p in pitches])))
+            
+            # Check against known patterns
+            for chord_type, pattern in Chord.CHORD_PATTERNS.items():
+                if intervals == pattern:
+                    root_name = Chord.NOTE_NAMES[root]
+                    return f"{root_name} {chord_type}"
+        
+        return None
+
+
+
+
+
 class PianoRollRenderer:
     """
     Renders MIDI data as a piano roll visualization.
@@ -97,6 +201,45 @@ class PianoRollRenderer:
         self.font = pygame.font.Font(None, 18)
         self.small_font = pygame.font.Font(None, 14)
         
+        # Visual enhancements configuration
+        self.enable_3d_perspective = self.config.get('visualization', 'enable_3d_perspective', True)
+        self.enable_ghosted_notes = self.config.get('visualization', 'enable_ghosted_notes', True)
+        self.ghosted_lookahead_time = 5.0  # Show 5 seconds ahead in ghosted style
+        self.enable_motion_blur = self.config.get('visualization', 'enable_motion_blur', True)
+        self.enable_audio_reactive_bg = self.config.get('visualization', 'enable_audio_reactive_bg', True)
+        self.enable_waveform = self.config.get('visualization', 'enable_waveform', True)
+        
+        # Audio reactivity state
+        self.audio_intensity = 0.0  # Range 0.0 to 1.0
+        self.bg_pulse_alpha = 0.0  # For pulsing background effect
+        
+        # Trail rendering for motion blur
+        self.trail_segments = {}  # Store trail segments per note
+        
+        # Advanced effects configuration
+        self.enable_particles = self.config.get('visualization', 'enable_particles', True)
+        self.enable_keyboard_animation = self.config.get('visualization', 'enable_keyboard_animation', True)
+        self.enable_bloom = self.config.get('visualization', 'enable_bloom', True)
+        self.enable_chord_labels = self.config.get('visualization', 'enable_chord_labels', True)
+        self.enable_beat_effects = self.config.get('visualization', 'enable_beat_effects', True)
+        
+        # Particle system
+        self.particles = []  # List of active particles
+        
+        # Keyboard animation state
+        self.key_press_states = {}  # Track which keys are pressed and for how long
+        
+        # Chord detection state
+        self.current_chord = None
+        self.chord_display_time = 0.0
+        self.chord_display_duration = 1.5  # Show chord name for 1.5 seconds
+        
+        # Beat effect state
+        self.beat_intensity = 0.0  # Current beat intensity (0.0 to 1.0)
+        self.camera_offset_x = 0.0  # X offset from camera shake
+        self.camera_offset_y = 0.0  # Y offset from camera shake
+        self.zoom_scale = 1.0  # Zoom scaling factor
+        
         logger.info("PianoRollRenderer initialized")
     
     def set_midi_data(self, midi_data: MIDIData):
@@ -129,11 +272,69 @@ class PianoRollRenderer:
         """
         self.current_time = time
     
+    def set_audio_intensity(self, intensity: float):
+        """
+        Set audio intensity for reactive background effects.
+        
+        Args:
+            intensity: Audio intensity (0.0 to 1.0)
+        """
+        self.audio_intensity = max(0.0, min(1.0, intensity))
+        # Update pulsing background alpha
+        self.bg_pulse_alpha = self.audio_intensity * 0.3
+    
+    def set_beat_intensity(self, intensity: float):
+        """
+        Set beat intensity for rhythm effects (camera shake, zoom pulse).
+        
+        Args:
+            intensity: Beat intensity (0.0 to 1.0)
+        """
+        self.beat_intensity = max(0.0, min(1.0, intensity))
+        
+        # Update camera shake
+        if self.enable_beat_effects and self.beat_intensity > 0:
+            shake_amount = self.beat_intensity * 5
+            self.camera_offset_x = (math.sin(self.current_time * 50) * shake_amount)
+            self.camera_offset_y = (math.cos(self.current_time * 40) * shake_amount)
+            
+            # Update zoom pulse
+            self.zoom_scale = 1.0 + self.beat_intensity * 0.05
+    
     def render(self):
         """Render the complete piano roll visualization."""
         if not self.midi_data:
             self._render_no_data()
             return
+        
+        # Update particles
+        self.particles = [p for p in self.particles if p.update(1.0/60.0)]
+        
+        # Detect current chords and active notes
+        active_notes = self.midi_data.get_notes_at_time(self.current_time)
+        
+        # Update chord display
+        if active_notes and len(active_notes) >= 2:
+            active_pitches = [n.pitch for n in active_notes]
+            new_chord = Chord.detect_chord(active_pitches)
+            if new_chord != self.current_chord:
+                self.current_chord = new_chord
+                self.chord_display_time = 0.0
+        else:
+            self.current_chord = None
+        
+        if self.current_chord:
+            self.chord_display_time += 1.0/60.0
+        
+        # Update keyboard animation states
+        for note in active_notes:
+            self.key_press_states[note.pitch] = 0.0  # Currently pressed
+        
+        # Decay other keys
+        for pitch in list(self.key_press_states.keys()):
+            self.key_press_states[pitch] = self.key_press_states.get(pitch, 0.0) + 1.0/60.0
+            if self.key_press_states[pitch] > 0.5:  # Release animation time
+                del self.key_press_states[pitch]
         
         # Clear background
         self.surface.fill(self.bg_color)
@@ -146,19 +347,48 @@ class PianoRollRenderer:
         vis_height = height - (self.keyboard_height if self.show_keyboard else 0)
         vis_width = width
         
+        # Apply camera effects (shake and zoom)
+        if self.enable_beat_effects:
+            # Apply zoom by scaling the surface content (we'll clip to the visible area)
+            pass  # Zoom handled in coordinate calculations
+        
+        # Draw audio-reactive background if enabled
+        if self.enable_audio_reactive_bg:
+            self._draw_reactive_background(vis_width, vis_height)
+        
+        # Draw waveform if enabled
+        if self.enable_waveform:
+            self._draw_waveform_layer(vis_width, vis_height)
+        
         # Draw grid if enabled
         if self.show_grid:
             self._draw_grid(vis_width, vis_height)
+        
+        # Draw ghosted upcoming notes if enabled
+        if self.enable_ghosted_notes:
+            self._draw_ghosted_notes(vis_width, vis_height)
         
         # Draw piano keyboard if enabled (now at bottom)
         if self.show_keyboard:
             self._draw_keyboard(width)
         
-        # Draw notes
+        # Draw notes with 3D perspective
         self._draw_notes(vis_width, vis_height)
+        
+        # Draw bloom effect on active notes
+        if self.enable_bloom:
+            self._draw_bloom_effect(vis_width, vis_height, active_notes)
+        
+        # Draw particles
+        if self.enable_particles:
+            self._draw_particles()
         
         # Draw playhead
         self._draw_playhead(vis_width, vis_height)
+        
+        # Draw chord label
+        if self.enable_chord_labels and self.current_chord and self.chord_display_time < self.chord_display_duration:
+            self._draw_chord_label(vis_width)
     
     def _render_no_data(self):
         """Render message when no MIDI data is available."""
@@ -313,7 +543,7 @@ class PianoRollRenderer:
     
     def _draw_keyboard(self, height: int):
         """
-        Draw piano keyboard reference at the bottom (horizontal layout).
+        Draw piano keyboard reference at the bottom (horizontal layout) with animation.
         
         Args:
             height: Available width for keyboard display (width parameter)
@@ -331,21 +561,36 @@ class PianoRollRenderer:
             note_class = pitch % 12
             is_black_key = note_class in [1, 3, 6, 8, 10]  # C#, D#, F#, G#, A#
             
+            # Get key animation state
+            press_state = self.key_press_states.get(pitch, 0.5)  # 0.0 = pressed, 0.5 = released
+            press_amount = max(0.0, min(1.0, press_state / 0.5))  # Smooth release animation
+            
+            # Animate key press depth
+            key_depth = int(8 * press_amount)  # Press down 0-8 pixels
+            animated_keyboard_y = keyboard_y + key_depth
+            
             # Draw key 
             if is_black_key:
                 key_color = self.current_theme.keyboard_black_key
-                key_height = self.keyboard_height - 18  # Narrower for black keys
+                key_height = self.keyboard_height - 18 - key_depth  # Narrower for black keys
             else:
                 key_color = self.current_theme.keyboard_white_key
-                key_height = self.keyboard_height - 8  # Slightly wider white keys
+                key_height = self.keyboard_height - 8 - key_depth  # Slightly wider white keys
 
             
             pygame.draw.rect(self.surface, key_color,
-                           (x, keyboard_y, key_width, key_height))
+                           (x, animated_keyboard_y, key_width, key_height))
+            
+            # Draw depth shadow under pressed keys
+            if key_depth > 0:
+                shadow_color = (0, 0, 0, 40)
+                shadow_surface = pygame.Surface((key_width, key_depth), pygame.SRCALPHA)
+                pygame.draw.rect(shadow_surface, shadow_color, (0, 0, key_width, key_depth))
+                self.surface.blit(shadow_surface, (x, animated_keyboard_y + key_height))
             
             # Draw key border using theme color
             pygame.draw.rect(self.surface, self.current_theme.keyboard_border,
-                        (x, keyboard_y, key_width, key_height), 1)
+                        (x, animated_keyboard_y, key_width, key_height), 1)
 
             
             # Draw note name for C notes
@@ -355,7 +600,7 @@ class PianoRollRenderer:
                 text = self.small_font.render(note_name, True, self.current_theme.keyboard_text)
                 # Center text in key
                 text_x = x + (key_width - text.get_width()) // 2
-                text_y = keyboard_y + 8
+                text_y = animated_keyboard_y + 8
                 self.surface.blit(text, (text_x, text_y))
 
     
@@ -392,7 +637,7 @@ class PianoRollRenderer:
     
     def _draw_note(self, note: Note, width: int, height: int):
         """
-        Draw a single note rectangle with enhanced visual quality (vertical orientation).
+        Draw a single note rectangle with enhanced visual quality and 3D perspective.
         
         Args:
             note: Note object to draw
@@ -412,8 +657,24 @@ class PianoRollRenderer:
         # Get note color based on scheme
         color = self._get_note_color(note)
         
+        # Calculate 3D perspective scale
+        perspective_scale = self._calculate_perspective_scale(note, height)
+        
+        # Apply perspective scaling to dimensions
+        scaled_note_width = int(note_width * perspective_scale)
+        scaled_note_height = int(note_height * perspective_scale)
+        
+        # Adjust position to keep note centered during scaling
+        scaled_note_x = note_x + (note_width - scaled_note_width) // 2
+        scaled_note_y = note_y + (note_height - scaled_note_height) // 2
+        
+        # Draw motion blur trail if enabled
+        if self.enable_motion_blur:
+            self._draw_motion_blur_trail(note, scaled_note_x, scaled_note_y, 
+                                        scaled_note_width, scaled_note_height, color)
+        
         # Create note rectangle
-        note_rect = pygame.Rect(note_x, note_y, note_width, note_height)
+        note_rect = pygame.Rect(scaled_note_x, scaled_note_y, scaled_note_width, scaled_note_height)
         
         # ENHANCEMENT 1: Draw shadow (for depth)
         shadow_offset = 2  # pixels
@@ -424,13 +685,13 @@ class PianoRollRenderer:
         shadow_rect.y += shadow_offset
         
         # Create temporary surface for shadow with alpha
-        shadow_surface = pygame.Surface((note_width + shadow_offset, 
-                                         note_height + shadow_offset), 
+        shadow_surface = pygame.Surface((scaled_note_width + shadow_offset, 
+                                         scaled_note_height + shadow_offset), 
                                         pygame.SRCALPHA)
         pygame.draw.rect(shadow_surface, shadow_color, 
-                        (shadow_offset, shadow_offset, note_width, note_height),
+                        (shadow_offset, shadow_offset, scaled_note_width, scaled_note_height),
                         border_radius=3)
-        self.surface.blit(shadow_surface, (note_x, note_y))
+        self.surface.blit(shadow_surface, (scaled_note_x, scaled_note_y))
         
         # ENHANCEMENT 2: Draw main note body with rounded corners
         pygame.draw.rect(self.surface, color, note_rect, border_radius=3)
@@ -441,10 +702,10 @@ class PianoRollRenderer:
         
         # ENHANCEMENT 4: Add inner highlight for depth (optional)
         # Creates a subtle "3D" effect
-        if note_width > 8:  # Only for wider notes
+        if scaled_note_width > 8:  # Only for wider notes
             highlight_color = tuple(min(255, c + 30) for c in color)
-            highlight_rect = pygame.Rect(note_x + 1, note_y + 2, 
-                                         1, note_height - 4)
+            highlight_rect = pygame.Rect(scaled_note_x + 1, scaled_note_y + 2, 
+                                         1, scaled_note_height - 4)
             pygame.draw.rect(self.surface, highlight_color, highlight_rect)
         
         # Highlight if note is currently playing
@@ -613,6 +874,290 @@ class PianoRollRenderer:
         
         # Invert: earlier times (negative offset) move UP the screen
         return playhead_y - pixel_offset
+
+    def _draw_reactive_background(self, width: int, height: int):
+        """
+        Draw audio-reactive pulsing background.
+        
+        Args:
+            width: Drawable width
+            height: Drawable height
+        """
+        if self.audio_intensity <= 0:
+            return
+        
+        # Create a pulsing overlay that responds to audio intensity
+        overlay_surface = pygame.Surface((width, height), pygame.SRCALPHA)
+        
+        # Color based on theme
+        pulse_color = self.playhead_color
+        
+        # Alpha pulsates with audio intensity
+        alpha = int(self.bg_pulse_alpha * 255)
+        pulse_color_with_alpha = (*pulse_color[:3], alpha)
+        
+        # Draw subtle pulse effect
+        pygame.draw.rect(overlay_surface, pulse_color_with_alpha, (0, 0, width, height))
+        self.surface.blit(overlay_surface, (0, 0))
+
+    def _draw_waveform_layer(self, width: int, height: int):
+        """
+        Draw audio waveform as a semi-transparent backdrop.
+        
+        Args:
+            width: Drawable width
+            height: Drawable height
+        """
+        # Create vertical waveform visualization
+        waveform_surface = pygame.Surface((width, height), pygame.SRCALPHA)
+        
+        # Generate smooth vertical waveform pattern
+        waveform_color = (*self.grid_color, 30)  # Semi-transparent grid color
+        
+        # Draw waveform bars at different pitch frequencies
+        num_pitches = self.max_pitch - self.min_pitch + 1
+        bar_width = max(1, width // (num_pitches // 4))
+        
+        for i in range(0, width, bar_width):
+            # Vary the bar height for visual interest
+            frequency = (i / width) * 2 * math.pi
+            bar_height = int(height * 0.15 * (math.sin(frequency) + 1) / 2)
+            bar_y = (height - bar_height) // 2
+            
+            pygame.draw.rect(waveform_surface, waveform_color, (i, bar_y, bar_width, bar_height))
+        
+        self.surface.blit(waveform_surface, (0, 0))
+
+    def _draw_ghosted_notes(self, width: int, height: int):
+        """
+        Draw upcoming notes in ghosted/transparent style with gradient fade-in.
+        
+        Args:
+            width: Drawable width
+            height: Drawable height
+        """
+        if not self.midi_data:
+            return
+        
+        # Get notes that are 0.5 to ghosted_lookahead_time seconds in the future
+        future_start = self.current_time + 0.5
+        future_end = self.current_time + self.ghosted_lookahead_time
+        
+        future_notes = self.midi_data.get_notes_in_range(future_start, future_end)
+        
+        for note in future_notes:
+            # Calculate transparency based on distance from playhead
+            time_to_playhead = note.start_time - self.current_time
+            progress = time_to_playhead / self.ghosted_lookahead_time
+            
+            # Fade from transparent (far) to semi-transparent (near)
+            alpha = int((1.0 - progress) * 100)  # 0-100 alpha range
+            
+            if alpha <= 0:
+                continue
+            
+            # Get note color and apply transparency
+            color = self._get_note_color(note)
+            
+            # Draw ghosted note
+            note_x = self._pitch_to_x(note.pitch, width)
+            note_y = self._time_to_y(note.start_time, height)
+            note_width = self.note_width
+            note_height = int(note.duration * self.pixels_per_second)
+            
+            # Create transparent surface for ghosted note
+            ghosted_surface = pygame.Surface((note_width, note_height), pygame.SRCALPHA)
+            color_with_alpha = (*color[:3], alpha)
+            pygame.draw.rect(ghosted_surface, color_with_alpha, (0, 0, note_width, note_height), border_radius=2)
+            
+            # Draw border in current color at reduced opacity
+            border_alpha = int(alpha * 0.5)
+            border_color = tuple(max(0, c - 40) for c in color[:3])
+            border_color_with_alpha = (*border_color, border_alpha)
+            pygame.draw.rect(ghosted_surface, border_color_with_alpha, (0, 0, note_width, note_height), 1, border_radius=2)
+            
+            self.surface.blit(ghosted_surface, (note_x, note_y))
+
+    def _calculate_perspective_scale(self, note: Note, height: int) -> float:
+        """
+        Calculate perspective scaling factor based on distance from playhead.
+        Notes closer to playhead are larger (more prominent).
+        
+        Args:
+            note: Note object
+            height: Drawable height
+        
+        Returns:
+            Scale factor (0.5 to 1.5)
+        """
+        if not self.enable_3d_perspective:
+            return 1.0
+        
+        # Calculate distance from playhead
+        playhead_y = (2 * height) // 3
+        note_y = self._time_to_y(note.start_time, height)
+        
+        distance = abs(note_y - playhead_y)
+        max_distance = height
+        
+        # Scale inversely with distance: closer = larger
+        # Range: 0.5x (far) to 1.5x (at playhead)
+        scale = 0.5 + (1.0 - (distance / max_distance)) * 1.0
+        
+        return scale
+
+    def _draw_motion_blur_trail(self, note: Note, x: int, y: int, width: int, 
+                               height: int, color: Tuple[int, int, int]):
+        """
+        Draw motion blur trail behind a falling note.
+        
+        Args:
+            note: Note object
+            x: Note X position
+            y: Note Y position
+            width: Note width
+            height: Note height
+            color: Note color
+        """
+        if not self.enable_motion_blur or height <= 0:
+            return
+        
+        # Draw fading trail behind the note
+        trail_length = min(height, 40)  # Trail extends above the note
+        num_segments = 5
+        
+        for i in range(1, num_segments + 1):
+            # Each segment gets progressively more transparent
+            segment_alpha = int(100 * (1.0 - i / num_segments))
+            trail_y = y - (trail_length * i // num_segments)
+            
+            if trail_y < 0:
+                continue
+            
+            # Create trail segment surface
+            trail_surface = pygame.Surface((width, height), pygame.SRCALPHA)
+            trail_color = (*color[:3], segment_alpha)
+            pygame.draw.rect(trail_surface, trail_color, (0, 0, width, height), border_radius=2)
+            
+            self.surface.blit(trail_surface, (x, trail_y))
+
+    def _create_particle_burst(self, x: int, y: int, color: Tuple[int, int, int], 
+                              count: int = 12):
+        """
+        Create a burst of particles at the given location.
+        
+        Args:
+            x: X position
+            y: Y position
+            color: Particle color
+            count: Number of particles to create
+        """
+        for i in range(count):
+            angle = (i / count) * 2 * math.pi
+            speed = 100 + (i % 3) * 50  # Varying speeds
+            vx = math.cos(angle) * speed
+            vy = math.sin(angle) * speed
+            
+            particle = Particle(x, y, vx, vy, color, lifetime=0.8)
+            self.particles.append(particle)
+    
+    def _draw_particles(self):
+        """Draw all active particles."""
+        for particle in self.particles:
+            x = int(particle.x)
+            y = int(particle.y)
+            
+            # Skip if off screen
+            if x < 0 or x > self.surface.get_width() or y < 0 or y > self.surface.get_height():
+                continue
+            
+            # Draw particle as small circle with fading alpha
+            alpha = particle.get_alpha()
+            particle_surface = pygame.Surface((6, 6), pygame.SRCALPHA)
+            color_with_alpha = (*particle.color, alpha)
+            pygame.draw.circle(particle_surface, color_with_alpha, (3, 3), 3)
+            self.surface.blit(particle_surface, (x - 3, y - 3))
+    
+    def _draw_bloom_effect(self, width: int, height: int, active_notes: list):
+        """
+        Draw glowing bloom effect around active notes at the playhead.
+        
+        Args:
+            width: Drawable width
+            height: Drawable height
+            active_notes: List of currently playing notes
+        """
+        playhead_y = (2 * height) // 3
+        
+        for note in active_notes:
+            note_x = self._pitch_to_x(note.pitch, width)
+            color = self._get_note_color(note)
+            
+            # Draw multiple bloom circles with decreasing opacity
+            for bloom_size in [40, 30, 20, 10]:
+                alpha = int(50 * (1.0 - bloom_size / 40.0))
+                bloom_surface = pygame.Surface((bloom_size * 2, bloom_size * 2), pygame.SRCALPHA)
+                bloom_color = (*color, alpha)
+                pygame.draw.circle(bloom_surface, bloom_color, (bloom_size, bloom_size), bloom_size)
+                
+                # Center on note at playhead
+                blit_x = note_x + self.note_width // 2 - bloom_size
+                blit_y = playhead_y - bloom_size
+                self.surface.blit(bloom_surface, (blit_x, blit_y))
+            
+            # Create particle burst when note reaches playhead
+            if not hasattr(self, '_burst_notes'):
+                self._burst_notes = set()
+            
+            if note.pitch not in self._burst_notes:
+                # Burst at playhead collision
+                self._create_particle_burst(
+                    note_x + self.note_width // 2,
+                    playhead_y,
+                    color,
+                    count=15
+                )
+                self._burst_notes.add(note.pitch)
+        
+        # Clean up burst tracking for notes no longer playing
+        if hasattr(self, '_burst_notes'):
+            self._burst_notes = set(n.pitch for n in active_notes) & self._burst_notes
+    
+    def _draw_chord_label(self, width: int):
+        """
+        Draw chord name label at the top of the visualization.
+        
+        Args:
+            width: Drawable width
+        """
+        if not self.current_chord:
+            return
+        
+        # Calculate fade in/out
+        fade_progress = self.chord_display_time / self.chord_display_duration
+        if fade_progress < 0.1:
+            # Fade in
+            alpha = int(255 * (fade_progress / 0.1))
+        elif fade_progress > 0.9:
+            # Fade out
+            alpha = int(255 * (1.0 - (fade_progress - 0.9) / 0.1))
+        else:
+            alpha = 255
+        
+        # Render chord name
+        chord_font = pygame.font.Font(None, 32)
+        chord_text = chord_font.render(self.current_chord, True, self.playhead_color)
+        
+        # Create surface with alpha
+        text_surface = pygame.Surface(chord_text.get_size(), pygame.SRCALPHA)
+        chord_text_with_alpha = chord_text.copy()
+        chord_text_with_alpha.set_alpha(alpha)
+        text_surface.blit(chord_text_with_alpha, (0, 0))
+        
+        # Center at top of visualization
+        text_x = (width - chord_text.get_width()) // 2
+        text_y = 20
+        self.surface.blit(text_surface, (text_x, text_y))
 
     def set_theme(self, theme_name: str):
         """
