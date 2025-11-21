@@ -240,6 +240,10 @@ class PianoRollRenderer:
         self.camera_offset_y = 0.0  # Y offset from camera shake
         self.zoom_scale = 1.0  # Zoom scaling factor
         
+        # Track recently activated notes for effects
+        self._recently_activated_notes = []  # Notes that just started playing this frame
+        self._last_frame_time = 0.0
+        
         logger.info("PianoRollRenderer initialized")
     
     def set_midi_data(self, midi_data: MIDIData):
@@ -313,27 +317,65 @@ class PianoRollRenderer:
         # Detect current chords and active notes
         active_notes = self.midi_data.get_notes_at_time(self.current_time)
         
-        # Update chord display
-        if active_notes and len(active_notes) >= 2:
-            active_pitches = [n.pitch for n in active_notes]
+        # Detect notes reaching the keyboard (for keyboard hit effects)
+        # Instead of triggering at note.start_time, trigger when note reaches bottom keyboard
+        self._recently_activated_notes = []
+        
+        # Get all notes in the MIDI data to check their keyboard-hit times
+        all_notes = self.midi_data.get_notes_in_range(
+            self.current_time - 1.0,  # Look back 1 second
+            self.current_time + 0.1   # Look ahead 100ms
+        )
+        
+        for note in all_notes:
+            # Calculate when this note hits the keyboard
+            keyboard_hit_time = self.calculate_note_keyboard_hit_time(note, self.surface.get_height())
+            
+            # Check if this note is hitting the keyboard NOW (within this frame)
+            time_since_last_frame = self.current_time - self._last_frame_time
+            if time_since_last_frame < 0.05:  # Within 50ms (one frame at 60fps)
+                if abs(keyboard_hit_time - self.current_time) < 0.02:  # Just hit keyboard
+                    self._recently_activated_notes.append(note)
+                    
+                    # Trigger effects AT KEYBOARD POSITION
+                    if self.enable_particles:
+                        note_x = self._pitch_to_x(note.pitch, self.surface.get_width())
+                        # Particles burst AT the keyboard (bottom of screen)
+                        keyboard_y = self.surface.get_height() - self.keyboard_height
+                        color = self._get_note_color(note)
+                        self._create_particle_burst(
+                            note_x + self.note_width // 2,
+                            keyboard_y - 5,  # Just above keyboard for visibility
+                            color,
+                            count=15
+                        )
+        
+        self._last_frame_time = self.current_time
+        
+        # Update keyboard animation states based on KEYBOARD-HIT time
+        # Keys should animate when notes reach the keyboard, not when they start
+        for note in self._recently_activated_notes:
+            # These notes just hit the keyboard, so animate the key
+            self.key_press_states[note.pitch] = 0.0  # Start press animation
+        
+        # Update chord display based on notes hitting keyboard
+        if self._recently_activated_notes and len(self._recently_activated_notes) >= 2:
+            active_pitches = [n.pitch for n in self._recently_activated_notes]
             new_chord = Chord.detect_chord(active_pitches)
             if new_chord != self.current_chord:
                 self.current_chord = new_chord
                 self.chord_display_time = 0.0
         else:
-            self.current_chord = None
+            if not self._recently_activated_notes:
+                self.current_chord = None
         
         if self.current_chord:
             self.chord_display_time += 1.0/60.0
         
-        # Update keyboard animation states
-        for note in active_notes:
-            self.key_press_states[note.pitch] = 0.0  # Currently pressed
-        
         # Decay other keys
         for pitch in list(self.key_press_states.keys()):
             self.key_press_states[pitch] = self.key_press_states.get(pitch, 0.0) + 1.0/60.0
-            if self.key_press_states[pitch] > 0.5:  # Release animation time
+            if self.key_press_states[pitch] > 0.5:  # Release animation time (faster now)
                 del self.key_press_states[pitch]
         
         # Clear background
@@ -373,18 +415,15 @@ class PianoRollRenderer:
             self._draw_keyboard(width)
         
         # Draw notes with 3D perspective
-        self._draw_notes(vis_width, vis_height)
+        self._draw_notes(vis_width, vis_height, active_notes)
         
         # Draw bloom effect on active notes
         if self.enable_bloom:
-            self._draw_bloom_effect(vis_width, vis_height, active_notes)
+            self._draw_bloom_on_notes(vis_width, vis_height, active_notes)
         
         # Draw particles
         if self.enable_particles:
             self._draw_particles()
-        
-        # Draw playhead
-        self._draw_playhead(vis_width, vis_height)
         
         # Draw chord label
         if self.enable_chord_labels and self.current_chord and self.chord_display_time < self.chord_display_duration:
@@ -543,7 +582,7 @@ class PianoRollRenderer:
     
     def _draw_keyboard(self, height: int):
         """
-        Draw piano keyboard reference at the bottom (horizontal layout) with animation.
+        Draw piano keyboard reference at the bottom (horizontal layout) with dramatic press animations.
         
         Args:
             height: Available width for keyboard display (width parameter)
@@ -561,56 +600,91 @@ class PianoRollRenderer:
             note_class = pitch % 12
             is_black_key = note_class in [1, 3, 6, 8, 10]  # C#, D#, F#, G#, A#
             
-            # Get key animation state
-            press_state = self.key_press_states.get(pitch, 0.5)  # 0.0 = pressed, 0.5 = released
-            press_amount = max(0.0, min(1.0, press_state / 0.5))  # Smooth release animation
+            # Get key animation state (0.0 = pressed, 0.5+ = released)
+            press_state = self.key_press_states.get(pitch, 1.0)  # 1.0 = released
             
-            # Animate key press depth
-            key_depth = int(8 * press_amount)  # Press down 0-8 pixels
+            # Dramatic animation: fast press and slower release
+            if press_state < 0.3:
+                # Fully pressed (0-0.3 range)
+                press_amount = 0.0
+            elif press_state < 0.5:
+                # Quick release phase (0.3-0.5 range)
+                press_amount = (press_state - 0.3) / 0.2
+            else:
+                # Fully released
+                press_amount = 1.0
+            
+            # DRAMATIC DEPTH: 0-30 pixels (was 0-8)
+            key_depth = int(30 * (1.0 - press_amount))
             animated_keyboard_y = keyboard_y + key_depth
             
-            # Draw key 
+            # Get base key colors
             if is_black_key:
-                key_color = self.current_theme.keyboard_black_key
-                key_height = self.keyboard_height - 18 - key_depth  # Narrower for black keys
+                base_key_color = self.current_theme.keyboard_black_key
+                key_height = self.keyboard_height - 18 - key_depth
             else:
-                key_color = self.current_theme.keyboard_white_key
-                key_height = self.keyboard_height - 8 - key_depth  # Slightly wider white keys
-
+                base_key_color = self.current_theme.keyboard_white_key
+                key_height = self.keyboard_height - 8 - key_depth
+            
+            # COLOR CHANGE when pressed: brighten significantly
+            if press_state < 0.5:
+                # Pressed: increase brightness dramatically
+                brightness_boost = 1.5
+                key_color = tuple(min(255, int(c * brightness_boost)) for c in base_key_color)
+            else:
+                key_color = base_key_color
             
             pygame.draw.rect(self.surface, key_color,
                            (x, animated_keyboard_y, key_width, key_height))
             
-            # Draw depth shadow under pressed keys
+            # DRAMATIC SHADOWS under pressed keys
             if key_depth > 0:
-                shadow_color = (0, 0, 0, 40)
-                shadow_surface = pygame.Surface((key_width, key_depth), pygame.SRCALPHA)
-                pygame.draw.rect(shadow_surface, shadow_color, (0, 0, key_width, key_depth))
+                # Much stronger shadow (alpha 120 instead of 40)
+                shadow_alpha = 120
+                shadow_height = key_depth
+                shadow_color = (0, 0, 0, shadow_alpha)
+                shadow_surface = pygame.Surface((key_width, shadow_height), pygame.SRCALPHA)
+                pygame.draw.rect(shadow_surface, shadow_color, (0, 0, key_width, shadow_height))
                 self.surface.blit(shadow_surface, (x, animated_keyboard_y + key_height))
+                
+                # Add additional highlight shadow beneath
+                inner_shadow = (0, 0, 0, 60)
+                inner_surface = pygame.Surface((key_width, int(shadow_height / 2)), pygame.SRCALPHA)
+                pygame.draw.rect(inner_surface, inner_shadow, 
+                               (0, 0, key_width, int(shadow_height / 2)))
+                self.surface.blit(inner_surface, (x, animated_keyboard_y + key_height + int(shadow_height / 2)))
             
-            # Draw key border using theme color
-            pygame.draw.rect(self.surface, self.current_theme.keyboard_border,
-                        (x, animated_keyboard_y, key_width, key_height), 1)
-
+            # DRAMATIC BORDER: thicker and more visible
+            if press_state < 0.5:
+                # Darker border when pressed
+                border_color = tuple(max(0, c - 60) for c in key_color)
+                border_width = 3
+            else:
+                border_color = self.current_theme.keyboard_border
+                border_width = 2
+            
+            pygame.draw.rect(self.surface, border_color,
+                        (x, animated_keyboard_y, key_width, key_height), border_width)
             
             # Draw note name for C notes
             if note_class == 0:  # C notes
                 octave = (pitch // 12) - 1
                 note_name = f'C{octave}'
                 text = self.small_font.render(note_name, True, self.current_theme.keyboard_text)
-                # Center text in key
+                # Center text in key, adjust for key press
                 text_x = x + (key_width - text.get_width()) // 2
                 text_y = animated_keyboard_y + 8
                 self.surface.blit(text, (text_x, text_y))
 
     
-    def _draw_notes(self, width: int, height: int):
+    def _draw_notes(self, width: int, height: int, active_notes: list = None):
         """
         Draw MIDI notes as vertical rectangles (notes flow top to bottom).
         
         Args:
             width: Drawing area width
             height: Drawing area height
+            active_notes: List of currently active notes (optional)
         """
         if not self.midi_data:
             return
@@ -628,14 +702,14 @@ class PianoRollRenderer:
             # Draw simplified version for many notes
             logger.warning(f"Many notes visible ({len(visible_notes)}), using simplified rendering")
             for note in visible_notes[::2]:  # Draw every other note
-                self._draw_note(note, width, height)
+                self._draw_note(note, width, height, active_notes or [])
         else:
             # Draw each note normally
             for note in visible_notes:
-                self._draw_note(note, width, height)
+                self._draw_note(note, width, height, active_notes or [])
 
     
-    def _draw_note(self, note: Note, width: int, height: int):
+    def _draw_note(self, note: Note, width: int, height: int, active_notes: list = None):
         """
         Draw a single note rectangle with enhanced visual quality and 3D perspective.
         
@@ -643,6 +717,7 @@ class PianoRollRenderer:
             note: Note object to draw
             width: Drawing area width
             height: Drawing area height
+            active_notes: List of currently active notes (optional)
         """
         # Calculate note position and size (rotated 90°)
         note_x = self._pitch_to_x(note.pitch, width)
@@ -718,26 +793,10 @@ class PianoRollRenderer:
     
     def _draw_playhead(self, width: int, height: int):
         """
-        Draw the moving playhead indicator (now horizontal line).
-        
-        Args:
-            width: Drawing area width
-            height: Drawing area height
+        Playhead has been removed - all visual effects now happen directly on notes.
+        This method is kept for backward compatibility but does nothing.
         """
-        # Playhead at 2/3 from top (notes flow down toward it)
-        playhead_y = (2 * height) // 3
-        
-        # Draw horizontal line
-        pygame.draw.line(self.surface, self.playhead_color,
-                        (0, playhead_y), (width, playhead_y), 4)
-        
-        # Draw small triangle at left
-        triangle_points = [
-            (0, playhead_y),
-            (15, playhead_y - 8),
-            (15, playhead_y + 8)
-        ]
-        pygame.draw.polygon(self.surface, self.playhead_color, triangle_points)
+        pass
     
     def _get_note_color(self, note: Note) -> Tuple[int, int, int]:
         """
@@ -874,6 +933,47 @@ class PianoRollRenderer:
         
         # Invert: earlier times (negative offset) move UP the screen
         return playhead_y - pixel_offset
+    
+    def calculate_note_keyboard_hit_time(self, note: Note, height: int) -> float:
+        """
+        Calculate when a note visually reaches and hits the piano keyboard at the bottom.
+        
+        The keyboard is positioned at the bottom of the screen (at y = height - keyboard_height).
+        Notes start at their start_time Y position and flow downward.
+        
+        Args:
+            note: The MIDI note to calculate for
+            height: Total visualization height (including keyboard)
+        
+        Returns:
+            The time (in seconds) when the note visually reaches the keyboard
+        """
+        # Keyboard is at the bottom
+        keyboard_y = height - self.keyboard_height
+        
+        # Calculate where the note starts (Y position)
+        note_start_y = self._time_to_y(note.start_time, height)
+        
+        # The note moves downward as time progresses
+        # Note that just started is at note_start_y
+        # As current_time increases, notes move down the screen
+        # The note reaches keyboard when its Y position equals keyboard_y
+        
+        # Using the _time_to_y formula: y = playhead_y - (time - current_time) * pixels_per_second
+        # We want to find when: y = keyboard_y
+        # So: keyboard_y = playhead_y - (note_hit_time - current_time) * pixels_per_second
+        # Solving for note_hit_time:
+        # (note_hit_time - current_time) * pixels_per_second = playhead_y - keyboard_y
+        # note_hit_time = current_time + (playhead_y - keyboard_y) / pixels_per_second
+        
+        playhead_y = (2 * height) // 3
+        pixel_distance = playhead_y - keyboard_y  # How many pixels down from playhead to keyboard
+        time_to_keyboard = pixel_distance / self.pixels_per_second  # How many seconds to travel
+        
+        # The note reaches the keyboard at:
+        note_keyboard_hit_time = note.start_time + time_to_keyboard
+        
+        return note_keyboard_hit_time
 
     def _draw_reactive_background(self, width: int, height: int):
         """
@@ -1078,50 +1178,31 @@ class PianoRollRenderer:
             pygame.draw.circle(particle_surface, color_with_alpha, (3, 3), 3)
             self.surface.blit(particle_surface, (x - 3, y - 3))
     
-    def _draw_bloom_effect(self, width: int, height: int, active_notes: list):
+    def _draw_bloom_on_notes(self, width: int, height: int, active_notes: list):
         """
-        Draw glowing bloom effect around active notes at the playhead.
+        Draw glowing bloom effect directly on active notes.
         
         Args:
             width: Drawable width
             height: Drawable height
             active_notes: List of currently playing notes
         """
-        playhead_y = (2 * height) // 3
-        
         for note in active_notes:
             note_x = self._pitch_to_x(note.pitch, width)
+            note_y = self._time_to_y(note.start_time, height)
             color = self._get_note_color(note)
             
             # Draw multiple bloom circles with decreasing opacity
             for bloom_size in [40, 30, 20, 10]:
-                alpha = int(50 * (1.0 - bloom_size / 40.0))
+                alpha = int(80 * (1.0 - bloom_size / 40.0))  # Increased alpha for visibility
                 bloom_surface = pygame.Surface((bloom_size * 2, bloom_size * 2), pygame.SRCALPHA)
                 bloom_color = (*color, alpha)
                 pygame.draw.circle(bloom_surface, bloom_color, (bloom_size, bloom_size), bloom_size)
                 
-                # Center on note at playhead
+                # Center on note
                 blit_x = note_x + self.note_width // 2 - bloom_size
-                blit_y = playhead_y - bloom_size
+                blit_y = note_y - bloom_size
                 self.surface.blit(bloom_surface, (blit_x, blit_y))
-            
-            # Create particle burst when note reaches playhead
-            if not hasattr(self, '_burst_notes'):
-                self._burst_notes = set()
-            
-            if note.pitch not in self._burst_notes:
-                # Burst at playhead collision
-                self._create_particle_burst(
-                    note_x + self.note_width // 2,
-                    playhead_y,
-                    color,
-                    count=15
-                )
-                self._burst_notes.add(note.pitch)
-        
-        # Clean up burst tracking for notes no longer playing
-        if hasattr(self, '_burst_notes'):
-            self._burst_notes = set(n.pitch for n in active_notes) & self._burst_notes
     
     def _draw_chord_label(self, width: int):
         """

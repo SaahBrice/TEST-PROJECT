@@ -36,6 +36,10 @@ class PygameWidget(QWidget):
         self.is_initialized = False
         self.screen = None
         self.clock = None
+        
+        # Visualization mode system
+        self.visualization_mode = None  # Current VisualizationMode instance
+        self.midi_data = None
 
         # FPS tracking for performance monitoring
         self.frame_count = 0
@@ -173,13 +177,13 @@ class PygameWidget(QWidget):
     
     def _render(self):
         """
-        Render the frame using piano roll renderer if available.
+        Render the frame using the active visualization mode.
         """
-        # Check if we have a renderer
-        if hasattr(self, 'renderer') and self.renderer:
-            self.renderer.render()
+        # Check if we have a visualization mode
+        if self.visualization_mode:
+            self.visualization_mode.render()
         else:
-            # No renderer - show test pattern
+            # No mode - show test pattern
             self.screen.fill((30, 30, 40))
             self._draw_test_pattern()
 
@@ -225,6 +229,24 @@ class PygameWidget(QWidget):
         self.renderer = renderer
         logger.info(f"Renderer set: {type(renderer).__name__}")
     
+    def set_visualization_mode(self, mode):
+        """
+        Set the active visualization mode.
+        
+        Args:
+            mode: VisualizationMode instance (ClassicMode, LiquidMode, etc.)
+        """
+        if self.visualization_mode:
+            self.visualization_mode.cleanup()
+        
+        self.visualization_mode = mode
+        
+        # Pass MIDI data if available
+        if self.midi_data:
+            self.visualization_mode.set_midi_data(self.midi_data)
+        
+        logger.info(f"Visualization mode set: {mode.get_name()}")
+    
     def set_midi_data(self, midi_data):
         """
         Set MIDI data for visualization.
@@ -232,19 +254,20 @@ class PygameWidget(QWidget):
         Args:
             midi_data: MIDIData object
         """
-        if hasattr(self, 'renderer') and self.renderer:
-            self.renderer.set_midi_data(midi_data)
-            logger.info("MIDI data passed to renderer")
+        self.midi_data = midi_data
+        if self.visualization_mode:
+            self.visualization_mode.set_midi_data(midi_data)
+            logger.info("MIDI data passed to visualization mode")
     
-    def set_playback_time(self, time: float):
+    def update_playback_time(self, time: float):
         """
         Update playback time for visualization.
         
         Args:
             time: Current time in seconds
         """
-        if hasattr(self, 'renderer') and self.renderer:
-            self.renderer.set_playback_time(time)
+        if self.visualization_mode:
+            self.visualization_mode.update_time(time)
 
 
 

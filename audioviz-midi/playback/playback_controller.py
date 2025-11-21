@@ -55,6 +55,10 @@ class PlaybackController(QObject):
         self.start_time = 0.0  # Time when playback started
         self.pause_time = 0.0  # Position when paused
         
+        # MIDI data for keyboard-hit sync (optional)
+        self.midi_data = None
+        self.midi_keyboard_offset = 0.0  # Time offset to reach keyboard
+        
         # Update timer for position tracking
         self.update_timer = QTimer()
         self.update_timer.timeout.connect(self._update_position)
@@ -107,6 +111,22 @@ class PlaybackController(QObject):
             logger.error(f"Failed to load audio: {e}")
             raise Exception(f"Failed to load audio: {e}")
     
+    def set_midi_data(self, midi_data, keyboard_offset: float = 0.0):
+        """
+        Set MIDI data for keyboard-synchronized playback.
+        
+        When MIDI data is set, audio playback will be delayed so that
+        sounds trigger when notes visually hit the piano keyboard.
+        
+        Args:
+            midi_data: MIDIData object containing note information
+            keyboard_offset: Time offset (in seconds) to reach keyboard
+                           (calculated from note start time)
+        """
+        self.midi_data = midi_data
+        self.midi_keyboard_offset = keyboard_offset
+        logger.info(f"MIDI data set with keyboard offset: {keyboard_offset:.3f}s")
+    
     def play(self):
         """Start or resume playback."""
         if not self.audio_file:
@@ -127,10 +147,14 @@ class PlaybackController(QObject):
             # Start from current position
             start_position = self.current_time
             
+            # Apply MIDI keyboard offset if set
+            # This delays audio playback so sound triggers when notes hit the keyboard
+            actual_start_position = max(0.0, start_position - self.midi_keyboard_offset)
+            
             # Note: pygame.mixer.music doesn't support start position directly
             # So we play from beginning and fast-forward if needed
-            pygame.mixer.music.play(start=start_position)
-            self.start_time = time.time() - start_position
+            pygame.mixer.music.play(start=actual_start_position)
+            self.start_time = time.time() - actual_start_position
         
         # Update state
         self._set_state(PlaybackState.PLAYING)
@@ -211,8 +235,10 @@ class PlaybackController(QObject):
         
         # Restart if was playing
         if was_playing:
-            pygame.mixer.music.play(start=seek_time)
-            self.start_time = time.time() - seek_time
+            # Apply keyboard offset for delayed audio
+            actual_seek_time = max(0.0, seek_time - self.midi_keyboard_offset)
+            pygame.mixer.music.play(start=actual_seek_time)
+            self.start_time = time.time() - actual_seek_time
             self._set_state(PlaybackState.PLAYING)
         else:
             self._set_state(PlaybackState.STOPPED)

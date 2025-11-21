@@ -12,6 +12,9 @@ from PyQt5.QtWidgets import (
 )
 from playback import PlaybackController, PlaybackState
 from visualization import PianoRollRenderer
+from visualization.classic_mode import ClassicMode
+from visualization.liquid_mode import LiquidMode
+from visualization.visualization_mode import VisualizationMode
 from gui.control_panel import ControlPanel
 from visualization import PygameWidget
 from gui.processing_thread import ProcessingThread
@@ -249,6 +252,28 @@ class MainWindow(QMainWindow):
             )
             theme_menu.addAction(action)
             self.theme_actions.append(action)
+        
+        view_menu.addSeparator()
+        
+        # Visualization Mode submenu
+        mode_menu = view_menu.addMenu('&Visualization Mode')
+        
+        # Classic Mode
+        classic_mode_action = QAction('&Classic Mode', self)
+        classic_mode_action.setStatusTip('Switch to Classic waterfall visualization')
+        classic_mode_action.setCheckable(True)
+        classic_mode_action.setChecked(True)
+        classic_mode_action.triggered.connect(self._on_visualization_mode_classic)
+        mode_menu.addAction(classic_mode_action)
+        self.classic_mode_action = classic_mode_action
+        
+        # Liquid Mode
+        liquid_mode_action = QAction('&Liquid Mode', self)
+        liquid_mode_action.setStatusTip('Switch to Liquid fluid simulation')
+        liquid_mode_action.setCheckable(True)
+        liquid_mode_action.triggered.connect(self._on_visualization_mode_liquid)
+        mode_menu.addAction(liquid_mode_action)
+        self.liquid_mode_action = liquid_mode_action
         
         view_menu.addSeparator()
         
@@ -788,11 +813,36 @@ class MainWindow(QMainWindow):
         self.export_json_action.setEnabled(True)
         self.export_action.setEnabled(True)
         
-        # CREATE AND SET UP PIANO ROLL RENDERER
-        renderer = PianoRollRenderer(self.pygame_widget.screen, self.config)
-        renderer.set_midi_data(midi_data)
-        self.pygame_widget.set_renderer(renderer)
-        self.pygame_widget.set_midi_data(midi_data)
+        # CREATE AND SET UP VISUALIZATION MODES
+        # Initialize Classic Mode (default)
+        classic_mode = ClassicMode(self.pygame_widget.screen, self.config)
+        classic_mode.set_midi_data(midi_data)
+        self.current_visualization_mode = classic_mode
+        self.pygame_widget.set_visualization_mode(classic_mode)
+        
+        # Store available modes
+        self.visualization_modes = {
+            'classic': classic_mode,
+            'liquid': LiquidMode(self.pygame_widget.screen, self.config)
+        }
+        
+        # Set MIDI data for both modes
+        for mode in self.visualization_modes.values():
+            mode.set_midi_data(midi_data)
+        
+        # Calculate keyboard offset for audio sync
+        # This ensures audio plays when notes visually hit the keyboard
+        if midi_data and len(midi_data.get_notes_in_range(0, 1000)) > 0:
+            first_note = midi_data.get_notes_in_range(0, 1000)[0]
+            
+            # Use classic mode's renderer to calculate timing
+            if hasattr(classic_mode, 'renderer'):
+                keyboard_offset = classic_mode.renderer.calculate_note_keyboard_hit_time(
+                    first_note, 
+                    self.pygame_widget.screen.get_height()
+                ) - first_note.start_time
+                logger.info(f"Keyboard offset calculated: {keyboard_offset:.3f}s")
+                self.playback_controller.set_midi_data(midi_data, keyboard_offset)
         
         # LOAD AUDIO FOR PLAYBACK
         try:
@@ -906,7 +956,7 @@ class MainWindow(QMainWindow):
         
         # Update visualization
         if self.pygame_widget:
-            self.pygame_widget.set_playback_time(time)
+            self.pygame_widget.update_playback_time(time)
     
     def _on_playback_finished(self):
         """Handle playback completion."""
@@ -1398,6 +1448,34 @@ class MainWindow(QMainWindow):
         QMessageBox.information(self, 'Quick Help', message)
 
 
+
+    def _on_visualization_mode_classic(self):
+        """Switch to Classic visualization mode."""
+        if not hasattr(self, 'visualization_modes'):
+            return
+        
+        mode = self.visualization_modes['classic']
+        self.pygame_widget.set_visualization_mode(mode)
+        
+        # Update menu state
+        self.classic_mode_action.setChecked(True)
+        self.liquid_mode_action.setChecked(False)
+        
+        logger.info("Switched to Classic Mode")
+    
+    def _on_visualization_mode_liquid(self):
+        """Switch to Liquid visualization mode."""
+        if not hasattr(self, 'visualization_modes'):
+            return
+        
+        mode = self.visualization_modes['liquid']
+        self.pygame_widget.set_visualization_mode(mode)
+        
+        # Update menu state
+        self.classic_mode_action.setChecked(False)
+        self.liquid_mode_action.setChecked(True)
+        
+        logger.info("Switched to Liquid Mode")
 
     def closeEvent(self, event):
         """Handle window close event."""
