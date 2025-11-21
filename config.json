@@ -55,8 +55,8 @@
         "include_metadata": true
     },
     "ui": {
-        "window_width": 1920,
-        "window_height": 1001,
+        "window_width": 1280,
+        "window_height": 720,
         "theme": "dark",
         "last_directory": "C:/Users/brice.saah/Desktop"
     },

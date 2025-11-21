@@ -1,0 +1,162 @@
+2025-11-21 11:24:52 - AudioVizMIDI - INFO - [logger.py:63] - Logging system initialized
+2025-11-21 11:24:52 - AudioVizMIDI - INFO - [logger.py:64] - Log file: logs/audioviz_20251121_112452.log
+2025-11-21 11:24:52 - AudioVizMIDI - INFO - [main.py:18] - ============================================================
+2025-11-21 11:24:52 - AudioVizMIDI - INFO - [main.py:19] - AudioViz MIDI Application Starting
+2025-11-21 11:24:52 - AudioVizMIDI - INFO - [main.py:20] - AudioViz MIDI v0.2.0-dev Starting
+2025-11-21 11:24:52 - AudioVizMIDI - INFO - [main.py:21] - ============================================================
+2025-11-21 11:24:52 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-21 11:24:52 - AudioVizMIDI - INFO - [main.py:30] - Application: AudioViz MIDI
+2025-11-21 11:24:52 - AudioVizMIDI - INFO - [main.py:31] - Config Version: 0.2.0-dev
+2025-11-21 11:24:52 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:79] - Pygame mixer initialized
+2025-11-21 11:24:52 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:67] - PlaybackController initialized
+2025-11-21 11:24:52 - AudioVizMIDI.export.midi_exporter - INFO - [midi_exporter.py:38] - MIDIExporter initialized
+2025-11-21 11:24:52 - AudioVizMIDI.export.json_exporter - INFO - [json_exporter.py:37] - JSONExporter initialized
+2025-11-21 11:24:52 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:29] - PerformanceMonitor initialized
+2025-11-21 11:24:52 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:94] - 💾 Application start Memory: 66.2 MB (RSS), 297.2 MB (VMS)
+2025-11-21 11:24:52 - AudioVizMIDI.visualization.theme_manager - INFO - [theme_manager.py:207] - ThemeManager initialized with 3 themes
+2025-11-21 11:24:53 - AudioVizMIDI.visualization.pygame_widget - INFO - [pygame_widget.py:94] - Pygame initialized with surface size: (800, 480)
+2025-11-21 11:24:53 - AudioVizMIDI.visualization.pygame_widget - INFO - [pygame_widget.py:123] - Pygame initialized with surface size: (800, 480)
+2025-11-21 11:24:53 - AudioVizMIDI.visualization.pygame_widget - INFO - [pygame_widget.py:58] - PygameWidget initialized
+2025-11-21 11:24:53 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:400] - Keyboard shortcuts configured
+2025-11-21 11:24:53 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:76] - Main window initialized
+2025-11-21 11:24:53 - AudioVizMIDI - INFO - [main.py:47] - Main window displayed
+2025-11-21 11:24:53 - AudioVizMIDI - INFO - [main.py:48] - Application ready
+2025-11-21 11:24:53 - AudioVizMIDI.visualization.pygame_widget - WARNING - [pygame_widget.py:172] - Low FPS: 1.9 (target: 60)
+2025-11-21 11:25:37 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:627] - Open file dialog triggered
+2025-11-21 11:25:38 - AudioVizMIDI.visualization.pygame_widget - WARNING - [pygame_widget.py:172] - Low FPS: 10.9 (target: 60)
+2025-11-21 11:25:39 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:643] - File selected: C:/Users/brice.saah/Desktop/ASMR test  (Add Vocal).mp3
+2025-11-21 11:25:39 - AudioVizMIDI.utils.config - INFO - [config.py:101] - Configuration saved to config.json
+2025-11-21 11:25:39 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:660] - File loaded successfully via menu: ASMR test  (Add Vocal).mp3
+2025-11-21 11:25:40 - AudioVizMIDI.visualization.pygame_widget - WARNING - [pygame_widget.py:172] - Low FPS: 45.6 (target: 60)
+2025-11-21 11:25:47 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:733] - ============================================================
+2025-11-21 11:25:47 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:734] - Starting transcription process...
+2025-11-21 11:25:47 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:735] - ============================================================
+2025-11-21 11:25:47 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:772] - Background processing thread started
+2025-11-21 11:25:47 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:49] - ============================================================
+2025-11-21 11:25:47 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:50] - Starting Audio-to-MIDI Transcription
+2025-11-21 11:25:47 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:51] - ============================================================
+2025-11-21 11:25:47 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:94] - 💾 Start Memory: 124.7 MB (RSS), 322.1 MB (VMS)
+2025-11-21 11:25:47 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:59] - Step 1: Loading audio...
+2025-11-21 11:25:47 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-21 11:25:47 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:53] - AudioLoader initialized
+2025-11-21 11:25:47 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:73] - Loading audio file: C:/Users/brice.saah/Desktop/ASMR test  (Add Vocal).mp3
+2025-11-21 11:25:52 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:98] - Audio loaded successfully
+2025-11-21 11:25:52 - AudioVizMIDI.audio.audio_loader - INFO - [audio_loader.py:112] - Preprocessing complete. Duration: 196.80s
+2025-11-21 11:25:52 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:63] - ⏱️  audio_loading: 4.715s
+2025-11-21 11:25:52 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:94] - 💾 After audio loading Memory: 277.3 MB (RSS), 661.8 MB (VMS)
+2025-11-21 11:25:52 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:72] - Audio loaded: 196.80s, 22050 Hz
+2025-11-21 11:25:52 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:77] - Step 2: Detecting pitch...
+2025-11-21 11:25:52 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-21 11:25:52 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:51] - PitchDetector initialized with algorithm: piptrack
+2025-11-21 11:25:52 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:78] - Starting pitch detection using piptrack algorithm...
+2025-11-21 11:25:53 - AudioVizMIDI.audio.pitch_detector - INFO - [pitch_detector.py:101] - Pitch detection complete
+2025-11-21 11:25:53 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:63] - ⏱️  pitch_detection: 1.334s
+2025-11-21 11:25:53 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:94] - 💾 After pitch detection Memory: 281.2 MB (RSS), 665.4 MB (VMS)
+2025-11-21 11:25:53 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:92] - Pitch detection: 8466 frames detected
+2025-11-21 11:25:53 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:97] - Step 3: Detecting onsets...
+2025-11-21 11:25:53 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-21 11:25:53 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:51] - OnsetDetector initialized
+2025-11-21 11:25:53 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:72] - Detecting onsets using 'energy' method...
+2025-11-21 11:25:55 - AudioVizMIDI.audio.onset_detector - INFO - [onset_detector.py:115] - Onset detection complete: 428 onsets detected
+2025-11-21 11:25:55 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:63] - ⏱️  onset_detection: 1.184s
+2025-11-21 11:25:55 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:109] - Onset detection: 428 onsets found
+2025-11-21 11:25:55 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:114] - Step 4: Converting to MIDI...
+2025-11-21 11:25:55 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-21 11:25:55 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:41] - MIDIConverter initialized
+2025-11-21 11:25:55 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:63] - Converting audio analysis to MIDI notes...
+2025-11-21 11:25:55 - AudioVizMIDI.midi.midi_converter - INFO - [midi_converter.py:75] - Conversion complete: 417 notes created
+2025-11-21 11:25:55 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:63] - ⏱️  midi_conversion: 0.140s
+2025-11-21 11:25:55 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:127] - MIDI conversion: 417 notes created
+2025-11-21 11:25:55 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:132] - Step 5: Quantizing notes...
+2025-11-21 11:25:55 - AudioVizMIDI.utils.config - INFO - [config.py:84] - Configuration loaded from config.json
+2025-11-21 11:25:55 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:49] - NoteQuantizer initialized
+2025-11-21 11:25:55 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:63] - Starting note quantization...
+2025-11-21 11:25:55 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:196] - Merged 54 adjacent note pairs
+2025-11-21 11:25:55 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:243] - Filled 2 gaps
+2025-11-21 11:25:55 - AudioVizMIDI.midi.note_quantizer - INFO - [note_quantizer.py:99] - Quantization complete: 417 -> 363 notes
+2025-11-21 11:25:55 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:63] - ⏱️  quantization: 0.064s
+2025-11-21 11:25:55 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:94] - 💾 After quantization Memory: 285.1 MB (RSS), 665.4 MB (VMS)
+2025-11-21 11:25:55 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:144] - Quantization: 363 notes (filtered from 417)
+2025-11-21 11:25:55 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:63] - ⏱️  transcription: 7.505s
+2025-11-21 11:25:55 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:151] - ============================================================
+2025-11-21 11:25:55 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:152] - Transcription Complete!
+2025-11-21 11:25:55 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:153] - Total notes: 363
+2025-11-21 11:25:55 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:154] - Duration: 196.51s
+2025-11-21 11:25:55 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:155] - Pitch range: (40, 79)
+2025-11-21 11:25:55 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:156] - Total processing time: 7.51s
+2025-11-21 11:25:55 - AudioVizMIDI.gui.processing_thread - INFO - [processing_thread.py:157] - ============================================================
+2025-11-21 11:25:55 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:795] - Processing completed successfully!
+2025-11-21 11:25:55 - AudioVizMIDI.visualization.theme_manager - INFO - [theme_manager.py:207] - ThemeManager initialized with 3 themes
+2025-11-21 11:25:55 - AudioVizMIDI.visualization.theme_manager - INFO - [theme_manager.py:234] - Theme changed to: Studio Light
+2025-11-21 11:25:55 - AudioVizMIDI.visualization.piano_roll_renderer - INFO - [piano_roll_renderer.py:181] - Theme loaded: Studio Light
+2025-11-21 11:25:55 - AudioVizMIDI.visualization.piano_roll_renderer - INFO - [piano_roll_renderer.py:247] - PianoRollRenderer initialized
+2025-11-21 11:25:55 - AudioVizMIDI.visualization.piano_roll_renderer - INFO - [piano_roll_renderer.py:265] - MIDI data set: 363 notes, pitch range 37-82
+2025-11-21 11:25:55 - AudioVizMIDI.visualization.pygame_widget - INFO - [pygame_widget.py:248] - Visualization mode set: Classic Mode
+2025-11-21 11:25:55 - AudioVizMIDI.visualization.liquid_mode - INFO - [liquid_mode.py:221] - Professional Liquid Mode initialized
+2025-11-21 11:25:55 - AudioVizMIDI.visualization.piano_roll_renderer - INFO - [piano_roll_renderer.py:265] - MIDI data set: 363 notes, pitch range 37-82
+2025-11-21 11:25:55 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:844] - Keyboard offset calculated: -0.450s
+2025-11-21 11:25:55 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:128] - MIDI data set with keyboard offset: -0.450s
+2025-11-21 11:25:55 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:92] - Loading audio file: C:/Users/brice.saah/Desktop/ASMR test  (Add Vocal).mp3
+2025-11-21 11:25:55 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:108] - Audio loaded: duration=196.51s
+2025-11-21 11:25:55 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:850] - Audio loaded for playback
+2025-11-21 11:25:59 - AudioVizMIDI.visualization.pygame_widget - INFO - [pygame_widget.py:248] - Visualization mode set: Classic Mode
+2025-11-21 11:25:59 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:1464] - Switched to Classic Mode
+2025-11-21 11:26:02 - AudioVizMIDI.visualization.pygame_widget - INFO - [pygame_widget.py:248] - Visualization mode set: Liquid Mode
+2025-11-21 11:26:02 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:1478] - Switched to Liquid Mode
+2025-11-21 11:26:04 - AudioVizMIDI.gui.control_panel - INFO - [control_panel.py:228] - Play button clicked
+2025-11-21 11:26:04 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:888] - Play requested from control panel
+2025-11-21 11:26:04 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:140] - Starting playback
+2025-11-21 11:26:12 - AudioVizMIDI.visualization.pygame_widget - WARNING - [pygame_widget.py:172] - Low FPS: 47.8 (target: 60)
+2025-11-21 11:26:13 - AudioVizMIDI.visualization.pygame_widget - WARNING - [pygame_widget.py:172] - Low FPS: 37.6 (target: 60)
+2025-11-21 11:26:13 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:1275] - Window size reset to default
+2025-11-21 11:26:14 - AudioVizMIDI.visualization.pygame_widget - WARNING - [pygame_widget.py:172] - Low FPS: 31.7 (target: 60)
+2025-11-21 11:26:15 - AudioVizMIDI.visualization.pygame_widget - WARNING - [pygame_widget.py:172] - Low FPS: 30.0 (target: 60)
+2025-11-21 11:26:16 - AudioVizMIDI.visualization.pygame_widget - WARNING - [pygame_widget.py:172] - Low FPS: 30.7 (target: 60)
+2025-11-21 11:26:17 - AudioVizMIDI.visualization.pygame_widget - WARNING - [pygame_widget.py:172] - Low FPS: 42.4 (target: 60)
+2025-11-21 11:26:19 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:1275] - Window size reset to default
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:140] - ============================================================
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:141] - Performance Summary
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:142] - ============================================================
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:94] - 💾 Final Memory: 268.9 MB (RSS), 648.3 MB (VMS)
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:113] - 🔥 CPU Usage: 0.0%
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:152] - 
+Operation Timings:
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:155] -   audio_loading:
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:156] -     Count: 1
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:157] -     Average: 4.715s
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:158] -     Min: 4.715s
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:159] -     Max: 4.715s
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:155] -   pitch_detection:
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:156] -     Count: 1
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:157] -     Average: 1.334s
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:158] -     Min: 1.334s
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:159] -     Max: 1.334s
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:155] -   onset_detection:
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:156] -     Count: 1
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:157] -     Average: 1.184s
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:158] -     Min: 1.184s
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:159] -     Max: 1.184s
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:155] -   midi_conversion:
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:156] -     Count: 1
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:157] -     Average: 0.140s
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:158] -     Min: 0.140s
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:159] -     Max: 0.140s
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:155] -   quantization:
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:156] -     Count: 1
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:157] -     Average: 0.064s
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:158] -     Min: 0.064s
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:159] -     Max: 0.064s
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:155] -   transcription:
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:156] -     Count: 1
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:157] -     Average: 7.505s
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:158] -     Min: 7.505s
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:159] -     Max: 7.505s
+2025-11-21 11:26:21 - AudioVizMIDI.utils.performance_monitor - INFO - [performance_monitor.py:161] - ============================================================
+2025-11-21 11:26:21 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:336] - Cleaning up playback controller
+2025-11-21 11:26:21 - AudioVizMIDI.playback.playback_controller - INFO - [playback_controller.py:190] - Stopping playback
+2025-11-21 11:26:21 - AudioVizMIDI.visualization.pygame_widget - INFO - [pygame_widget.py:295] - Cleaning up Pygame resources
+2025-11-21 11:26:21 - AudioVizMIDI.utils.config - INFO - [config.py:101] - Configuration saved to config.json
+2025-11-21 11:26:21 - AudioVizMIDI.gui.main_window - INFO - [main_window.py:1498] - Main window closing
+2025-11-21 11:26:21 - AudioVizMIDI.visualization.pygame_widget - ERROR - [pygame_widget.py:175] - Error updating frame: display Surface quit
+2025-11-21 11:26:21 - AudioVizMIDI - INFO - [main.py:53] - Application shutting down
+2025-11-21 11:26:21 - AudioVizMIDI - INFO - [main.py:54] - Exit code: 0
